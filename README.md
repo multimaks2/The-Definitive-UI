@@ -131,8 +131,8 @@ source/
   Game/                 window mode, settings, game state
   LanguageManager/      словари UI и зон
   Draw/, InputManager/, TxdManager/, Shader/, Utils/
-tools/                  скрипты генерации словарей help
-assets/                 вспомогательные данные для сборки/инструментов
+assets/
+  The-Definitive-UI.SA/ ресурсы мода (map.txd, MainMenu.txd, blip.txd, png…)
 ```
 
 ---
