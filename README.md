@@ -27,6 +27,7 @@ ASI-плагин для **GTA San Andreas 1.0 US**, который заменя�
 |---|---|
 | 📦 Сборка | `The-Definitive-UI.SA.asi` |
 | ⚙️ Конфиг | `The-Definitive-UI.SA.ini` *(создаётся при первом запуске)* |
+| 📂 Ресурсы | папка `The-Definitive-UI.SA\` рядом с ASI — внутрь положить содержимое `assets/The-Definitive-UI.SA/` (`map.txd`, `MainMenu.txd`, `blip.txd`, png и т.д.) |
 
 ---
 
@@ -72,17 +73,24 @@ ASI-плагин для **GTA San Andreas 1.0 US**, который заменя�
 
 Рядом с `gta_sa.exe` (или в папке мода ModLoader):
 
+1. Скопировать `The-Definitive-UI.SA.asi` (и при желании `.pdb`).
+2. Создать папку **`The-Definitive-UI.SA`** рядом с ASI.
+3. Скопировать в неё **всё содержимое** `assets/The-Definitive-UI.SA/` из репозитория (`map.txd`, `MainMenu.txd`, `blip.txd`, png…).
+
+Итоговая раскладка:
+
 ```
+gta_sa.exe
 The-Definitive-UI.SA.asi
-The-Definitive-UI.SA.pdb          ← по желанию, для разбора дампов
-The-Definitive-UI.SA\             ← ресурсы
-  MainMenu.txd
+The-Definitive-UI.SA.pdb          ← по желанию
+The-Definitive-UI.SA\
   map.txd
+  MainMenu.txd
   blip.txd
-  …png / прочие ассеты
+  …остальные файлы из assets/The-Definitive-UI.SA/
 ```
 
-Игра ищет TXD по путям вида `The-Definitive-UI.SA\map.txd` относительно каталога игры.
+Без этой папки мод не укомплектован: радар/меню не найдут текстуры (`The-Definitive-UI.SA\map.txd` и т.п.).
 
 > 💡 PDB рядом с ASI нужен, если присылают `.dmp`: без него стек будет безымянным.
 
