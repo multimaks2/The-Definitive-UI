@@ -31,6 +31,9 @@ ipch/
 # Local machine config (deploy paths etc.)
 Local.props
 
+# Local-only docs (keep on disk, do not publish)
+PLUGIN-SDK-ADDRESS-AUDIT.md
+
 # Python caches (if any scripts appear outside tools/)
 __pycache__/
 *.py[cod]

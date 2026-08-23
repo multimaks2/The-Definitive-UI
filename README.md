@@ -1,4 +1,4 @@
-﻿# 🎮 The-Definitive-UI
+# 🎮 The-Definitive-UI
 <p align="center">
   <img src="https://img.shields.io/badge/GTA%20SA-1.0%20US-brightgreen?style=for-the-badge&logo=rockstargames&logoColor=white" alt="GTA SA 1.0 US"/>
   <img src="https://img.shields.io/badge/platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows"/>
@@ -165,7 +165,6 @@ assets/
 
 - Целевая сборка игры: **SA 1.0 US** (`PLUGIN_SGV_10US`). Другие экзешники не поддерживаются.
 - В Release PDB пишется отдельно; в бинарник вшивается только имя файла PDB (`/PDBALTPATH`), без абсолютного пути машины сборки.
-- Документ `PLUGIN-SDK-ADDRESS-AUDIT.md` — внутренний аудит адресов plugin-sdk, к установке мода не относится.
 
 <p align="center">
   <sub>Made for GTA San Andreas · Windows · DirectX 9</sub>
