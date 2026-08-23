@@ -41,7 +41,7 @@ ASI-плагин для **GTA San Andreas 1.0 US**, который заменя�
 - 🪟 Режим окна: exclusive / windowed / borderless
 - 🎨 Разрядность цвета (16 / 32 bit) в настройках
 - 🌫️ Переключатели эффектов: heat haze, speed blur
-- 🧩 Опционально: DE-иконки радара/HUD, кастомный `map.txd`, зоны банд
+- 🧩 Переключение в ini: свои тайлы `map.txd` или сток `radar00`–`radar143`; иконки Definitive или сток `hud.txd`; зоны банд
 
 > Отдельные подсистемы можно отключить через ini (`RadarRender`, `MenuRender` и др.).
 
@@ -98,14 +98,15 @@ The-Definitive-UI.SA\
 
 ## ⚙️ Конфигурация
 
-`The-Definitive-UI.SA.ini` — рядом с ASI. Основные ключи:
+`The-Definitive-UI.SA.ini` — рядом с ASI (создаётся при первом запуске). Основные ключи:
 
 | Ключ | Назначение |
 |------|------------|
 | `RadarRender` / `MenuRender` | вкл. кастомный радар / меню |
 | `Language` | язык UI |
 | `ZoomKey` | зум камеры радара (по умолчанию `G`) |
-| `DeIcons` / `CustomRadarTxd` | DE-иконки / свой `map.txd` |
+| `CustomRadarTxd` | **тайлы карты:** `1` — свои из `map.txd` (папка `The-Definitive-UI.SA`), `0` — оригинал игры `radar00`–`radar143` |
+| `DeIcons` | **иконки радара/HUD:** `1` — пак Definitive, `0` — оригинал `hud.txd` (блипы 56/57 всегда сток) |
 | `GPS` / `RadioText` / `UpdatedHelp` | GPS, текст радио, обновлённые help |
 | `HeatHaze` / `SpeedBlur` | пост-эффекты |
 | `WindowMode` / `WindowWidth` / `WindowHeight` / `ColorDepth` | окно и цвет |
