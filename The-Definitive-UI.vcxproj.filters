@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Config">
+      <UniqueIdentifier>{E5F6A7B8-C9D0-1234-EF01-345678901234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Draw">
+      <UniqueIdentifier>{18C9D0E1-F203-4567-1234-678901234567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game">
+      <UniqueIdentifier>{A8E4C1D2-3B5F-4E6A-9C7D-1F2E3D4C5B6A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Help">
+      <UniqueIdentifier>{5A6B7C8D-9E0F-1234-5678-90ABCDEF1234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\HookManager">
+      <UniqueIdentifier>{F6A7B8C9-D0E1-2345-F012-456789012345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\InputManager">
+      <UniqueIdentifier>{29D0E1F2-0314-5678-2345-789012345678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\LanguageManager">
+      <UniqueIdentifier>{07B8C9D0-E1F2-3456-0123-567890123456}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\MainMenu">
+      <UniqueIdentifier>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\pMainMenu">
+      <UniqueIdentifier>{4BF2A314-2536-789A-4567-901234567890}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Radar">
+      <UniqueIdentifier>{B2C3D4E5-F6A7-8901-BCDE-F12345678901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Radar\mapmanager">
+      <UniqueIdentifier>{A5B6C7D8-E9F0-1234-0123-67890ABCDEF0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Radar\mapmanager\gangzones">
+      <UniqueIdentifier>{B6C7D8E9-F0A1-2345-1234-7890ABCDEF01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Radar\render">
+      <UniqueIdentifier>{D2E3F4A5-B6C7-8901-DEF0-34567890ABCD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Radar\render\camera">
+      <UniqueIdentifier>{E3F4A5B6-C7D8-9012-EF01-4567890ABCDE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Radar\render\draw">
+      <UniqueIdentifier>{F4A5B6C7-D8E9-0123-F012-567890ABCDEF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\SaveSlots">
+      <UniqueIdentifier>{47C1D2E3-F4A5-6789-B012-3456789ABCDE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shader">
+      <UniqueIdentifier>{D4E5F6A7-B8C9-0123-DEF0-234567890123}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\TxdManager">
+      <UniqueIdentifier>{39E1F203-1425-6789-3456-890123456789}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utils">
+      <UniqueIdentifier>{C3D4E5F6-A7B8-9012-CDEF-123456789012}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\pch.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Config\Config.cpp">
+      <Filter>Source\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Draw\Draw.cpp">
+      <Filter>Source\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\GameState.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\GameSettings.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game\WindowMode.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Help\Help.cpp">
+      <Filter>Source\Help</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Help\HelpRenderer.cpp">
+      <Filter>Source\Help</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Help\HelpGxt.cpp">
+      <Filter>Source\Help</Filter>
+    </ClCompile>
+    <ClCompile Include="source\HookManager\HookManager.cpp">
+      <Filter>Source\HookManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\InputManager\InputManager.cpp">
+      <Filter>Source\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LanguageManager\LanguageManager.cpp">
+      <Filter>Source\LanguageManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MainMenu\MainMenu.cpp">
+      <Filter>Source\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="source\pMainMenu\pMainMenu.cpp">
+      <Filter>Source\pMainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\Radar.cpp">
+      <Filter>Source\Radar</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\mapmanager\BlipManager.cpp">
+      <Filter>Source\Radar\mapmanager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\mapmanager\MapChunkManager.cpp">
+      <Filter>Source\Radar\mapmanager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\mapmanager\RadarOverlayCompat.cpp">
+      <Filter>Source\Radar\mapmanager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\mapmanager\StockRadarDraw.cpp">
+      <Filter>Source\Radar\mapmanager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\mapmanager\gangzones\GangZoneRenderer.cpp">
+      <Filter>Source\Radar\mapmanager\gangzones</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\render\GpsRender.cpp">
+      <Filter>Source\Radar\render</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\render\RadarGeometry.cpp">
+      <Filter>Source\Radar\render</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\render\RadarRenderer.cpp">
+      <Filter>Source\Radar\render</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\render\RadarViewContext.cpp">
+      <Filter>Source\Radar\render</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\render\RenderRadio.cpp">
+      <Filter>Source\Radar\render</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\render\RenderTarget.cpp">
+      <Filter>Source\Radar\render</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\render\camera\CameraController.cpp">
+      <Filter>Source\Radar\render\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Radar\render\draw\DxDrawPrimitives.cpp">
+      <Filter>Source\Radar\render\draw</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SaveSlots\SaveSlots.cpp">
+      <Filter>Source\SaveSlots</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Shader\Shader.cpp">
+      <Filter>Source\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Shader\ShaderCode.cpp">
+      <Filter>Source\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Shader\ShaderManager.cpp">
+      <Filter>Source\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TxdManager\TxdManager.cpp">
+      <Filter>Source\TxdManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Utils.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\MathUtils.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Base64Image.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\CrashDump.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\pch.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Config\Config.h">
+      <Filter>Source\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Draw\Draw.h">
+      <Filter>Source\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Game\GameState.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Game\GameSettings.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Game\WindowMode.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Help\Help.h">
+      <Filter>Source\Help</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Help\HelpRenderer.h">
+      <Filter>Source\Help</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Help\HelpGxt.h">
+      <Filter>Source\Help</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Help\HelpPhrases.inc">
+      <Filter>Source\Help</Filter>
+    </ClInclude>
+    <ClInclude Include="source\HookManager\HookManager.h">
+      <Filter>Source\HookManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\InputManager\InputManager.h">
+      <Filter>Source\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\LanguageManager\LanguageManager.h">
+      <Filter>Source\LanguageManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MainMenu\MainMenu.h">
+      <Filter>Source\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="source\pMainMenu\pMainMenu.h">
+      <Filter>Source\pMainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\Radar.h">
+      <Filter>Source\Radar</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\mapmanager\BlipManager.h">
+      <Filter>Source\Radar\mapmanager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\mapmanager\BlipTypes.h">
+      <Filter>Source\Radar\mapmanager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\mapmanager\MapChunkManager.h">
+      <Filter>Source\Radar\mapmanager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\mapmanager\RadarOverlayCompat.h">
+      <Filter>Source\Radar\mapmanager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\mapmanager\StockRadarDraw.h">
+      <Filter>Source\Radar\mapmanager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\mapmanager\gangzones\GangZoneRenderer.h">
+      <Filter>Source\Radar\mapmanager\gangzones</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\mapmanager\gangzones\GangZoneTypes.h">
+      <Filter>Source\Radar\mapmanager\gangzones</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\render\GpsRender.h">
+      <Filter>Source\Radar\render</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\render\RadarGeometry.h">
+      <Filter>Source\Radar\render</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\render\RadarRenderer.h">
+      <Filter>Source\Radar\render</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\render\RadarTypes.h">
+      <Filter>Source\Radar\render</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\render\RadarViewContext.h">
+      <Filter>Source\Radar\render</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\render\RenderRadio.h">
+      <Filter>Source\Radar\render</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\render\RenderTarget.h">
+      <Filter>Source\Radar\render</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\render\camera\CameraController.h">
+      <Filter>Source\Radar\render\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\render\draw\DxDrawPrimitives.h">
+      <Filter>Source\Radar\render\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Radar\render\draw\DrawResources.h">
+      <Filter>Source\Radar\render\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="source\SaveSlots\SaveSlots.h">
+      <Filter>Source\SaveSlots</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Shader\Shader.h">
+      <Filter>Source\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Shader\ShaderCode.h">
+      <Filter>Source\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Shader\ShaderManager.h">
+      <Filter>Source\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="source\TxdManager\TxdManager.h">
+      <Filter>Source\TxdManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Utils.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\MathUtils.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Base64Image.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\ColorUtils.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\CrashDump.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

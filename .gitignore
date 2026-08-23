@@ -1,0 +1,47 @@
+# Build / local output
+bin/
+obj/
+verify-bin/
+tools/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.aps
+*.ilk
+*.exp
+*.lib
+*.pdb
+*.ipch
+*.VC.db
+*.VC.opendb
+ipch/
+*.opensdf
+*.sdf
+*.tlog
+*.obj
+*.log
+*.idb
+*.pch
+*.res
+*.iobj
+*.ipdb
+
+# Local machine config (deploy paths etc.)
+Local.props
+
+# Python caches (if any scripts appear outside tools/)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Keep shipping assets (do not ignore)
+!assets/
+!assets/**
