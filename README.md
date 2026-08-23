@@ -13,6 +13,7 @@
   <img src="https://img.shields.io/badge/plugin--sdk-required-yellow?style=flat-square" alt="plugin-sdk"/>
   <img src="https://img.shields.io/badge/UI%20style-Definitive%20Edition-blueviolet?style=flat-square" alt="DE UI"/>
   <img src="https://img.shields.io/badge/languages-6-informational?style=flat-square" alt="6 languages"/>
+  <img src="https://img.shields.io/badge/license-GPL--3.0-blue?style=flat-square" alt="GPL-3.0"/>
   <a href="https://github.com/multimaks2/Radar-in-style-GTA-SA-The-Definitive-Edition/releases">
     <img src="https://img.shields.io/github/v/release/multimaks2/Radar-in-style-GTA-SA-The-Definitive-Edition?include_prereleases&style=flat-square&label=release" alt="Release"/>
   </a>
@@ -149,6 +150,14 @@ assets/
 | патчи heat haze / speed blur в `Config` | тот же принцип отключения через RET в начале функции |
 
 Остальной код (радар, меню, help, GPS и т.д.) — собственная реализация проекта.
+
+---
+
+## 📜 Лицензия
+
+Проект распространяется под **[GNU General Public License v3.0](LICENSE)** (`GPL-3.0`).
+
+Часть кода производна от MTA (`mtasa-blue`, GPLv3), поэтому весь репозиторий и бинарные сборки при распространении идут под GPLv3: исходники должны оставаться открытыми на тех же условиях.
 
 ---
 
