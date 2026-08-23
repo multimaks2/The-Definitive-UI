@@ -1,4 +1,4 @@
-# 🎮 The-Definitive-UI
+﻿# 🎮 The-Definitive-UI
 
 <p align="center">
   <img src="https://img.shields.io/badge/GTA%20SA-1.0%20US-brightgreen?style=for-the-badge&logo=rockstargames&logoColor=white" alt="GTA SA 1.0 US"/>
@@ -14,11 +14,11 @@
   <img src="https://img.shields.io/badge/UI%20style-Definitive%20Edition-blueviolet?style=flat-square" alt="DE UI"/>
   <img src="https://img.shields.io/badge/languages-6-informational?style=flat-square" alt="6 languages"/>
   <img src="https://img.shields.io/badge/license-GPL--3.0-blue?style=flat-square" alt="GPL-3.0"/>
-  <a href="https://github.com/multimaks2/Radar-in-style-GTA-SA-The-Definitive-Edition/releases">
-    <img src="https://img.shields.io/github/v/release/multimaks2/Radar-in-style-GTA-SA-The-Definitive-Edition?include_prereleases&style=flat-square&label=release" alt="Release"/>
+  <a href="https://github.com/multimaks2/The-Definitive-UI/releases">
+    <img src="https://img.shields.io/github/v/release/multimaks2/The-Definitive-UI?include_prereleases&style=flat-square&label=release" alt="Release"/>
   </a>
-  <a href="https://github.com/multimaks2/Radar-in-style-GTA-SA-The-Definitive-Edition/stargazers">
-    <img src="https://img.shields.io/github/stars/multimaks2/Radar-in-style-GTA-SA-The-Definitive-Edition?style=flat-square" alt="Stars"/>
+  <a href="https://github.com/multimaks2/The-Definitive-UI/stargazers">
+    <img src="https://img.shields.io/github/stars/multimaks2/The-Definitive-UI?style=flat-square" alt="Stars"/>
   </a>
 </p>
 
