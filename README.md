@@ -1,6 +1,4 @@
 ﻿# 🎮 The-Definitive-UI
-<img width="2560" height="1440" alt="image 26" src="https://github.com/user-attachments/assets/35dae7be-495a-49b2-ba70-1cacd04ccad1" />
-
 <p align="center">
   <img src="https://img.shields.io/badge/GTA%20SA-1.0%20US-brightgreen?style=for-the-badge&logo=rockstargames&logoColor=white" alt="GTA SA 1.0 US"/>
   <img src="https://img.shields.io/badge/platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows"/>
@@ -22,6 +20,7 @@
     <img src="https://img.shields.io/github/stars/multimaks2/The-Definitive-UI?style=flat-square" alt="Stars"/>
   </a>
 </p>
+<img width="2560" height="1440" alt="image 26" src="https://github.com/user-attachments/assets/35dae7be-495a-49b2-ba70-1cacd04ccad1" />
 
 ASI-плагин для **GTA San Andreas 1.0 US**, который заменяет стоковый интерфейс на UI в стиле *GTA: The Definitive Edition*: радар, главное меню, пауза с картой, подсказки и связанные HUD-элементы.
 
