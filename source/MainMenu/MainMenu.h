@@ -33,6 +33,12 @@ public:
         static constexpr const char* Game       = "Game";
         static constexpr const char* Settings   = "Settings";
         static constexpr const char* Exit       = "Exit";
+        static constexpr const char* GameNoHoverCancel  = "GameNoHoverCancel";
+        static constexpr const char* GameHoverCancel    = "GameHoverCancel";
+        static constexpr const char* GameNoHoverAccept  = "GameNoHoverAccept";
+        static constexpr const char* GameHoverAccept    = "GameHoverAccept";
+        static constexpr const char* Logo               = "Logo";
+        static constexpr const char* Rochelle           = "ROCHELLE";
     };
 
     // 2K reference (2560x1440). Menu button Y is from the BOTTOM of the screen.
@@ -49,6 +55,15 @@ public:
         static constexpr float TextHeight   = 50.0f;
         static constexpr float HoverWidth   = 388.0f;
         static constexpr float HoverHeight  = 78.0f;
+
+        static constexpr float LogoPadX     = 60.0f;
+        static constexpr float LogoPadY     = 80.0f;
+        static constexpr float LogoW        = 575.0f;
+        static constexpr float LogoH        = 510.0f;
+
+        static constexpr float RochelleW        = 1265.0f;
+        static constexpr float RochelleH        = 1440.0f;
+        static constexpr float RochellePadRight = 115.0f;
 
         static constexpr DWORD OutlineColor   = 0xFF588942;
         static constexpr float OutlineOffsetX = 3.0f;
@@ -85,11 +100,10 @@ public:
         static constexpr float CycleArrowGap    = 2.0f;   // space between < value >
         static constexpr float CycleArrowScale  = 1.28f;  // hover via larger font face
 
-        // New Game confirm @2K (inside list body)
+        // Game confirm @2K — origin = list center; text up 1× font body; pair down 1× pair H
         static constexpr float NewGameBtnW         = 400.0f;
         static constexpr float NewGameBtnH         = 72.0f;
         static constexpr float NewGameBtnGap       = 24.0f;
-        static constexpr float NewGameBtnBottomPad = 90.0f;
         static constexpr DWORD NewGameBtnIdle      = 0xC8000000;
         static constexpr DWORD NewGameBtnHover     = 0xE1000000;
 
@@ -201,6 +215,7 @@ private:
 
     bool LoadBackground();
     bool LoadHoverTextures();
+    bool LoadGameConfirmTextures();
     void ShowOsCursor();
     void HideOsCursor();
     void HandleAltF4();
@@ -233,12 +248,15 @@ private:
     void DismissSaveSuccess();
     void OnStartOrContinue();
     void DrawButtons(float screenW, float screenH);
+    void DrawLogo(float screenW, float screenH);
+    void DrawRochelle(float screenW, float screenH);
     void DrawGamePanel(float screenW, float screenH);
     void DrawNewGameConfirm(float screenW, float screenH, float cursorX, float cursorY);
     void DrawLoadConfirm(float screenW, float screenH, float cursorX, float cursorY);
     void DrawSaveSuccess(float screenW, float screenH, float cursorX, float cursorY);
     void DrawConfirmButtons(float screenW, float screenH, float cursorX, float cursorY);
     void DrawOkButton(float screenW, float screenH, float cursorX, float cursorY);
+    void DrawConfirmSheet(float screenW, float screenH, const char* prompt, bool okOnly);
     void DrawSettingsPanel(float screenW, float screenH);
     // onActivePlate = black on white plate; hovered = solid white;
     // solidIdle = white+outline (left 4 buttons on green bg);
@@ -256,7 +274,11 @@ private:
     GameSettings*      m_pSettings = nullptr;
     SaveSlots          m_saves;
     LPDIRECT3DTEXTURE9 m_pBackground = nullptr;
+    LPDIRECT3DTEXTURE9 m_pLogo = nullptr;
+    LPDIRECT3DTEXTURE9 m_pRochelle = nullptr;
     LPDIRECT3DTEXTURE9 m_pHover[Layout::Count] = {};
+    LPDIRECT3DTEXTURE9 m_pGameBtnIdle[2] = {};  // Cancel, Accept
+    LPDIRECT3DTEXTURE9 m_pGameBtnHover[2] = {};
     int                m_nHovered = -1;
     int                m_nHoverSoundId = -1;
     int                m_nHoverSlot = -1;

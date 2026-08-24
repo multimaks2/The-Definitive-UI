@@ -166,3 +166,35 @@ void Ui::DrawMenuText(Draw* draw,
     draw->DrawString(left, top, right, bottom, 0x00FFFFFF, text, 1.0f, 1.0f,
                      format, true, kOutlineColor, ox, oy);
 }
+
+void Ui::DrawTexturedConfirmButton(Draw* draw,
+                                   float left, float top, float right, float bottom,
+                                   LPDIRECT3DTEXTURE9 idleTex, LPDIRECT3DTEXTURE9 hoverTex,
+                                   bool hovered, const char* label,
+                                   float screenW, float screenH)
+{
+    if (!draw)
+        return;
+
+    const float w = right - left;
+    const float h = bottom - top;
+    const DWORD fmt = DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE;
+
+    if (hovered)
+    {
+        if (hoverTex)
+            draw->DrawTexture(hoverTex, left, top, w, h);
+        else if (idleTex)
+            draw->DrawTexture(idleTex, left, top, w, h);
+        DrawMenuText(draw, left, top, right, bottom, label, fmt, false, screenW, screenH, true, false);
+        return;
+    }
+
+    if (idleTex)
+    {
+        draw->DrawTextureCutoutText(idleTex, left, top, w, h, left, top, right, bottom, label, fmt);
+        return;
+    }
+
+    draw->DrawRectCutoutText(left, top, w, h, 0xC8000000, left, top, right, bottom, label, fmt);
+}

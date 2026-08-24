@@ -101,12 +101,12 @@ namespace RadarConfig
                 "# Кастомные меню: 1=вкл, 0=сток frontend"
             } },
             { "Language", {
-                "# UI language: American, French, German, Italian, Spanish, Russian",
-                "# Langue de l'UI: American, French, German, Italian, Spanish, Russian",
-                "# UI-Sprache: American, French, German, Italian, Spanish, Russian",
-                "# Lingua UI: American, French, German, Italian, Spanish, Russian",
-                "# Idioma de la UI: American, French, German, Italian, Spanish, Russian",
-                "# Язык UI: American, French, German, Italian, Spanish, Russian"
+                "# UI language: American, French, German, Italian, Spanish, Russian, Portuguese, Brazilian",
+                "# Langue de l'UI: American, French, German, Italian, Spanish, Russian, Portuguese, Brazilian",
+                "# UI-Sprache: American, French, German, Italian, Spanish, Russian, Portuguese, Brazilian",
+                "# Lingua UI: American, French, German, Italian, Spanish, Russian, Portuguese, Brazilian",
+                "# Idioma de la UI: American, French, German, Italian, Spanish, Russian, Portuguese, Brazilian",
+                "# Язык UI: American, French, German, Italian, Spanish, Russian, Portuguese, Brazilian"
             } },
             { "ZoomKey", {
                 "# Radar camera zoom key, default G (latin letter A-Z)",

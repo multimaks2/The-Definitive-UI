@@ -58,4 +58,11 @@ namespace Ui
                       const char* text, DWORD format, bool hovered,
                       float screenW, float screenH,
                       bool onActivePlate, bool solidIdle);
+
+    // Idle: texture + cutout label. Hover: hover texture + black label.
+    void DrawTexturedConfirmButton(Draw* draw,
+                                   float left, float top, float right, float bottom,
+                                   LPDIRECT3DTEXTURE9 idleTex, LPDIRECT3DTEXTURE9 hoverTex,
+                                   bool hovered, const char* label,
+                                   float screenW, float screenH);
 }

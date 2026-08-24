@@ -13,7 +13,8 @@
 class LanguageManager
 {
 public:
-    // Matches settings list: American, French, German, Italian, Spanish, Russian
+    // Matches settings list: American, French, German, Italian, Spanish, Russian,
+    // Portuguese (Portugal), Brazilian (pt-BR)
     enum class Lang : int
     {
         American = 0,
@@ -22,6 +23,8 @@ public:
         Italian,
         Spanish,
         Russian,
+        Portuguese,
+        Brazilian,
         Count
     };
 

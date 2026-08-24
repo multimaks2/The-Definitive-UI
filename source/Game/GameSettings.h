@@ -150,7 +150,7 @@ public:
     struct RemapBind
     {
         int         action; // e_ControllerAction
-        const char* label;
+        const char* label;  // LanguageManager / GXT key (FEC_*)
     };
 
     void Bind(Draw* draw, LPDIRECT3DDEVICE9 device, bool* pendingVideo);

@@ -1260,13 +1260,153 @@ void Draw::DrawRectCutoutText(float fX, float fY, float fWidth, float fHeight, D
                               float fTextLeft, float fTextTop, float fTextRight, float fTextBottom,
                               const char* szText, DWORD dwFormat)
 {
+    const CutoutSpan span{ fTextLeft, fTextTop, fTextRight, fTextBottom, szText, dwFormat };
+    DrawRectCutoutTexts(fX, fY, fWidth, fHeight, dwColor, &span, 1);
+}
+
+void Draw::DrawRectCutoutTexts(float fX, float fY, float fWidth, float fHeight, DWORD dwColor,
+                               const CutoutSpan* spans, int count)
+{
     auto fallback = [&]() {
         DrawRect(fX, fY, fWidth, fHeight, dwColor);
+        if (!spans)
+            return;
+        for (int i = 0; i < count; ++i)
+        {
+            if (spans[i].text)
+                DrawString(spans[i].left, spans[i].top, spans[i].right, spans[i].bottom,
+                           0xFFFFFFFF, spans[i].text, 1.0f, 1.0f, spans[i].format, false);
+        }
+    };
+
+    if (!m_bInitialized || !m_pDevice || !m_pFont || !spans || count < 1)
+    {
+        if (m_bInitialized && m_pDevice)
+            fallback();
+        return;
+    }
+
+    if (fWidth < 1.0f || fHeight < 1.0f)
+        return;
+
+    const UINT tw = static_cast<UINT>(fWidth + 0.5f);
+    const UINT th = static_cast<UINT>(fHeight + 0.5f);
+    if (!EnsureCutoutTarget(tw, th))
+    {
+        fallback();
+        return;
+    }
+
+    SavedFb fb;
+    if (!BindOffscreen(m_pDevice, m_pMaskSurf, tw, th, &fb))
+    {
+        ReleaseSavedFb(fb);
+        fallback();
+        return;
+    }
+
+    // --- Pass A: glyph mask (white letters, transparent bg) ---
+    m_pDevice->Clear(0, nullptr, D3DCLEAR_TARGET, 0x00000000, 1.0f, 0);
+
+    m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+    m_pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+    m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+    m_pDevice->SetRenderState(D3DRS_SEPARATEALPHABLENDENABLE, FALSE);
+    m_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
+
+    int drawn = 0;
+    for (int i = 0; i < count; ++i)
+    {
+        if (!spans[i].text)
+            continue;
+        wchar_t wide[512];
+        if (Utf8ToWide(spans[i].text, wide, 512) <= 0)
+            continue;
+        RECT textRc = {
+            static_cast<LONG>((spans[i].left - fX) + 0.5f),
+            static_cast<LONG>((spans[i].top - fY) + 0.5f),
+            static_cast<LONG>((spans[i].right - fX) + 0.5f),
+            static_cast<LONG>((spans[i].bottom - fY) + 0.5f)
+        };
+        m_pFont->DrawTextW(nullptr, wide, -1, &textRc, spans[i].format, 0xFFFFFFFF);
+        ++drawn;
+    }
+    if (drawn == 0)
+    {
+        RestoreFb(m_pDevice, fb);
+        fallback();
+        return;
+    }
+
+    // --- Pass B: panel color, then punch with mask ---
+    if (!SetOffscreenColorRt(m_pDevice, m_pCutoutSurf, tw, th))
+    {
+        RestoreFb(m_pDevice, fb);
+        fallback();
+        return;
+    }
+    m_pDevice->Clear(0, nullptr, D3DCLEAR_TARGET, 0x00000000, 1.0f, 0);
+    FillRectRaw(0.0f, 0.0f, static_cast<float>(tw), static_cast<float>(th), dwColor);
+
+    // dest *= (1 - maskAlpha)  -- opaque glyph => transparent hole
+    const float u2 = static_cast<float>(tw) / static_cast<float>(m_nCutoutW);
+    const float v2 = static_cast<float>(th) / static_cast<float>(m_nCutoutH);
+    const float x2 = static_cast<float>(tw) - 0.5f;
+    const float y2 = static_cast<float>(th) - 0.5f;
+
+    ScreenVertex punch[6] = {
+        { -0.5f, -0.5f, 0.0f, 1.0f, 0xFFFFFFFF, 0.0f, 0.0f },
+        { x2,    -0.5f, 0.0f, 1.0f, 0xFFFFFFFF, u2,   0.0f },
+        { -0.5f, y2,    0.0f, 1.0f, 0xFFFFFFFF, 0.0f, v2   },
+        { x2,    -0.5f, 0.0f, 1.0f, 0xFFFFFFFF, u2,   0.0f },
+        { x2,    y2,    0.0f, 1.0f, 0xFFFFFFFF, u2,   v2   },
+        { -0.5f, y2,    0.0f, 1.0f, 0xFFFFFFFF, 0.0f, v2   },
+    };
+
+    m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+    m_pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_ZERO);
+    m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+    m_pDevice->SetRenderState(D3DRS_SEPARATEALPHABLENDENABLE, TRUE);
+    m_pDevice->SetRenderState(D3DRS_SRCBLENDALPHA, D3DBLEND_ZERO);
+    m_pDevice->SetRenderState(D3DRS_DESTBLENDALPHA, D3DBLEND_INVSRCALPHA);
+    m_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
+    m_pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+    m_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+
+    m_pDevice->SetVertexShader(nullptr);
+    m_pDevice->SetPixelShader(nullptr);
+    m_pDevice->SetTexture(0, m_pMaskTex);
+    m_pDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_POINT);
+    m_pDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_POINT);
+    m_pDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_CLAMP);
+    m_pDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
+    m_pDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+    m_pDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+    m_pDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1);
+    m_pDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+    m_pDevice->SetFVF(SCREEN_FVF);
+    m_pDevice->DrawPrimitiveUP(D3DPT_TRIANGLELIST, 2, punch, sizeof(ScreenVertex));
+    m_pDevice->SetTexture(0, nullptr);
+    m_pDevice->SetRenderState(D3DRS_SEPARATEALPHABLENDENABLE, FALSE);
+    m_pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+    m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+
+    RestoreFb(m_pDevice, fb);
+    BlitCutout(fX, fY, fWidth, fHeight, u2, v2);
+}
+
+void Draw::DrawTextureCutoutText(LPDIRECT3DTEXTURE9 pTexture, float fX, float fY, float fWidth, float fHeight,
+                                 float fTextLeft, float fTextTop, float fTextRight, float fTextBottom,
+                                 const char* szText, DWORD dwFormat)
+{
+    auto fallback = [&]() {
+        if (pTexture)
+            DrawTexture(pTexture, fX, fY, fWidth, fHeight);
         if (szText)
             DrawString(fTextLeft, fTextTop, fTextRight, fTextBottom, 0xFFFFFFFF, szText, 1.0f, 1.0f, dwFormat, false);
     };
 
-    if (!m_bInitialized || !m_pDevice || !m_pFont || !szText)
+    if (!m_bInitialized || !m_pDevice || !m_pFont || !pTexture || !szText)
     {
         if (m_bInitialized && m_pDevice)
             fallback();
@@ -1303,9 +1443,7 @@ void Draw::DrawRectCutoutText(float fX, float fY, float fWidth, float fHeight, D
         static_cast<LONG>((fTextBottom - fY) + 0.5f)
     };
 
-    // --- Pass A: glyph mask (white letters, transparent bg) ---
     m_pDevice->Clear(0, nullptr, D3DCLEAR_TARGET, 0x00000000, 1.0f, 0);
-
     m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
     m_pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
     m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
@@ -1313,7 +1451,6 @@ void Draw::DrawRectCutoutText(float fX, float fY, float fWidth, float fHeight, D
     m_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
     m_pFont->DrawTextW(nullptr, wide, -1, &textRc, dwFormat, 0xFFFFFFFF);
 
-    // --- Pass B: panel color, then punch with mask ---
     if (!SetOffscreenColorRt(m_pDevice, m_pCutoutSurf, tw, th))
     {
         RestoreFb(m_pDevice, fb);
@@ -1321,9 +1458,45 @@ void Draw::DrawRectCutoutText(float fX, float fY, float fWidth, float fHeight, D
         return;
     }
     m_pDevice->Clear(0, nullptr, D3DCLEAR_TARGET, 0x00000000, 1.0f, 0);
-    FillRectRaw(0.0f, 0.0f, static_cast<float>(tw), static_cast<float>(th), dwColor);
 
-    // dest *= (1 - maskAlpha)  -- opaque glyph => transparent hole
+    // Copy texture RGBA as-is — alpha is already in the art; do not blend onto clear.
+    {
+        const float x2 = static_cast<float>(tw);
+        const float y2 = static_cast<float>(th);
+        ScreenVertex copy[6] = {
+            { 0.0f, 0.0f, 0.0f, 1.0f, 0xFFFFFFFF, 0.0f, 0.0f },
+            { x2,   0.0f, 0.0f, 1.0f, 0xFFFFFFFF, 1.0f, 0.0f },
+            { 0.0f, y2,   0.0f, 1.0f, 0xFFFFFFFF, 0.0f, 1.0f },
+            { x2,   0.0f, 0.0f, 1.0f, 0xFFFFFFFF, 1.0f, 0.0f },
+            { x2,   y2,   0.0f, 1.0f, 0xFFFFFFFF, 1.0f, 1.0f },
+            { 0.0f, y2,   0.0f, 1.0f, 0xFFFFFFFF, 0.0f, 1.0f },
+        };
+        m_pDevice->SetVertexShader(nullptr);
+        m_pDevice->SetPixelShader(nullptr);
+        m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
+        m_pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
+        m_pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+        m_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+        m_pDevice->SetRenderState(D3DRS_COLORWRITEENABLE,
+                                  D3DCOLORWRITEENABLE_RED | D3DCOLORWRITEENABLE_GREEN |
+                                  D3DCOLORWRITEENABLE_BLUE | D3DCOLORWRITEENABLE_ALPHA);
+        m_pDevice->SetTexture(0, pTexture);
+        m_pDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);
+        m_pDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
+        m_pDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_CLAMP);
+        m_pDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
+        m_pDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+        m_pDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+        m_pDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1);
+        m_pDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+        m_pDevice->SetTextureStageState(1, D3DTSS_COLOROP, D3DTOP_DISABLE);
+        m_pDevice->SetTextureStageState(1, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
+        m_pDevice->SetFVF(SCREEN_FVF);
+        m_pDevice->DrawPrimitiveUP(D3DPT_TRIANGLELIST, 2, copy, sizeof(ScreenVertex));
+        m_pDevice->SetTexture(0, nullptr);
+        m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+    }
+
     const float u2 = static_cast<float>(tw) / static_cast<float>(m_nCutoutW);
     const float v2 = static_cast<float>(th) / static_cast<float>(m_nCutoutH);
     const float x2 = static_cast<float>(tw) - 0.5f;

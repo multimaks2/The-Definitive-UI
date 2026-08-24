@@ -38,6 +38,11 @@ public:
         static constexpr const char* Game       = "Game";
         static constexpr const char* Settings   = "Settings";
         static constexpr const char* Exit       = "Exit";
+        static constexpr const char* ExitNoHoverCancel = "ExitNoHoverCancel";
+        static constexpr const char* ExitHoverCancel   = "ExitHoverCancel";
+        static constexpr const char* ExitNoHoverAccept = "ExitNoHoverAccept";
+        static constexpr const char* ExitHoverAccept   = "ExitHoverAccept";
+        static constexpr const char* Logo              = "Logo";
     };
 
     // 2K reference (2560x1440). Button Y is from the BOTTOM of the screen.
@@ -54,6 +59,11 @@ public:
         static constexpr float TextHeight   = 50.0f;
         static constexpr float HoverWidth   = 388.0f;
         static constexpr float HoverHeight  = 78.0f;
+
+        static constexpr float LogoPadX     = 60.0f;
+        static constexpr float LogoPadY     = 80.0f;
+        static constexpr float LogoW        = 575.0f;
+        static constexpr float LogoH        = 510.0f;
 
         static constexpr DWORD OutlineColor   = 0xFF588942;
         static constexpr float OutlineOffsetX = 3.0f;
@@ -89,6 +99,26 @@ public:
         static constexpr float MapZoneFont   = 36.0f;  // place name above bar
         static constexpr float MapZoneGap    = 12.0f;  // gap between name and bar top
         static constexpr float MapHintGap    = 36.0f;  // space between hint groups
+
+        // Fullscreen map legend (2K) — TAB toggle
+        static constexpr float LegendX       = 200.0f;
+        static constexpr float LegendY       = 70.0f;
+        static constexpr float LegendW       = 515.0f;
+        static constexpr float LegendH       = 1200.0f;
+        static constexpr float LegendPadX    = 20.0f;
+        static constexpr float LegendIcon    = 48.0f;
+        static constexpr float LegendIconGap = 16.0f;
+        static constexpr float LegendFont    = 32.0f;
+        static constexpr DWORD LegendZebraA  = 0xE1000000; // α225
+        static constexpr DWORD LegendZebraB  = 0xC8000000; // α200
+
+        // Pause Exit confirm — origin = screen center (2K)
+        static constexpr float ExitConfirmBtnW       = 480.0f;
+        static constexpr float ExitConfirmBtnH       = 90.0f;
+        static constexpr float ExitConfirmBtnGap     = 40.0f;
+        static constexpr float ExitConfirmBtnDown    = 0.85f; // × pair body H, down from center
+        static constexpr float ExitConfirmTextUp     = 4.0f;  // × font body, up from center
+        static constexpr float ExitConfirmFont       = 50.0f;
 
         // ZonesVisited 10×10 — contour + shader fog (per-pixel arcs)
         static constexpr int   MapFogCells       = 10;
@@ -157,6 +187,7 @@ private:
     void HideOsCursor();
 
     ButtonRect GetButtonRect(int index, float screenW, float screenH) const;
+    ButtonRect GetExitConfirmBtnRect(int which, float screenW, float screenH) const; // 0=Cancel 1=Confirm
     int  HitTestButton(float cursorX, float cursorY, float screenW, float screenH) const;
     void SyncActiveFromPanel();
     void UpdateHoverSound(float screenW, float screenH);
@@ -182,6 +213,10 @@ private:
                     DWORD format, bool hovered, float screenW, float screenH,
                     bool onActivePlate = false, bool solidIdle = false);
     void DrawButtons(float screenW, float screenH);
+    void DrawLogo(float screenW, float screenH);
+    void DrawExitConfirm(float screenW, float screenH);
+    void OpenExitConfirm();
+    void CloseExitConfirm();
     void DrawMapPlane(float mapL, float mapT, float mapSize);
     void DrawMapFogShader(float mapL, float mapT, float mapSize,
                          float coverL, float coverT, float coverW, float coverH);
@@ -197,6 +232,10 @@ private:
     void DrawMapLeftArt(float screenW, float screenH);
     void DrawMapBlips(float screenW, float screenH);
     void DrawMapHintBar(float screenW, float screenH);
+    void DrawMapLegend(float screenW, float screenH);
+    void HandleMapLegendToggle();
+    ButtonRect GetMapLegendRect(float screenW, float screenH) const;
+    bool IsCursorOnMapLegend(float cursorX, float cursorY, float screenW, float screenH) const;
     // Zone under cursor for fullscreen map; dictionary via LanguageManager::GetZone
     void GetMapHoverPlaceNameUtf8(float screenW, float screenH, char* out, size_t outChars) const;
     bool IsMapOpen() const { return m_nActive == static_cast<int>(Button::Map); }
@@ -212,7 +251,10 @@ private:
     Shader*            m_pShader = nullptr;
     MapChunkManager*   m_pMapChunks = nullptr; // RadarRenderer owns; borrow for pause map
     LPDIRECT3DTEXTURE9 m_pBackground = nullptr;
+    LPDIRECT3DTEXTURE9 m_pLogo = nullptr;
     LPDIRECT3DTEXTURE9 m_pHover[Layout::Count] = {};
+    LPDIRECT3DTEXTURE9 m_pExitBtnIdle[2] = {};
+    LPDIRECT3DTEXTURE9 m_pExitBtnHover[2] = {};
     LPDIRECT3DTEXTURE9 m_pRadar[Layout::MapTileCount] = {};
     LPDIRECT3DTEXTURE9 m_pRadarStock[Layout::MapTileCount] = {};
     LPDIRECT3DTEXTURE9 m_pFogMaskTex = nullptr;
@@ -223,6 +265,8 @@ private:
     bool               m_bStockRadarReady = false;
     int                m_nMapWarmIndex = 0; // progressive fallback load
     bool               m_bMapFullscreen = false;
+    bool               m_bMapLegend = false;
+    bool               m_bTabWasDown = false;
     float              m_fMapPanX = 0.0f;
     float              m_fMapPanY = 0.0f;
     float              m_fMapZoom = Layout::MapZoomDefault;
@@ -250,6 +294,7 @@ private:
     bool               m_bSwallowClick = false;
     bool               m_bWasFocused = true;
     bool               m_bPauseWasOpen = false;
+    bool               m_bExitConfirm = false;
     bool               m_bOsCursorHeld = false;
     bool               m_bInitialized = false;
 };

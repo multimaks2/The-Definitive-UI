@@ -53,6 +53,26 @@ public:
                             const char* szText,
                             DWORD dwFormat = DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
 
+    struct CutoutSpan
+    {
+        float left = 0.0f;
+        float top = 0.0f;
+        float right = 0.0f;
+        float bottom = 0.0f;
+        const char* text = nullptr;
+        DWORD format = DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE;
+    };
+
+    // Same as DrawRectCutoutText, but every span is punched before the rect is composited
+    void DrawRectCutoutTexts(float fX, float fY, float fWidth, float fHeight, DWORD dwColor,
+                             const CutoutSpan* spans, int count);
+
+    // Texture with text glyphs cut out (same punch as DrawRectCutoutText)
+    void DrawTextureCutoutText(LPDIRECT3DTEXTURE9 pTexture, float fX, float fY, float fWidth, float fHeight,
+                               float fTextLeft, float fTextTop, float fTextRight, float fTextBottom,
+                               const char* szText,
+                               DWORD dwFormat = DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
+
     // One full-row cutout: label + < value > (optional larger arrow fonts on hover)
     void DrawRectCutoutCycleValue(float fX, float fY, float fWidth, float fHeight, DWORD dwColor,
                                   float labelL, float labelR, const char* label,

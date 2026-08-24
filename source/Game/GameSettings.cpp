@@ -344,22 +344,22 @@ std::string GameSettings::KeyCodeToName(unsigned key)
 
     switch (key)
     {
-    case rsMOUSELEFTBUTTON: return "ЛКМ";
-    case rsMOUSERIGHTBUTTON: return "ПКМ";
-    case rsMOUSEMIDDLEBUTTON: return "СКМ";
-    case rsMOUSEWHEELUPBUTTON: return "Колесико вверх";
-    case rsMOUSEWHEELDOWNBUTTON: return "Колесико вниз";
-    case rsMOUSEX1BUTTON: return "Мышь 4";
-    case rsMOUSEX2BUTTON: return "Мышь 5";
-    case rsSPACE: return "ПРОБЕЛ";
+    case rsMOUSELEFTBUTTON: return LanguageManager::Get("FEC_MSL");
+    case rsMOUSERIGHTBUTTON: return LanguageManager::Get("FEC_MSR");
+    case rsMOUSEMIDDLEBUTTON: return LanguageManager::Get("FEC_MSM");
+    case rsMOUSEWHEELUPBUTTON: return LanguageManager::Get("FEC_MWF");
+    case rsMOUSEWHEELDOWNBUTTON: return LanguageManager::Get("FEC_MWB");
+    case rsMOUSEX1BUTTON: return LanguageManager::Get("UI_KEY_MOUSE4");
+    case rsMOUSEX2BUTTON: return LanguageManager::Get("UI_KEY_MOUSE5");
+    case rsSPACE: return LanguageManager::Get("UI_KEY_SPACE");
     case rsTAB: return "TAB";
-    case rsLSHIFT: return "Л. SHIFT";
-    case rsRSHIFT: return "П. SHIFT";
+    case rsLSHIFT: return LanguageManager::Get("UI_KEY_LSHIFT");
+    case rsRSHIFT: return LanguageManager::Get("UI_KEY_RSHIFT");
     case rsSHIFT: return "SHIFT";
-    case rsLCTRL: return "Л. CTRL";
-    case rsRCTRL: return "П. CTRL";
-    case rsLALT: return "Л. ALT";
-    case rsRALT: return "П. ALT";
+    case rsLCTRL: return LanguageManager::Get("UI_KEY_LCTRL");
+    case rsRCTRL: return LanguageManager::Get("UI_KEY_RCTRL");
+    case rsLALT: return LanguageManager::Get("UI_KEY_LALT");
+    case rsRALT: return LanguageManager::Get("UI_KEY_RALT");
     case rsENTER: return "ENTER";
     case rsBACKSP: return "BACKSPACE";
     case rsESC: return "ESC";
@@ -431,72 +431,72 @@ const GameSettings::RemapBind* GameSettings::GetRemapBinds(int col, int& outCoun
     static constexpr int kRadioTrackSkip = 28; // gap in plugin-sdk enum (= VEHICLE_RADIO_TRACK_SKIP)
 
     static const RemapBind kFoot[] = {
-        { GO_FORWARD, "Двигаться вперед" },
-        { GO_LEFT, "Двигаться влево" },
-        { GO_BACK, "Двигаться назад" },
-        { GO_RIGHT, "Двигаться вправо" },
-        { PED_FIREWEAPON, "Атака" },
-        { VEHICLE_ENTER_EXIT, "В машину/из машины" },
-        { PED_SPRINT, "Ускорение" },
-        { PED_JUMPING, "Прыжок" },
-        { PED_CYCLE_WEAPON_RIGHT, "Следующее оружие" },
-        { PED_CYCLE_WEAPON_LEFT, "Предыдущее оружие" },
-        { PED_DUCK, "Присесть" },
-        { PED_FIREWEAPON_ALT, "Атака (доп.)" },
-        { PED_SNIPER_ZOOM_IN, "Приблизить камеру" },
-        { PED_SNIPER_ZOOM_OUT, "Отдалить камеру" },
-        { PED_LOOKBEHIND, "Посмотреть назад" },
-        { CAMERA_CHANGE_VIEW_ALL_SITUATIONS, "Смена камеры" },
-        { PED_LOCK_TARGET, "Прицелиться" },
-        { PED_CENTER_CAMERA_BEHIND_PLAYER, "Камера за игроком" },
-        { CONVERSATION_YES, "Начать/согласие" },
-        { CONVERSATION_NO, "Отменить/отказ" },
-        { SNEAK_ABOUT, "Скрытность / шаг" },
-        { GROUP_CONTROL_FWD, "Банда: нанять/следовать" },
-        { GROUP_CONTROL_BWD, "Банда: игнорировать/стоять" },
-        { VEHICLE_STEERUP, "Подняться на джетпаке" },
-        { VEHICLE_STEERDOWN, "Опуститься на джетпаке" },
-        { PED_ANSWER_PHONE, "Ответить на телефон" },
-        { PED_CYCLE_TARGET_LEFT, "Цель влево" },
-        { PED_CYCLE_TARGET_RIGHT, "Цель вправо" },
-        { PED_1RST_PERSON_LOOK_LEFT, "Взгляд влево (1-е лицо)" },
-        { PED_1RST_PERSON_LOOK_RIGHT, "Взгляд вправо (1-е лицо)" },
-        { PED_1RST_PERSON_LOOK_UP, "Взгляд вверх (1-е лицо)" },
-        { PED_1RST_PERSON_LOOK_DOWN, "Взгляд вниз (1-е лицо)" },
+        { GO_FORWARD, "FEC_FOR" },
+        { GO_LEFT, "FEC_LEF" },
+        { GO_BACK, "FEC_BAC" },
+        { GO_RIGHT, "FEC_RIG" },
+        { PED_FIREWEAPON, "FEC_FIR" },
+        { VEHICLE_ENTER_EXIT, "FEC_EEX" },
+        { PED_SPRINT, "FEC_SPN" },
+        { PED_JUMPING, "FEC_JMP" },
+        { PED_CYCLE_WEAPON_RIGHT, "FEC_NWE" },
+        { PED_CYCLE_WEAPON_LEFT, "FEC_PWE" },
+        { PED_DUCK, "FEC_CRO" },
+        { PED_FIREWEAPON_ALT, "FEC_FIA" },
+        { PED_SNIPER_ZOOM_IN, "FEC_ZIN" },
+        { PED_SNIPER_ZOOM_OUT, "FEC_ZOT" },
+        { PED_LOOKBEHIND, "FEC_LBA" },
+        { CAMERA_CHANGE_VIEW_ALL_SITUATIONS, "FEC_CMR" },
+        { PED_LOCK_TARGET, "FEC_TAR" },
+        { PED_CENTER_CAMERA_BEHIND_PLAYER, "FEC_CEN" },
+        { CONVERSATION_YES, "FEC_COY" },
+        { CONVERSATION_NO, "FEC_CON" },
+        { SNEAK_ABOUT, "FEC_PDW" },
+        { GROUP_CONTROL_FWD, "FEC_GPF" },
+        { GROUP_CONTROL_BWD, "FEC_GPB" },
+        { VEHICLE_STEERUP, "FEC_HCA" },
+        { VEHICLE_STEERDOWN, "FEC_HCD" },
+        { PED_ANSWER_PHONE, "FEC_ANP" },
+        { PED_CYCLE_TARGET_LEFT, "FEC_PTT" },
+        { PED_CYCLE_TARGET_RIGHT, "FEC_NTR" },
+        { PED_1RST_PERSON_LOOK_LEFT, "FEC_TFL" },
+        { PED_1RST_PERSON_LOOK_RIGHT, "FEC_TFR" },
+        { PED_1RST_PERSON_LOOK_UP, "FEC_LUD" },
+        { PED_1RST_PERSON_LOOK_DOWN, "FEC_LDU" },
     };
 
     static const RemapBind kVeh[] = {
-        { VEHICLE_ACCELERATE, "Газ" },
-        { VEHICLE_STEERLEFT, "Поворот влево" },
-        { VEHICLE_BRAKE, "Тормоз" },
-        { VEHICLE_STEERRIGHT, "Поворот вправо" },
-        { VEHICLE_ENTER_EXIT, "В машину/из машины" },
-        { PED_SNIPER_ZOOM_IN, "Приблизить камеру" },
-        { PED_SNIPER_ZOOM_OUT, "Отдалить камеру" },
-        { VEHICLE_RADIO_STATION_UP, "Следующее радио" },
-        { VEHICLE_RADIO_STATION_DOWN, "Предыдущее радио" },
-        { kRadioTrackSkip, "Пропуск трека" },
-        { VEHICLE_HANDBRAKE, "Ручник" },
-        { VEHICLE_HORN, "Сигнал" },
-        { VEHICLE_LOOKLEFT, "Посмотреть влево" },
-        { VEHICLE_LOOKRIGHT, "Посмотреть вправо" },
-        { VEHICLE_LOOKBEHIND, "Посмотреть назад" },
-        { VEHICLE_FIREWEAPON, "Стрелять" },
-        { VEHICLE_FIREWEAPON_ALT, "Оружие / доп. огонь" },
-        { TOGGLE_SUBMISSIONS, "Доп. задание" },
-        { CAMERA_CHANGE_VIEW_ALL_SITUATIONS, "Смена камеры" },
-        { VEHICLE_TURRETUP, "Поднять (турель/гидравлика)" },
-        { VEHICLE_TURRETDOWN, "Опустить (турель/гидравлика)" },
-        { VEHICLE_TURRETLEFT, "Влево (турель/гидравлика)" },
-        { VEHICLE_TURRETRIGHT, "Вправо (турель/гидравлика)" },
-        { VEHICLE_STEERUP, "Набрать высоту / wheelie" },
-        { VEHICLE_STEERDOWN, "Понизить высоту / stoppie" },
-        { VEHICLE_MOUSELOOK, "Руление мышью / обзор" },
-        { PED_JUMPING, "Прыжок на велосипеде" },
-        { PED_1RST_PERSON_LOOK_LEFT, "Нос влево в полёте" },
-        { PED_1RST_PERSON_LOOK_RIGHT, "Нос вправо в полёте" },
-        { PED_1RST_PERSON_LOOK_UP, "Нос вверх в полёте" },
-        { PED_1RST_PERSON_LOOK_DOWN, "Нос вниз в полёте" },
+        { VEHICLE_ACCELERATE, "FEC_ACC" },
+        { VEHICLE_STEERLEFT, "FEC_LEF" },
+        { VEHICLE_BRAKE, "FEC_BRA" },
+        { VEHICLE_STEERRIGHT, "FEC_RIG" },
+        { VEHICLE_ENTER_EXIT, "FEC_EEX" },
+        { PED_SNIPER_ZOOM_IN, "FEC_ZIN" },
+        { PED_SNIPER_ZOOM_OUT, "FEC_ZOT" },
+        { VEHICLE_RADIO_STATION_UP, "FEC_RSC" },
+        { VEHICLE_RADIO_STATION_DOWN, "FEC_RSP" },
+        { kRadioTrackSkip, "FEC_RTS" },
+        { VEHICLE_HANDBRAKE, "FEC_HND" },
+        { VEHICLE_HORN, "FEC_HRN" },
+        { VEHICLE_LOOKLEFT, "FEC_LOL" },
+        { VEHICLE_LOOKRIGHT, "FEC_LOR" },
+        { VEHICLE_LOOKBEHIND, "FEC_LBA" },
+        { VEHICLE_FIREWEAPON, "FEC_FIR" },
+        { VEHICLE_FIREWEAPON_ALT, "FEC_FIA" },
+        { TOGGLE_SUBMISSIONS, "FEC_SUB" },
+        { CAMERA_CHANGE_VIEW_ALL_SITUATIONS, "FEC_CMR" },
+        { VEHICLE_TURRETUP, "FEC_TFU" },
+        { VEHICLE_TURRETDOWN, "FEC_TFD" },
+        { VEHICLE_TURRETLEFT, "FEC_TFL" },
+        { VEHICLE_TURRETRIGHT, "FEC_TFR" },
+        { VEHICLE_STEERUP, "FEC_PLU" },
+        { VEHICLE_STEERDOWN, "FEC_PLD" },
+        { VEHICLE_MOUSELOOK, "FEC_VML" },
+        { PED_JUMPING, "FEC_JMP" },
+        { PED_1RST_PERSON_LOOK_LEFT, "FEC_RL" },
+        { PED_1RST_PERSON_LOOK_RIGHT, "FEC_RR" },
+        { PED_1RST_PERSON_LOOK_UP, "FEC_HCA" },
+        { PED_1RST_PERSON_LOOK_DOWN, "FEC_HCD" },
     };
 
     if (col == 0)
@@ -1826,14 +1826,14 @@ void GameSettings::DrawControlsRemap(float screenW, float screenH, float cursorX
     m_nRemapHoverCol = -1;
     m_nRemapHoverRow = -1;
 
-    static const char* headers[2] = { "пешком", "в транспорте" };
+    static const char* headers[2] = { "FET_CFT", "FET_CCR" };
 
     for (int col = 0; col < 2; ++col)
     {
         const ButtonRect hdr = GetRemapHeaderRect(col, screenW, screenH);
         m_pDraw->DrawRectCutoutText(hdr.left, hdr.top, hdr.right - hdr.left, hdr.bottom - hdr.top,
                                     Layout::SlotZebraB, hdr.left, hdr.top, hdr.right, hdr.bottom,
-                                    headers[col], DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
+                                    LanguageManager::Get(headers[col]), DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
 
         const ButtonRect clip = GetRemapListClipRect(col, screenW, screenH);
         const float rowH = Layout::RemapRowH * sy;
@@ -1884,7 +1884,8 @@ void GameSettings::DrawControlsRemap(float screenW, float screenH, float cursorX
             const float localPad = pad;
             const std::string key = FormatActionKey(binds[row].action);
             m_pDraw->DrawRect(lx, ly, rx - lx, by - ly, bg);
-            m_pDraw->DrawString(lx + localPad, ly, mid, by, 0xFFFFFFFF, binds[row].label, 1.0f, 1.0f,
+            m_pDraw->DrawString(lx + localPad, ly, mid, by, 0xFFFFFFFF,
+                                LanguageManager::Get(binds[row].label), 1.0f, 1.0f,
                                 DT_LEFT | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE, false);
             m_pDraw->DrawString(mid, ly, rx - localPad, by, 0xFFFFFFFF, key.c_str(), 1.0f, 1.0f,
                                 DT_RIGHT | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE, false);
@@ -1900,14 +1901,14 @@ void GameSettings::DrawControlsRemap(float screenW, float screenH, float cursorX
         if (hotBack)
         {
             m_pDraw->DrawRect(back.left, back.top, back.right - back.left, back.bottom - back.top, Layout::TabActiveBg);
-            DrawUiText(back.left, back.top, back.right, back.bottom, "НАЗАД",
+            DrawUiText(back.left, back.top, back.right, back.bottom, LanguageManager::Get("UI_BACK"),
                        DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE, false, screenW, screenH, true);
         }
         else
         {
             m_pDraw->DrawRectCutoutText(back.left, back.top, back.right - back.left, back.bottom - back.top,
                                         Layout::TabIdleBg, back.left, back.top, back.right, back.bottom,
-                                        "НАЗАД", DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
+                                        LanguageManager::Get("UI_BACK"), DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
         }
 
         const ButtonRect reset = GetRemapFooterRect(1, screenW, screenH);
@@ -1915,7 +1916,7 @@ void GameSettings::DrawControlsRemap(float screenW, float screenH, float cursorX
         const DWORD rbg = hotReset ? Layout::TabHoverBg : Layout::TabIdleBg;
         m_pDraw->DrawRectCutoutText(reset.left, reset.top, reset.right - reset.left, reset.bottom - reset.top,
                                     rbg, reset.left, reset.top, reset.right, reset.bottom,
-                                    "СБРОС", DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
+                                    LanguageManager::Get("UI_RESET"), DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
     }
 
     if (IsRebindWaiting())
@@ -1931,9 +1932,9 @@ void GameSettings::DrawControlsRemap(float screenW, float screenH, float cursorX
 
         const float midY = bandY + bandH * 0.5f;
         const float lineH = 36.0f * sy;
-        DrawUiText(px, midY - lineH, px + pw, midY, "Ожидание ввода...",
+        DrawUiText(px, midY - lineH, px + pw, midY, LanguageManager::Get("UI_REBIND_WAIT"),
                    DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE, false, screenW, screenH);
-        DrawUiText(px, midY, px + pw, midY + lineH, "Для отмены нажмите [esc]",
+        DrawUiText(px, midY, px + pw, midY + lineH, LanguageManager::Get("UI_REBIND_ESC"),
                    DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE, false, screenW, screenH);
     }
 }

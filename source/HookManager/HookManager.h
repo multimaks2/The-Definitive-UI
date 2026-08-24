@@ -63,6 +63,10 @@ public:
     void SetPauseMapFullscreen(bool enabled);
     bool ConsumePauseMapFullscreenEsc();
 
+    // Exit confirm dialog: ESC cancels confirm instead of resume
+    void SetPauseExitConfirm(bool enabled);
+    bool ConsumePauseExitConfirmEsc();
+
     void DismissCustomMainMenu();
     void RequestResumeGame();
     void RequestResumeGameFromEsc();
@@ -95,5 +99,7 @@ private:
     static bool   s_pauseWasActive; // edge: open ESC must not resume same frame
     static bool   s_pauseMapFullscreen;
     static bool   s_pauseMapFsEsc;  // ESC while map FS — consume in pMainMenu
+    static bool   s_pauseExitConfirm;
+    static bool   s_pauseExitConfirmEsc;
     static DWORD  s_suppressAttackUntilMs; // GetTickCount cutoff; 0 = off
 };

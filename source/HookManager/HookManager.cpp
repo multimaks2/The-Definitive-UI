@@ -41,6 +41,8 @@ bool HookManager::s_pauseEscClose = false;
 bool HookManager::s_pauseWasActive = false;
 bool HookManager::s_pauseMapFullscreen = false;
 bool HookManager::s_pauseMapFsEsc = false;
+bool HookManager::s_pauseExitConfirm = false;
+bool HookManager::s_pauseExitConfirmEsc = false;
 DWORD HookManager::s_suppressAttackUntilMs = 0;
 
 namespace
@@ -204,6 +206,10 @@ int __fastcall HookManager::Process_Detour(CMenuManager* menu)
             if (s_pauseMapFullscreen)
             {
                 s_pauseMapFsEsc = true;
+            }
+            else if (s_pauseExitConfirm)
+            {
+                s_pauseExitConfirmEsc = true;
             }
             else
             {
@@ -403,6 +409,21 @@ bool HookManager::ConsumePauseMapFullscreenEsc()
     return true;
 }
 
+void HookManager::SetPauseExitConfirm(bool enabled)
+{
+    s_pauseExitConfirm = enabled;
+    if (!enabled)
+        s_pauseExitConfirmEsc = false;
+}
+
+bool HookManager::ConsumePauseExitConfirmEsc()
+{
+    if (!s_pauseExitConfirmEsc)
+        return false;
+    s_pauseExitConfirmEsc = false;
+    return true;
+}
+
 void HookManager::DismissCustomMainMenu()
 {
     s_session = false;
@@ -416,6 +437,8 @@ void HookManager::RequestResumeGame()
     s_pauseWasActive = false;
     s_pauseMapFullscreen = false;
     s_pauseMapFsEsc = false;
+    s_pauseExitConfirm = false;
+    s_pauseExitConfirmEsc = false;
     FrontEndMenuManager.m_bShutDownFrontEndRequested = false;
     FrontEndMenuManager.m_bMenuActive = false;
     FrontEndMenuManager.m_bSaveMenuActive = false;

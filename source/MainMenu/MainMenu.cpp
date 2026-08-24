@@ -33,6 +33,7 @@
 
 #include <windows.h>
 #include <cmath>
+#include <cstdio>
 #include <cstring>
 #include <string>
 
@@ -53,6 +54,17 @@ namespace
     const char* SettingsTabKeys[MainMenu::Layout::SettingsTabCount] = {
         "UI_TAB_CONTROLS", "UI_TAB_GAME", "UI_TAB_GRAPHICS", "UI_TAB_SOUND", "UI_TAB_OPTIONS"
     };
+
+    void FormatPrompt(char* out, size_t cap, const char* key, const char* arg)
+    {
+        if (!out || cap == 0)
+            return;
+        out[0] = 0;
+        const char* fmt = LanguageManager::Get(key);
+        if (!fmt)
+            return;
+        _snprintf_s(out, cap, _TRUNCATE, fmt, arg ? arg : "");
+    }
 
     const char* RadarModeKeys[] = {
         "RADAR_MAP_BLIPS", "RADAR_BLIPS", "RADAR_OFF"
@@ -159,8 +171,12 @@ void MainMenu::Shutdown()
     CancelLoadConfirm();
 
     m_pBackground = nullptr;
+    m_pLogo = nullptr;
+    m_pRochelle = nullptr;
     for (int i = 0; i < Layout::Count; ++i)
         m_pHover[i] = nullptr;
+    m_pGameBtnIdle[0] = m_pGameBtnIdle[1] = nullptr;
+    m_pGameBtnHover[0] = m_pGameBtnHover[1] = nullptr;
 
     m_nHovered = -1;
     m_nHoverSoundId = -1;
@@ -188,8 +204,12 @@ void MainMenu::OnDeviceLost()
 {
     // Keep m_panel / tabs / remap / rebind — only GPU handles go stale
     m_pBackground = nullptr;
+    m_pLogo = nullptr;
+    m_pRochelle = nullptr;
     for (int i = 0; i < Layout::Count; ++i)
         m_pHover[i] = nullptr;
+    m_pGameBtnIdle[0] = m_pGameBtnIdle[1] = nullptr;
+    m_pGameBtnHover[0] = m_pGameBtnHover[1] = nullptr;
     if (m_pSettings)
         m_pSettings->OnDeviceLost();
     m_bSwallowClick = false;
@@ -205,7 +225,16 @@ void MainMenu::OnDeviceLost()
 bool MainMenu::LoadBackground()
 {
     if (m_pBackground)
+    {
+        if (m_pTxd && m_pTxd->IsTxdLoaded())
+        {
+            if (!m_pLogo)
+                m_pLogo = m_pTxd->GetTexture(Tex::Logo);
+            if (!m_pRochelle)
+                m_pRochelle = m_pTxd->GetTexture(Tex::Rochelle);
+        }
         return true;
+    }
 
     if (!m_pTxd || !m_pTxd->IsInitialized())
         return false;
@@ -214,6 +243,10 @@ bool MainMenu::LoadBackground()
         return false;
 
     m_pBackground = m_pTxd->GetTexture(Tex::Background);
+    if (!m_pLogo)
+        m_pLogo = m_pTxd->GetTexture(Tex::Logo);
+    if (!m_pRochelle)
+        m_pRochelle = m_pTxd->GetTexture(Tex::Rochelle);
     LoadHoverTextures();
     return m_pBackground != nullptr;
 }
@@ -235,7 +268,24 @@ bool MainMenu::LoadHoverTextures()
         if (!m_pHover[i])
             ok = false;
     }
+    LoadGameConfirmTextures();
     return ok;
+}
+
+bool MainMenu::LoadGameConfirmTextures()
+{
+    if (!m_pTxd || !m_pTxd->IsTxdLoaded())
+        return false;
+
+    if (!m_pGameBtnIdle[0])
+        m_pGameBtnIdle[0] = m_pTxd->GetTexture(Tex::GameNoHoverCancel);
+    if (!m_pGameBtnHover[0])
+        m_pGameBtnHover[0] = m_pTxd->GetTexture(Tex::GameHoverCancel);
+    if (!m_pGameBtnIdle[1])
+        m_pGameBtnIdle[1] = m_pTxd->GetTexture(Tex::GameNoHoverAccept);
+    if (!m_pGameBtnHover[1])
+        m_pGameBtnHover[1] = m_pTxd->GetTexture(Tex::GameHoverAccept);
+    return m_pGameBtnIdle[0] && m_pGameBtnHover[0] && m_pGameBtnIdle[1] && m_pGameBtnHover[1];
 }
 
 
@@ -589,9 +639,11 @@ MainMenu::ButtonRect MainMenu::GetNewGameBtnRect(int which, float screenW, float
     const float btnW = Layout::NewGameBtnW * sx;
     const float btnH = Layout::NewGameBtnH * sy;
     const float gap = Layout::NewGameBtnGap * sx;
-    const float totalW = btnW * 2.0f + gap;
-    const float left0 = Layout::PanelX * sx + (Layout::PanelW * sx - totalW) * 0.5f;
-    const float top = (Layout::ListTopY + Layout::PanelH - Layout::NewGameBtnBottomPad) * sy - btnH;
+    const float pairW = btnW * 2.0f + gap;
+    const float listCx = (Layout::PanelX + Layout::PanelW * 0.5f) * sx;
+    const float listCy = (Layout::ListTopY + Layout::PanelH * 0.5f) * sy;
+    const float top = listCy + btnH - btnH * 0.5f;
+    const float left0 = listCx - pairW * 0.5f;
     const float left = left0 + static_cast<float>(which) * (btnW + gap);
     return { left, top, left + btnW, top + btnH };
 }
@@ -602,8 +654,10 @@ MainMenu::ButtonRect MainMenu::GetOkBtnRect(float screenW, float screenH) const
     const float sy = screenH / Layout::RefH;
     const float btnW = Layout::NewGameBtnW * sx;
     const float btnH = Layout::NewGameBtnH * sy;
-    const float left = Layout::PanelX * sx + (Layout::PanelW * sx - btnW) * 0.5f;
-    const float top = (Layout::ListTopY + Layout::PanelH - Layout::NewGameBtnBottomPad) * sy - btnH;
+    const float listCx = (Layout::PanelX + Layout::PanelW * 0.5f) * sx;
+    const float listCy = (Layout::ListTopY + Layout::PanelH * 0.5f) * sy;
+    const float left = listCx - btnW * 0.5f;
+    const float top = listCy + btnH - btnH * 0.5f;
     return { left, top, left + btnW, top + btnH };
 }
 
@@ -921,6 +975,30 @@ void MainMenu::DrawUiText(float left, float top, float right, float bottom, cons
                      screenW, screenH, onActivePlate, solidIdle);
 }
 
+void MainMenu::DrawLogo(float screenW, float screenH)
+{
+    if (!m_pDraw || !m_pLogo)
+        return;
+
+    const float sx = screenW / Layout::RefW;
+    const float sy = screenH / Layout::RefH;
+    m_pDraw->DrawTexture(m_pLogo, Layout::LogoPadX * sx, Layout::LogoPadY * sy,
+                         Layout::LogoW * sx, Layout::LogoH * sy);
+}
+
+void MainMenu::DrawRochelle(float screenW, float screenH)
+{
+    if (!m_pDraw || !m_pRochelle || m_panel != Panel::None)
+        return;
+
+    const float sx = screenW / Layout::RefW;
+    const float sy = screenH / Layout::RefH;
+    const float w = Layout::RochelleW * sx;
+    const float h = Layout::RochelleH * sy;
+    const float x = screenW - (Layout::RochellePadRight * sx) - w;
+    m_pDraw->DrawTexture(m_pRochelle, x, 0.0f, w, h);
+}
+
 void MainMenu::DrawButtons(float screenW, float screenH)
 {
     if (!m_pDraw)
@@ -1068,17 +1146,14 @@ void MainMenu::DrawGamePanel(float screenW, float screenH)
 
 void MainMenu::DrawConfirmButtons(float screenW, float screenH, float cursorX, float cursorY)
 {
-    static const char* labels[2] = { "Отмена", "Подтвердить" };
+    const char* labels[2] = { LanguageManager::Get("UI_CANCEL"), LanguageManager::Get("UI_CONFIRM") };
     for (int i = 0; i < 2; ++i)
     {
         const ButtonRect btn = GetNewGameBtnRect(i, screenW, screenH);
         const bool hot = btn.Contains(cursorX, cursorY);
-        const DWORD bg = hot ? Layout::NewGameBtnHover : Layout::NewGameBtnIdle;
-        const float bw = btn.right - btn.left;
-        const float bh = btn.bottom - btn.top;
-        m_pDraw->DrawRectCutoutText(btn.left, btn.top, bw, bh, bg,
-                                    btn.left, btn.top, btn.right, btn.bottom,
-                                    labels[i], DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
+        Ui::DrawTexturedConfirmButton(m_pDraw, btn.left, btn.top, btn.right, btn.bottom,
+                                      m_pGameBtnIdle[i], m_pGameBtnHover[i], hot, labels[i],
+                                      screenW, screenH);
     }
 }
 
@@ -1089,14 +1164,11 @@ void MainMenu::DrawOkButton(float screenW, float screenH, float cursorX, float c
     const DWORD bg = hot ? Layout::NewGameBtnHover : Layout::NewGameBtnIdle;
     m_pDraw->DrawRectCutoutText(btn.left, btn.top, btn.right - btn.left, btn.bottom - btn.top, bg,
                                 btn.left, btn.top, btn.right, btn.bottom,
-                                "OK", DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
+                                LanguageManager::Get("UI_OK"), DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE);
 }
 
-void MainMenu::DrawNewGameConfirm(float screenW, float screenH, float cursorX, float cursorY)
+void MainMenu::DrawConfirmSheet(float screenW, float screenH, const char* prompt, bool okOnly)
 {
-    if (!m_pDraw)
-        return;
-
     const float sx = screenW / Layout::RefW;
     const float sy = screenH / Layout::RefH;
     const float px = Layout::PanelX * sx;
@@ -1105,14 +1177,46 @@ void MainMenu::DrawNewGameConfirm(float screenW, float screenH, float cursorX, f
     const float ph = Layout::PanelH * sy;
     const float padX = Layout::PanelPadX * sx;
 
-    m_pDraw->DrawRect(px, listY, pw, ph, Layout::SlotZebraA);
+    const float listCy = listY + ph * 0.5f;
+    const float textBody = m_pDraw->GetFontHeight();
+    const float textCy = listCy - textBody;
+    const float wrapH = textBody * 8.0f;
+    const float promptL = px + padX;
+    const float promptR = px + pw - padX;
+    const float promptT = textCy - wrapH * 0.5f;
+    const float promptB = textCy + wrapH * 0.5f;
 
-    const ButtonRect cancel = GetNewGameBtnRect(0, screenW, screenH);
-    const float textBottom = cancel.top - 40.0f * sy;
-    DrawUiText(px + padX, listY, px + pw - padX, textBottom,
-               "Вы действительно хотите начать новую игру?",
-               DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_WORDBREAK, false, screenW, screenH);
+    const DWORD promptFmt = DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_WORDBREAK;
+    const DWORD btnFmt = DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE;
 
+    Draw::CutoutSpan spans[3];
+    int n = 0;
+    spans[n++] = { promptL, promptT, promptR, promptB, prompt, promptFmt };
+
+    if (okOnly)
+    {
+        const ButtonRect ok = GetOkBtnRect(screenW, screenH);
+        spans[n++] = { ok.left, ok.top, ok.right, ok.bottom, LanguageManager::Get("UI_OK"), btnFmt };
+    }
+    else
+    {
+        const char* labels[2] = { LanguageManager::Get("UI_CANCEL"), LanguageManager::Get("UI_CONFIRM") };
+        for (int i = 0; i < 2; ++i)
+        {
+            const ButtonRect btn = GetNewGameBtnRect(i, screenW, screenH);
+            spans[n++] = { btn.left, btn.top, btn.right, btn.bottom, labels[i], btnFmt };
+        }
+    }
+
+    m_pDraw->DrawRectCutoutTexts(px, listY, pw, ph, Layout::SlotZebraA, spans, n);
+}
+
+void MainMenu::DrawNewGameConfirm(float screenW, float screenH, float cursorX, float cursorY)
+{
+    if (!m_pDraw)
+        return;
+
+    DrawConfirmSheet(screenW, screenH, LanguageManager::Get("UI_NEW_GAME_PROMPT"), false);
     DrawConfirmButtons(screenW, screenH, cursorX, cursorY);
 }
 
@@ -1121,30 +1225,16 @@ void MainMenu::DrawLoadConfirm(float screenW, float screenH, float cursorX, floa
     if (!m_pDraw || m_pendingLoadSlot < 0 || m_pendingLoadSlot >= Layout::SlotCount)
         return;
 
-    const float sx = screenW / Layout::RefW;
-    const float sy = screenH / Layout::RefH;
-    const float px = Layout::PanelX * sx;
-    const float listY = Layout::ListTopY * sy;
-    const float pw = Layout::PanelW * sx;
-    const float ph = Layout::PanelH * sy;
-    const float padX = Layout::PanelPadX * sx;
-
-    m_pDraw->DrawRect(px, listY, pw, ph, Layout::SlotZebraA);
-
     std::string title = m_saves.Get(m_pendingLoadSlot).name;
-    std::string msg;
+    char msg[512];
     if (m_pendingIsSave)
-        msg = "Вы хотите перезаписать сохранение \"" + title + "\"?";
+        FormatPrompt(msg, sizeof(msg), "UI_OVERWRITE_PROMPT", title.c_str());
     else if (m_pendingIsDelete)
-        msg = "Вы хотите удалить сохранение '" + title + "'?";
+        FormatPrompt(msg, sizeof(msg), "UI_DELETE_PROMPT", title.c_str());
     else
-        msg = "Вы хотите загрузить сохранение '" + title + "'?";
+        FormatPrompt(msg, sizeof(msg), "UI_LOAD_PROMPT", title.c_str());
 
-    const ButtonRect cancel = GetNewGameBtnRect(0, screenW, screenH);
-    const float textBottom = cancel.top - 40.0f * sy;
-    DrawUiText(px + padX, listY, px + pw - padX, textBottom, msg.c_str(),
-               DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_WORDBREAK, false, screenW, screenH);
-
+    DrawConfirmSheet(screenW, screenH, msg, false);
     DrawConfirmButtons(screenW, screenH, cursorX, cursorY);
 }
 
@@ -1153,22 +1243,7 @@ void MainMenu::DrawSaveSuccess(float screenW, float screenH, float cursorX, floa
     if (!m_pDraw)
         return;
 
-    const float sx = screenW / Layout::RefW;
-    const float sy = screenH / Layout::RefH;
-    const float px = Layout::PanelX * sx;
-    const float listY = Layout::ListTopY * sy;
-    const float pw = Layout::PanelW * sx;
-    const float ph = Layout::PanelH * sy;
-    const float padX = Layout::PanelPadX * sx;
-
-    m_pDraw->DrawRect(px, listY, pw, ph, Layout::SlotZebraA);
-
-    const ButtonRect ok = GetOkBtnRect(screenW, screenH);
-    const float textBottom = ok.top - 40.0f * sy;
-    DrawUiText(px + padX, listY, px + pw - padX, textBottom,
-               "Сохранение прошло успешно.\nНажмите OK, чтобы продолжить.",
-               DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_WORDBREAK, false, screenW, screenH);
-
+    DrawConfirmSheet(screenW, screenH, LanguageManager::Get("UI_SAVE_SUCCESS"), true);
     DrawOkButton(screenW, screenH, cursorX, cursorY);
 }
 
@@ -1219,6 +1294,8 @@ void MainMenu::Render()
 
     m_pDraw->BeginUi();
     m_pDraw->DrawTexture(m_pBackground, 0.0f, 0.0f, w, h);
+    DrawRochelle(w, h);
+    DrawLogo(w, h);
     DrawButtons(w, h);
     DrawGamePanel(w, h);
     DrawSettingsPanel(w, h);

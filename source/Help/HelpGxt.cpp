@@ -807,6 +807,8 @@ void HelpGxt::Load()
         tryLoad("italian.gxt", LanguageManager::Lang::Italian, false);
         tryLoad("spanish.gxt", LanguageManager::Lang::Spanish, false);
         tryLoad("russian.gxt", LanguageManager::Lang::Russian, true);
+        tryLoad("portuguese.gxt", LanguageManager::Lang::Portuguese, false);
+        tryLoad("brazilian.gxt", LanguageManager::Lang::Brazilian, false);
     }
 
     TryLoadSanLtdRussian();
@@ -831,6 +833,14 @@ void HelpGxt::Shutdown()
     s_hookSet.reset();
     s_hookSetNum.reset();
     s_hooksOn = false;
+}
+
+const char* HelpGxt::Get(const char* key)
+{
+    Load();
+    if (const std::string* s = LookupKey(key))
+        return s->c_str();
+    return nullptr;
 }
 
 bool HelpGxt::Format(const char* liveGxt, char* utf8, size_t cap)

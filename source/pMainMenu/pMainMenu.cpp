@@ -22,6 +22,8 @@
 #include "Shader.h"
 #include "CMenuManager.h"
 #include "CRadar.h"
+#include "CSprite2d.h"
+#include "BlipManager.h"
 #include "StockRadarDraw.h"
 #include "CPad.h"
 #include "CTimer.h"
@@ -67,6 +69,93 @@ namespace
     }
 
     constexpr float kWorldBound = 3000.0f;
+    constexpr uintptr_t kRwD3D9RasterExtOffset = 0xB4E9E0;
+
+    LPDIRECT3DTEXTURE9 NativeRwTexture(RwTexture* rwTex)
+    {
+        if (!rwTex)
+            return nullptr;
+        RwRaster* raster = RwTextureGetRaster(rwTex);
+        if (!raster)
+            return nullptr;
+        const int extOff = *reinterpret_cast<int*>(kRwD3D9RasterExtOffset);
+        if (extOff <= 0)
+            return nullptr;
+        auto* ext = reinterpret_cast<unsigned char*>(raster) + extOff;
+        return *reinterpret_cast<LPDIRECT3DTEXTURE9*>(ext);
+    }
+
+    const char* LegendGxtKey(int sprite)
+    {
+        switch (sprite)
+        {
+        case -5: return "LG_56"; // player interest
+        case -4: return "LG_55"; // threat
+        case -3: return "LG_54"; // friend
+        case -2: return "LG_50"; // object
+        case -1: return "LG_49"; // destination
+        case RADAR_SPRITE_MAP_HERE:      return "LG_01";
+        case RADAR_SPRITE_AIRYARD:       return "LG_02";
+        case RADAR_SPRITE_AMMUGUN:       return "LG_03";
+        case RADAR_SPRITE_BARBERS:       return "LG_04";
+        case RADAR_SPRITE_BIGSMOKE:      return "LG_05";
+        case RADAR_SPRITE_BOATYARD:      return "LG_06";
+        case RADAR_SPRITE_BURGERSHOT:    return "LG_07";
+        case RADAR_SPRITE_BULLDOZER:     return "LG_66";
+        case RADAR_SPRITE_CATALINAPINK:  return "LG_09";
+        case RADAR_SPRITE_CESARVIAPANDO: return "LG_10";
+        case RADAR_SPRITE_CHICKEN:       return "LG_11";
+        case RADAR_SPRITE_CJ:            return "LG_12";
+        case RADAR_SPRITE_CRASH1:        return "LG_13";
+        case RADAR_SPRITE_DINER:         return "LG_67";
+        case RADAR_SPRITE_EMMETGUN:      return "LG_15";
+        case RADAR_SPRITE_ENEMYATTACK:   return "LG_16";
+        case RADAR_SPRITE_FIRE:          return "LG_17";
+        case RADAR_SPRITE_GIRLFRIEND:    return "LG_18";
+        case RADAR_SPRITE_HOSTPITAL:     return "LG_19";
+        case RADAR_SPRITE_LOGOSYNDICATE: return "LG_20";
+        case RADAR_SPRITE_MADDOG:        return "LG_21";
+        case RADAR_SPRITE_MAFIACASINO:   return "LG_22";
+        case RADAR_SPRITE_MCSTRAP:       return "LG_23";
+        case RADAR_SPRITE_MODGARAGE:     return "LG_24";
+        case RADAR_SPRITE_OGLOC:         return "LG_25";
+        case RADAR_SPRITE_PIZZA:         return "LG_26";
+        case RADAR_SPRITE_POLICE:        return "LG_27";
+        case RADAR_SPRITE_PROPERTYG:     return "LG_28";
+        case RADAR_SPRITE_PROPERTYR:     return "LG_29";
+        case RADAR_SPRITE_RACE:          return "LG_30";
+        case RADAR_SPRITE_RYDER:         return "LG_31";
+        case RADAR_SPRITE_SAVEGAME:      return "LG_32";
+        case RADAR_SPRITE_SCHOOL:        return "LG_33";
+        case RADAR_SPRITE_QMARK:         return "LG_63";
+        case RADAR_SPRITE_SWEET:         return "LG_35";
+        case RADAR_SPRITE_TATTOO:        return "LG_36";
+        case RADAR_SPRITE_THETRUTH:      return "LG_37";
+        case RADAR_SPRITE_WAYPOINT:      return "LG_64";
+        case RADAR_SPRITE_TORENORANCH:   return "LG_39";
+        case RADAR_SPRITE_TRIADS:        return "LG_40";
+        case RADAR_SPRITE_TRIADSCASINO:  return "LG_41";
+        case RADAR_SPRITE_TSHIRT:        return "LG_42";
+        case RADAR_SPRITE_WOOZIE:        return "LG_43";
+        case RADAR_SPRITE_ZERO:          return "LG_44";
+        case RADAR_SPRITE_DATEDISCO:     return "LG_45";
+        case RADAR_SPRITE_DATEDRINK:     return "LG_46";
+        case RADAR_SPRITE_DATEFOOD:      return "LG_47";
+        case RADAR_SPRITE_TRUCK:         return "LG_48";
+        case RADAR_SPRITE_CASH:          return "LG_51";
+        case RADAR_SPRITE_FLAG:          return "LG_52";
+        case RADAR_SPRITE_GYM:           return "LG_53";
+        case RADAR_SPRITE_IMPOUND:       return "LG_57";
+        case RADAR_SPRITE_RUNWAY:        return "LG_65";
+        case RADAR_SPRITE_GANGB:         return "LG_58";
+        case RADAR_SPRITE_GANGP:         return "LG_59";
+        case RADAR_SPRITE_GANGY:         return "LG_60";
+        case RADAR_SPRITE_GANGN:         return "LG_61";
+        case RADAR_SPRITE_GANGG:         return "LG_62";
+        case RADAR_SPRITE_SPRAY:         return "LG_34";
+        default: return nullptr;
+        }
+    }
 
     CVector PlayerCentreForMap()
     {
@@ -113,8 +202,11 @@ void pMainMenu::Shutdown()
     HideOsCursor();
 
     m_pBackground = nullptr;
+    m_pLogo = nullptr;
     for (int i = 0; i < Layout::Count; ++i)
         m_pHover[i] = nullptr;
+    m_pExitBtnIdle[0] = m_pExitBtnIdle[1] = nullptr;
+    m_pExitBtnHover[0] = m_pExitBtnHover[1] = nullptr;
     ReleaseMapTextures();
     m_mapTxd.Shutdown();
 
@@ -125,6 +217,7 @@ void pMainMenu::Shutdown()
     m_bSwallowClick = false;
     m_bWasFocused = true;
     m_bPauseWasOpen = false;
+    m_bExitConfirm = false;
     m_bOsCursorHeld = false;
 
     // Menu TXD owned by Main.cpp / MainMenu — do not unload here
@@ -142,13 +235,17 @@ void pMainMenu::Shutdown()
 void pMainMenu::OnDeviceLost()
 {
     m_pBackground = nullptr;
+    m_pLogo = nullptr;
     for (int i = 0; i < Layout::Count; ++i)
         m_pHover[i] = nullptr;
+    m_pExitBtnIdle[0] = m_pExitBtnIdle[1] = nullptr;
+    m_pExitBtnHover[0] = m_pExitBtnHover[1] = nullptr;
     ReleaseMapTextures();
     m_mapTxd.Shutdown();
 
     m_bSwallowClick = false;
     m_bWasFocused = false;
+    m_bExitConfirm = false;
 
     m_pDevice = nullptr;
     m_pDraw = nullptr;
@@ -161,7 +258,11 @@ void pMainMenu::OnDeviceLost()
 bool pMainMenu::LoadBackground()
 {
     if (m_pBackground)
+    {
+        if (m_pTxd && m_pTxd->IsTxdLoaded() && !m_pLogo)
+            m_pLogo = m_pTxd->GetTexture(Tex::Logo);
         return true;
+    }
 
     if (!m_pTxd || !m_pTxd->IsInitialized())
         return false;
@@ -170,6 +271,8 @@ bool pMainMenu::LoadBackground()
         return false;
 
     m_pBackground = m_pTxd->GetTexture(Tex::Background);
+    if (!m_pLogo)
+        m_pLogo = m_pTxd->GetTexture(Tex::Logo);
     LoadHoverTextures();
     return m_pBackground != nullptr;
 }
@@ -187,6 +290,14 @@ bool pMainMenu::LoadHoverTextures()
         if (!m_pHover[i])
             ok = false;
     }
+    if (!m_pExitBtnIdle[0])
+        m_pExitBtnIdle[0] = m_pTxd->GetTexture(Tex::ExitNoHoverCancel);
+    if (!m_pExitBtnHover[0])
+        m_pExitBtnHover[0] = m_pTxd->GetTexture(Tex::ExitHoverCancel);
+    if (!m_pExitBtnIdle[1])
+        m_pExitBtnIdle[1] = m_pTxd->GetTexture(Tex::ExitNoHoverAccept);
+    if (!m_pExitBtnHover[1])
+        m_pExitBtnHover[1] = m_pTxd->GetTexture(Tex::ExitHoverAccept);
     return ok;
 }
 
@@ -296,6 +407,7 @@ bool pMainMenu::UploadZonesTex()
 void pMainMenu::ResetMapView()
 {
     m_bMapFullscreen = false;
+    m_bMapLegend = false;
     m_fMapPanX = 0.0f;
     m_fMapPanY = 0.0f;
     m_fMapZoom = Layout::MapZoomDefault;
@@ -349,6 +461,7 @@ void pMainMenu::ExitMapFullscreen()
     if (!m_bMapFullscreen)
         return;
     m_bMapFullscreen = false;
+    m_bMapLegend = false;
     m_fMapZoom = Layout::MapZoomDefault;
     m_fMapZoomTarget = Layout::MapZoomDefault;
     m_bMapZoomFocus = false;
@@ -1245,6 +1358,119 @@ void pMainMenu::DrawMapHintBar(float screenW, float screenH)
                         DT_RIGHT | DT_BOTTOM | DT_SINGLELINE | DT_NOCLIP);
 }
 
+pMainMenu::ButtonRect pMainMenu::GetMapLegendRect(float screenW, float screenH) const
+{
+    const float sx = screenW / Layout::RefW;
+    const float sy = screenH / Layout::RefH;
+    const float l = Layout::LegendX * sx;
+    const float t = Layout::LegendY * sy;
+    return { l, t, l + Layout::LegendW * sx, t + Layout::LegendH * sy };
+}
+
+bool pMainMenu::IsCursorOnMapLegend(float cursorX, float cursorY, float screenW, float screenH) const
+{
+    if (!m_bMapLegend || !m_bMapFullscreen)
+        return false;
+    return GetMapLegendRect(screenW, screenH).Contains(cursorX, cursorY);
+}
+
+void pMainMenu::HandleMapLegendToggle()
+{
+    const bool tab = (GetAsyncKeyState(VK_TAB) & 0x8000) != 0;
+    const bool pressed = tab && !m_bTabWasDown;
+    m_bTabWasDown = tab;
+
+    if (!pressed || !m_bMapFullscreen || m_bExitConfirm)
+        return;
+    if (m_pSettings && m_pSettings->IsRebindWaiting())
+        return;
+
+    m_bMapLegend = !m_bMapLegend;
+    PlayFe(m_bMapLegend ? AE_FRONTEND_SELECT : AE_FRONTEND_BACK);
+}
+
+void pMainMenu::DrawMapLegend(float screenW, float screenH)
+{
+    if (!m_pDraw || !m_bMapFullscreen || !m_bMapLegend)
+        return;
+
+    const auto* list = reinterpret_cast<const int16_t*>(CRadar::MapLegendList);
+    const int rawCount = CRadar::MapLegendCounter;
+    if (!list || rawCount <= 0)
+        return;
+
+    int16_t sprites[175];
+    int count = 0;
+    const int cap = static_cast<int>(sizeof(sprites) / sizeof(sprites[0]));
+    const int n = (rawCount < cap) ? rawCount : cap;
+    for (int i = 0; i < n; ++i)
+    {
+        const int16_t sprite = list[i];
+        if (!LegendGxtKey(sprite))
+            continue;
+        sprites[count++] = sprite;
+    }
+    if (count <= 0)
+        return;
+
+    const ButtonRect box = GetMapLegendRect(screenW, screenH);
+    const float sx = screenW / Layout::RefW;
+    const float sy = screenH / Layout::RefH;
+    const float panelW = box.right - box.left;
+    const float panelH = box.bottom - box.top;
+    const float rowH = panelH / static_cast<float>(count);
+    const float padX = Layout::LegendPadX * sx;
+    float icon = Layout::LegendIcon * sy;
+    if (icon > rowH * 0.72f)
+        icon = rowH * 0.72f;
+    const float iconGap = Layout::LegendIconGap * sx;
+
+    int fontH = static_cast<int>(Layout::LegendFont * sy + 0.5f);
+    const int maxFont = static_cast<int>(rowH * 0.55f + 0.5f);
+    if (fontH > maxFont)
+        fontH = maxFont;
+    m_pDraw->EnsureFontHeight(fontH > 0 ? fontH : 1);
+
+    BlipManager::PushDeIcons();
+
+    for (int i = 0; i < count; ++i)
+    {
+        const float y = box.top + rowH * static_cast<float>(i);
+        const DWORD bg = (i & 1) ? Layout::LegendZebraB : Layout::LegendZebraA;
+        m_pDraw->DrawRect(box.left, y, panelW, rowH, bg);
+
+        const int sprite = sprites[i];
+        const float iconX = box.left + padX;
+        const float iconY = y + (rowH - icon) * 0.5f;
+
+        if (sprite < 0)
+        {
+            const int colorIdx = -sprite;
+            DWORD col = 0xFFFF3333;
+            if (colorIdx >= 0 && colorIdx < 6 && CRadar::ArrowBlipColour)
+            {
+                const CRGBA c = CRadar::ArrowBlipColour[colorIdx];
+                col = D3DCOLOR_ARGB(c.a ? c.a : 255, c.r, c.g, c.b);
+            }
+            m_pDraw->DrawCircleAA(iconX + icon * 0.5f, iconY + icon * 0.5f, icon * 0.32f, col);
+        }
+        else if (sprite > 0 && sprite <= BlipManager::MAX_BLIP_ID && CRadar::RadarBlipSprites)
+        {
+            if (LPDIRECT3DTEXTURE9 tex = NativeRwTexture(CRadar::RadarBlipSprites[sprite].m_pTexture))
+                m_pDraw->DrawTexture(tex, iconX, iconY, icon, icon);
+        }
+
+        const char* key = LegendGxtKey(sprite);
+        const char* label = LanguageManager::Get(key);
+        const float textL = iconX + icon + iconGap;
+        m_pDraw->DrawString(textL, y, box.right - padX, y + rowH,
+                            0xFFFFFFFF, label ? label : "", 1.0f, 1.0f,
+                            DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_NOCLIP);
+    }
+
+    BlipManager::PopDeIcons();
+}
+
 void pMainMenu::GetScreenSize(float& outW, float& outH) const
 {
     Ui::GetScreenSizeViewport(m_pDevice, outW, outH);
@@ -1309,6 +1535,20 @@ pMainMenu::ButtonRect pMainMenu::GetButtonRect(int index, float screenW, float s
     return { cx - halfW, cy - halfH, cx + halfW, cy + halfH };
 }
 
+pMainMenu::ButtonRect pMainMenu::GetExitConfirmBtnRect(int which, float screenW, float screenH) const
+{
+    const float sx = screenW / Layout::RefW;
+    const float sy = screenH / Layout::RefH;
+    const float btnW = Layout::ExitConfirmBtnW * sx;
+    const float btnH = Layout::ExitConfirmBtnH * sy;
+    const float gap = Layout::ExitConfirmBtnGap * sx;
+    const float pairW = btnW * 2.0f + gap;
+    const float left0 = screenW * 0.5f - pairW * 0.5f;
+    const float top = screenH * 0.5f + Layout::ExitConfirmBtnDown * btnH - btnH * 0.5f;
+    const float left = left0 + static_cast<float>(which) * (btnW + gap);
+    return { left, top, left + btnW, top + btnH };
+}
+
 int pMainMenu::HitTestButton(float cursorX, float cursorY, float screenW, float screenH) const
 {
     int best = -1;
@@ -1349,14 +1589,14 @@ void pMainMenu::SyncActiveFromPanel()
     default:
         if (m_nActive == static_cast<int>(Button::Game)
             || m_nActive == static_cast<int>(Button::Settings))
-            m_nActive = -1;
+            m_nActive = static_cast<int>(Button::Map);
         break;
     }
 }
 
 void pMainMenu::UpdateHoverSound(float screenW, float screenH)
 {
-    if (m_bMapFullscreen)
+    if (m_bMapFullscreen || m_bExitConfirm)
     {
         m_nHoverSoundId = -1;
         return;
@@ -1384,6 +1624,7 @@ void pMainMenu::ConsumeEscJustPressed()
 
 void pMainMenu::LeavePauseSession()
 {
+    CloseExitConfirm();
     if (m_pMainMenu)
         m_pMainMenu->ClosePanel();
     ResetMapView();
@@ -1466,8 +1707,7 @@ void pMainMenu::OnButtonActivated(int index)
         break;
 
     case Button::Exit:
-        if (m_pMainMenu)
-            m_pMainMenu->RequestExitGame();
+        OpenExitConfirm();
         break;
 
     default:
@@ -1560,8 +1800,10 @@ void pMainMenu::HandleMapInput(float screenW, float screenH)
         return;
 
     const MapLayout layout = ComputeMapLayout(screenW, screenH);
-    const bool overArea = cx >= layout.areaL && cx < layout.areaR
+    bool overArea = cx >= layout.areaL && cx < layout.areaR
         && cy >= layout.areaT && cy < layout.areaB;
+    if (overArea && !m_bMapPress && IsCursorOnMapLegend(cx, cy, screenW, screenH))
+        overArea = false;
 
     // Left menu buttons win in strip mode
     if (!m_bMapFullscreen && !m_bMapPress && HitTestButton(cx, cy, screenW, screenH) >= 0)
@@ -1706,6 +1948,22 @@ void pMainMenu::HandleClicks(float screenW, float screenH)
     if (!GetCursorPosClient(screenW, screenH, cx, cy))
         return;
 
+    if (m_bExitConfirm)
+    {
+        if (GetExitConfirmBtnRect(0, screenW, screenH).Contains(cx, cy))
+        {
+            PlayFe(AE_FRONTEND_BACK);
+            CloseExitConfirm();
+        }
+        else if (GetExitConfirmBtnRect(1, screenW, screenH).Contains(cx, cy))
+        {
+            PlayFe(AE_FRONTEND_SELECT);
+            if (m_pMainMenu)
+                m_pMainMenu->RequestExitGame();
+        }
+        return;
+    }
+
     if (IsMapOpen())
     {
         const MapLayout layout = ComputeMapLayout(screenW, screenH);
@@ -1727,6 +1985,67 @@ void pMainMenu::DrawUiText(float left, float top, float right, float bottom, con
                      screenW, screenH, onActivePlate, solidIdle);
 }
 
+void pMainMenu::OpenExitConfirm()
+{
+    if (m_pMainMenu)
+        m_pMainMenu->ClosePanel();
+    ResetMapView();
+    m_nActive = static_cast<int>(Button::Exit);
+    m_bExitConfirm = true;
+    m_bSwallowClick = true;
+    if (m_pHooks)
+        m_pHooks->SetPauseExitConfirm(true);
+}
+
+void pMainMenu::CloseExitConfirm()
+{
+    m_bExitConfirm = false;
+    if (m_nActive == static_cast<int>(Button::Exit))
+        m_nActive = static_cast<int>(Button::Map);
+    if (m_pHooks)
+        m_pHooks->SetPauseExitConfirm(false);
+}
+
+void pMainMenu::DrawExitConfirm(float screenW, float screenH)
+{
+    if (!m_pDraw || !m_bExitConfirm)
+        return;
+
+    float cursorX = 0.0f, cursorY = 0.0f;
+    GetCursorPosClient(screenW, screenH, cursorX, cursorY);
+
+    const float sy = screenH / Layout::RefH;
+    const int fontH = static_cast<int>(Layout::ExitConfirmFont * sy + 0.5f);
+    m_pDraw->EnsureFontHeight(fontH > 0 ? fontH : 1);
+
+    const float textBody = m_pDraw->GetFontHeight();
+    const float textCy = screenH * 0.5f - Layout::ExitConfirmTextUp * textBody;
+    m_pDraw->DrawString(0.0f, textCy - textBody * 0.5f, screenW, textCy + textBody * 0.5f, 0xFF000000,
+                        LanguageManager::Get("UI_ARE_YOU_SURE"), 1.0f, 1.0f,
+                        DT_CENTER | DT_VCENTER | DT_NOCLIP | DT_SINGLELINE, false);
+
+    const char* labels[2] = { LanguageManager::Get("UI_CANCEL"), LanguageManager::Get("UI_CONFIRM") };
+    for (int i = 0; i < 2; ++i)
+    {
+        const ButtonRect btn = GetExitConfirmBtnRect(i, screenW, screenH);
+        const bool hot = btn.Contains(cursorX, cursorY);
+        Ui::DrawTexturedConfirmButton(m_pDraw, btn.left, btn.top, btn.right, btn.bottom,
+                                      m_pExitBtnIdle[i], m_pExitBtnHover[i], hot, labels[i],
+                                      screenW, screenH);
+    }
+}
+
+void pMainMenu::DrawLogo(float screenW, float screenH)
+{
+    if (!m_pDraw || !m_pLogo)
+        return;
+
+    const float sx = screenW / Layout::RefW;
+    const float sy = screenH / Layout::RefH;
+    m_pDraw->DrawTexture(m_pLogo, Layout::LogoPadX * sx, Layout::LogoPadY * sy,
+                         Layout::LogoW * sx, Layout::LogoH * sy);
+}
+
 void pMainMenu::DrawButtons(float screenW, float screenH)
 {
     if (!m_pDraw)
@@ -1735,7 +2054,7 @@ void pMainMenu::DrawButtons(float screenW, float screenH)
     float cursorX = 0.0f;
     float cursorY = 0.0f;
     m_nHovered = -1;
-    if (GetCursorPosClient(screenW, screenH, cursorX, cursorY))
+    if (!m_bExitConfirm && GetCursorPosClient(screenW, screenH, cursorX, cursorY))
         m_nHovered = HitTestButton(cursorX, cursorY, screenW, screenH);
 
     const float sx = screenW / Layout::RefW;
@@ -1799,6 +2118,7 @@ void pMainMenu::Render()
         m_bLmbWasDown = (GetAsyncKeyState(VK_LBUTTON) & 0x8000) != 0;
         ConsumeEscJustPressed();
         m_nHoverSoundId = -1;
+        m_bTabWasDown = (GetAsyncKeyState(VK_TAB) & 0x8000) != 0;
         ResetMapView();
 
         // Fresh pause: drop leftover title-screen Game/Settings (New Game confirm).
@@ -1809,11 +2129,14 @@ void pMainMenu::Render()
             m_pMainMenu->OpenGamePanelForSave();
             m_nActive = static_cast<int>(Button::Game);
         }
-        else if (m_pMainMenu)
+        else
         {
-            m_pMainMenu->ClosePanel();
-            m_nActive = -1;
+            if (m_pMainMenu)
+                m_pMainMenu->ClosePanel();
+            CenterMapOnPlayer();
+            m_nActive = static_cast<int>(Button::Map);
         }
+        CloseExitConfirm();
 
         WarmMapResources();
     }
@@ -1825,6 +2148,11 @@ void pMainMenu::Render()
 
     if (m_pHooks->ConsumePauseMapFullscreenEsc())
         ExitMapFullscreen();
+    if (m_pHooks->ConsumePauseExitConfirmEsc())
+    {
+        PlayFe(AE_FRONTEND_BACK);
+        CloseExitConfirm();
+    }
 
     ShowOsCursor();
 
@@ -1841,6 +2169,11 @@ void pMainMenu::Render()
     {
         if (m_bMapFullscreen)
             ExitMapFullscreen();
+        else if (m_bExitConfirm)
+        {
+            PlayFe(AE_FRONTEND_BACK);
+            CloseExitConfirm();
+        }
         else
         {
             PlayFe(AE_FRONTEND_BACK);
@@ -1850,6 +2183,7 @@ void pMainMenu::Render()
     }
 
     SyncActiveFromPanel();
+    HandleMapLegendToggle();
     UpdateMapZoom(w, h);
     UpdateHoverSound(w, h);
     HandleClicks(w, h);
@@ -1881,13 +2215,22 @@ void pMainMenu::Render()
     m_pDraw->BeginUi();
     if (IsMapOpen())
         DrawMapLeftArt(w, h);
-    if (!m_bMapFullscreen)
+    if (!m_bMapFullscreen && !m_bExitConfirm)
+    {
+        DrawLogo(w, h);
         DrawButtons(w, h);
+    }
     if (m_bMapFullscreen)
+    {
         DrawMapHintBar(w, h);
+        DrawMapLegend(w, h);
+    }
 
-    if (!IsMapOpen() && m_pMainMenu && m_pMainMenu->IsInitialized())
+    if (!IsMapOpen() && !m_bExitConfirm && m_pMainMenu && m_pMainMenu->IsInitialized())
         m_pMainMenu->RenderEmbeddedPanels();
+
+    if (m_bExitConfirm)
+        DrawExitConfirm(w, h);
 
     if (m_pDraw)
         m_pDraw->EndUi();

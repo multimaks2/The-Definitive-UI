@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/Visual%20Studio-2022%2B-5C2D91?style=flat-square&logo=visualstudio&logoColor=white" alt="VS2022"/>
   <img src="https://img.shields.io/badge/plugin--sdk-required-yellow?style=flat-square" alt="plugin-sdk"/>
   <img src="https://img.shields.io/badge/UI%20style-Definitive%20Edition-blueviolet?style=flat-square" alt="DE UI"/>
-  <img src="https://img.shields.io/badge/languages-6-informational?style=flat-square" alt="6 languages"/>
+  <img src="https://img.shields.io/badge/languages-8-informational?style=flat-square" alt="8 languages"/>
   <img src="https://img.shields.io/badge/license-GPL--3.0-blue?style=flat-square" alt="GPL-3.0"/>
   <a href="https://github.com/multimaks2/The-Definitive-UI/releases">
     <img src="https://img.shields.io/github/v/release/multimaks2/The-Definitive-UI?include_prereleases&style=flat-square&label=release" alt="Release"/>
@@ -38,7 +38,8 @@ ASI-плагин для **GTA San Andreas 1.0 US**, который заменя�
 - 🖥️ Главное меню и пауза с панелями Game / Settings / карта с метками
 - 🧭 GPS-маршрут на радаре
 - 💬 Подсказки help и название радиостанции своим шрифтом
-- 🌐 Языки UI: American, French, German, Italian, Spanish, Russian
+- 🌐 Языки UI: American, French, German, Italian, Spanish, Russian, Portuguese, Brazilian
+- 🛠️ Tools: `tools/` — export/import HelpPhrases, gen `.inc`
 - 🪟 Режим окна: exclusive / windowed / borderless
 - 🎨 Разрядность цвета (16 / 32 bit) в настройках
 - 🌫️ Переключатели эффектов: heat haze, speed blur
@@ -130,8 +131,10 @@ source/
   Config/               ini
   HookManager/          редиректы frontend / HUD
   Game/                 window mode, settings, game state
-  LanguageManager/      словари UI и зон
-  Draw/, InputManager/, TxdManager/, Shader/, Utils/
+  LanguageManager/      словари UI и зон (8 языков)
+  Help/                 подсказки (GXT / HelpPhrases.inc)
+tools/                  export/import HelpPhrases, gen .inc
+
 assets/
   The-Definitive-UI.SA/ ресурсы мода (map.txd, MainMenu.txd, blip.txd, png…)
 ```
