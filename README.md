@@ -20,7 +20,7 @@
     <img src="https://img.shields.io/github/stars/multimaks2/The-Definitive-UI?style=flat-square" alt="Stars"/>
   </a>
 </p>
-<img width="2560" height="1440" alt="image 26" src="https://github.com/user-attachments/assets/35dae7be-495a-49b2-ba70-1cacd04ccad1" />
+<img width="2560" height="1440" alt="image 37" src="https://github.com/user-attachments/assets/2daa6c36-124d-47ad-a764-faea76b986aa" />
 
 ASI-плагин для **GTA San Andreas 1.0 US**, который заменяет стоковый интерфейс на UI в стиле *GTA: The Definitive Edition*: радар, главное меню, пауза с картой, подсказки и связанные HUD-элементы.
 
