@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Release GTA-SA|Win32">
-      <Configuration>Release GTA-SA</Configuration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug GTA-SA|Win32">
-      <Configuration>Debug GTA-SA</Configuration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
@@ -18,7 +18,7 @@
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release GTA-SA|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
@@ -26,7 +26,7 @@
     <!-- Off for fast iteration; re-enable for final ship if you want max size/speed -->
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug GTA-SA|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
@@ -35,13 +35,26 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release GTA-SA|Win32'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug GTA-SA|Win32'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <!-- Always bin/obj — never $(Configuration) folders in project root -->
+  <PropertyGroup>
+    <OutDir>$(ProjectDir)bin\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TduiBinDir>$(ProjectDir)bin\</TduiBinDir>
+    <TduiShaderSourceDir>$(ProjectDir)source\tdui\gfx\shaders\</TduiShaderSourceDir>
+    <TduiAssetsSourceDir>$(ProjectDir)assets\The-Definitive-UI.SA\</TduiAssetsSourceDir>
+    <TduiModDataDir>$(TduiBinDir)The-Definitive-UI.SA\</TduiModDataDir>
+    <TduiShaderOutDir>$(TduiModDataDir)shaders\</TduiShaderOutDir>
+    <TduiAssetsOutDir>$(TduiModDataDir)</TduiAssetsOutDir>
+  </PropertyGroup>
   <!-- Optional post-build copy of the .asi into a game folder. Off unless
        TduiGameDir / TduiModLoaderDir are set in an untracked Local.props,
        or via the TDUI_GAME_DIR / TDUI_MODLOADER_DIR environment variables. -->
@@ -50,34 +63,30 @@
     <TduiGameDir Condition="'$(TduiGameDir)'=='' and '$(TDUI_GAME_DIR)'!=''">$(TDUI_GAME_DIR)</TduiGameDir>
     <TduiModLoaderDir Condition="'$(TduiModLoaderDir)'=='' and '$(TDUI_MODLOADER_DIR)'!=''">$(TDUI_MODLOADER_DIR)</TduiModLoaderDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release GTA-SA|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
-    <OutDir>$(ProjectDir)bin\GTA-SA\Release\</OutDir>
-    <IntDir>$(ProjectDir)obj\GTA-SA\Release\</IntDir>
     <TargetName>The-Definitive-UI.SA</TargetName>
     <TargetExt>.asi</TargetExt>
     <ExternalIncludePath>$(IncludePath);$(PLUGIN_SDK_DIR)\shared\dxsdk;$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>$(LibraryPath);$(PLUGIN_SDK_DIR)\shared\dxsdk;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug GTA-SA|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
-    <OutDir>$(ProjectDir)bin\GTA-SA\Debug\</OutDir>
-    <IntDir>$(ProjectDir)obj\GTA-SA\Debug\</IntDir>
     <TargetName>The-Definitive-UI.SA</TargetName>
     <TargetExt>.asi</TargetExt>
     <ExternalIncludePath>$(IncludePath);$(PLUGIN_SDK_DIR)\shared\dxsdk;$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>$(LibraryPath);$(PLUGIN_SDK_DIR)\shared\dxsdk;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release GTA-SA|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;_CRT_NON_CONFORMING_SWPRINTFS;TARGET_NAME=R"($(TargetName))";GTASA;GTAGAME_NAME="San Andreas";GTAGAME_ABBR="SA";GTAGAME_ABBRLOW="sa";GTAGAME_PROTAGONISTNAME="CJ";GTAGAME_CITYNAME="San Andreas";_DX9_SDK_INSTALLED;PLUGIN_SGV_10US;RW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)source;$(ProjectDir)source\MainMenu;$(ProjectDir)source\pMainMenu;$(ProjectDir)source\Radar;$(ProjectDir)source\Radar\render;$(ProjectDir)source\Radar\render\draw;$(ProjectDir)source\Radar\render\camera;$(ProjectDir)source\Radar\mapmanager;$(ProjectDir)source\Radar\mapmanager\gangzones;$(ProjectDir)source\Radar\mapmanager\legends;$(ProjectDir)source\Radar\mapmanager\airstrips;$(ProjectDir)source\Utils;$(ProjectDir)source\Shader;$(ProjectDir)source\Config;$(ProjectDir)source\HookManager;$(ProjectDir)source\LanguageManager;$(ProjectDir)source\SaveSlots;$(ProjectDir)source\Game;$(ProjectDir)source\Draw;$(ProjectDir)source\InputManager;$(ProjectDir)source\TxdManager;$(ProjectDir)source\Help;$(PLUGIN_SDK_DIR)\plugin_sa;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa\enums;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa\rw;$(PLUGIN_SDK_DIR)\shared;$(PLUGIN_SDK_DIR)\shared\game;$(PLUGIN_SDK_DIR)\stb;$(PLUGIN_SDK_DIR)\safetyhook;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)source;$(ProjectDir)source\tdui\config;$(ProjectDir)source\tdui\core;$(ProjectDir)source\tdui\game;$(ProjectDir)source\tdui\gfx;$(ProjectDir)source\tdui\input;$(ProjectDir)source\tdui\localization;$(ProjectDir)source\tdui\persistence;$(ProjectDir)source\tdui\radar;$(ProjectDir)source\tdui\radar\camera;$(ProjectDir)source\tdui\radar\map;$(ProjectDir)source\tdui\radar\map\gangzone;$(ProjectDir)source\tdui\radar\render;$(ProjectDir)source\tdui\radar\render\draw;$(ProjectDir)source\tdui\ui;$(ProjectDir)source\tdui\ui\help;$(ProjectDir)source\tdui\ui\menu;$(ProjectDir)source\tdui\util;$(PLUGIN_SDK_DIR)\plugin_sa;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa\enums;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa\rw;$(PLUGIN_SDK_DIR)\shared;$(PLUGIN_SDK_DIR)\shared\game;$(PLUGIN_SDK_DIR)\stb;$(PLUGIN_SDK_DIR)\safetyhook;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <!-- Keep optimized Release code, but emit symbols for matching crash dumps. -->
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>MaxSpeed</Optimization>
@@ -108,7 +117,8 @@
       <ImportLibrary>$(IntDir)The-Definitive-UI.SA.lib</ImportLibrary>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
+      <Command>powershell -NoProfile -ExecutionPolicy Bypass -File "$(ProjectDir)tools\stage_mod_data.ps1" -ProjectDir "$(ProjectDir)"
+if not exist "$(OutDir)" mkdir "$(OutDir)"
 del /q "$(OutDir)$(TargetName).asi" 2&gt;nul
 del /q "$(OutDir)$(TargetName).pdb" 2&gt;nul
 del /q "$(OutDir)$(TargetName).ilk" 2&gt;nul
@@ -116,26 +126,25 @@ del /q "$(OutDir)$(TargetName).exp" 2&gt;nul
 del /q "$(OutDir)$(TargetName).lib" 2&gt;nul</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>if exist "$(ProjectDir)assets\sanltd_american.gxt" copy /Y "$(ProjectDir)assets\sanltd_american.gxt" "$(OutDir)sanltd_american.gxt"
-if not "$(TduiGameDir)$(TduiModLoaderDir)"=="" taskkill /IM gta_sa.exe /F /FI "STATUS eq RUNNING" &gt;nul 2&gt;nul
+      <Command>if not "$(TduiGameDir)$(TduiModLoaderDir)"=="" taskkill /IM gta_sa.exe /F /FI "STATUS eq RUNNING" &gt;nul 2&gt;nul
 if not "$(TduiGameDir)"=="" if not exist "$(TduiGameDir)" mkdir "$(TduiGameDir)"
 if not "$(TduiGameDir)"=="" copy /Y "$(TargetPath)" "$(TduiGameDir)\$(TargetFileName)"
 if not "$(TduiGameDir)"=="" if exist "$(OutDir)$(TargetName).pdb" copy /Y "$(OutDir)$(TargetName).pdb" "$(TduiGameDir)\$(TargetName).pdb"
-if not "$(TduiGameDir)"=="" if exist "$(ProjectDir)assets\sanltd_american.gxt" copy /Y "$(ProjectDir)assets\sanltd_american.gxt" "$(TduiGameDir)\sanltd_american.gxt"
+if not "$(TduiGameDir)"=="" if exist "$(TduiModDataDir)" xcopy /E /I /Y "$(TduiModDataDir)*" "$(TduiGameDir)\The-Definitive-UI.SA\"
 if not "$(TduiModLoaderDir)"=="" if not exist "$(TduiModLoaderDir)" mkdir "$(TduiModLoaderDir)"
 if not "$(TduiModLoaderDir)"=="" copy /Y "$(TargetPath)" "$(TduiModLoaderDir)\$(TargetFileName)"
 if not "$(TduiModLoaderDir)"=="" if exist "$(OutDir)$(TargetName).pdb" copy /Y "$(OutDir)$(TargetName).pdb" "$(TduiModLoaderDir)\$(TargetName).pdb"
-if not "$(TduiModLoaderDir)"=="" if exist "$(ProjectDir)assets\sanltd_american.gxt" copy /Y "$(ProjectDir)assets\sanltd_american.gxt" "$(TduiModLoaderDir)\sanltd_american.gxt"</Command>
+if not "$(TduiModLoaderDir)"=="" if exist "$(TduiModDataDir)" xcopy /E /I /Y "$(TduiModDataDir)*" "$(TduiModLoaderDir)\The-Definitive-UI.SA\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug GTA-SA|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DEBUG;_CRT_NON_CONFORMING_SWPRINTFS;TARGET_NAME=R"($(TargetName))";GTASA;GTAGAME_NAME="San Andreas";GTAGAME_ABBR="SA";GTAGAME_ABBRLOW="sa";GTAGAME_PROTAGONISTNAME="CJ";GTAGAME_CITYNAME="San Andreas";_DX9_SDK_INSTALLED;PLUGIN_SGV_10US;RW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)source;$(ProjectDir)source\MainMenu;$(ProjectDir)source\pMainMenu;$(ProjectDir)source\Radar;$(ProjectDir)source\Radar\render;$(ProjectDir)source\Radar\render\draw;$(ProjectDir)source\Radar\render\camera;$(ProjectDir)source\Radar\mapmanager;$(ProjectDir)source\Radar\mapmanager\gangzones;$(ProjectDir)source\Radar\mapmanager\legends;$(ProjectDir)source\Radar\mapmanager\airstrips;$(ProjectDir)source\Utils;$(ProjectDir)source\Shader;$(ProjectDir)source\Config;$(ProjectDir)source\HookManager;$(ProjectDir)source\LanguageManager;$(ProjectDir)source\SaveSlots;$(ProjectDir)source\Game;$(ProjectDir)source\Draw;$(ProjectDir)source\InputManager;$(ProjectDir)source\TxdManager;$(ProjectDir)source\Help;$(PLUGIN_SDK_DIR)\plugin_sa;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa\enums;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa\rw;$(PLUGIN_SDK_DIR)\shared;$(PLUGIN_SDK_DIR)\shared\game;$(PLUGIN_SDK_DIR)\stb;$(PLUGIN_SDK_DIR)\safetyhook;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)source;$(ProjectDir)source\tdui\config;$(ProjectDir)source\tdui\core;$(ProjectDir)source\tdui\game;$(ProjectDir)source\tdui\gfx;$(ProjectDir)source\tdui\input;$(ProjectDir)source\tdui\localization;$(ProjectDir)source\tdui\persistence;$(ProjectDir)source\tdui\radar;$(ProjectDir)source\tdui\radar\camera;$(ProjectDir)source\tdui\radar\map;$(ProjectDir)source\tdui\radar\map\gangzone;$(ProjectDir)source\tdui\radar\render;$(ProjectDir)source\tdui\radar\render\draw;$(ProjectDir)source\tdui\ui;$(ProjectDir)source\tdui\ui\help;$(ProjectDir)source\tdui\ui\menu;$(ProjectDir)source\tdui\util;$(PLUGIN_SDK_DIR)\plugin_sa;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa\enums;$(PLUGIN_SDK_DIR)\plugin_sa\game_sa\rw;$(PLUGIN_SDK_DIR)\shared;$(PLUGIN_SDK_DIR)\shared\game;$(PLUGIN_SDK_DIR)\stb;$(PLUGIN_SDK_DIR)\safetyhook;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <!-- Fast Debug: PDB + /O2, no RTC. /MTd kept for Plugin_d.lib ABI. -->
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>MaxSpeed</Optimization>
@@ -159,7 +168,8 @@ if not "$(TduiModLoaderDir)"=="" if exist "$(ProjectDir)assets\sanltd_american.g
       <ImportLibrary>$(IntDir)The-Definitive-UI.SA.lib</ImportLibrary>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
+      <Command>powershell -NoProfile -ExecutionPolicy Bypass -File "$(ProjectDir)tools\stage_mod_data.ps1" -ProjectDir "$(ProjectDir)"
+if not exist "$(OutDir)" mkdir "$(OutDir)"
 del /q "$(OutDir)$(TargetName).asi" 2&gt;nul
 del /q "$(OutDir)$(TargetName).pdb" 2&gt;nul
 del /q "$(OutDir)$(TargetName).ilk" 2&gt;nul
@@ -167,107 +177,128 @@ del /q "$(OutDir)$(TargetName).exp" 2&gt;nul
 del /q "$(OutDir)$(TargetName).lib" 2&gt;nul</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>if exist "$(ProjectDir)assets\sanltd_american.gxt" copy /Y "$(ProjectDir)assets\sanltd_american.gxt" "$(OutDir)sanltd_american.gxt"
-if not "$(TduiGameDir)$(TduiModLoaderDir)"=="" taskkill /IM gta_sa.exe /F /FI "STATUS eq RUNNING" &gt;nul 2&gt;nul
+      <Command>if not "$(TduiGameDir)$(TduiModLoaderDir)"=="" taskkill /IM gta_sa.exe /F /FI "STATUS eq RUNNING" &gt;nul 2&gt;nul
 if not "$(TduiGameDir)"=="" if not exist "$(TduiGameDir)" mkdir "$(TduiGameDir)"
 if not "$(TduiGameDir)"=="" copy /Y "$(TargetPath)" "$(TduiGameDir)\$(TargetFileName)"
 if not "$(TduiGameDir)"=="" if exist "$(OutDir)$(TargetName).pdb" copy /Y "$(OutDir)$(TargetName).pdb" "$(TduiGameDir)\$(TargetName).pdb"
-if not "$(TduiGameDir)"=="" if exist "$(ProjectDir)assets\sanltd_american.gxt" copy /Y "$(ProjectDir)assets\sanltd_american.gxt" "$(TduiGameDir)\sanltd_american.gxt"
+if not "$(TduiGameDir)"=="" if exist "$(TduiModDataDir)" xcopy /E /I /Y "$(TduiModDataDir)*" "$(TduiGameDir)\The-Definitive-UI.SA\"
 if not "$(TduiModLoaderDir)"=="" if not exist "$(TduiModLoaderDir)" mkdir "$(TduiModLoaderDir)"
 if not "$(TduiModLoaderDir)"=="" copy /Y "$(TargetPath)" "$(TduiModLoaderDir)\$(TargetFileName)"
 if not "$(TduiModLoaderDir)"=="" if exist "$(OutDir)$(TargetName).pdb" copy /Y "$(OutDir)$(TargetName).pdb" "$(TduiModLoaderDir)\$(TargetName).pdb"
-if not "$(TduiModLoaderDir)"=="" if exist "$(ProjectDir)assets\sanltd_american.gxt" copy /Y "$(ProjectDir)assets\sanltd_american.gxt" "$(TduiModLoaderDir)\sanltd_american.gxt"</Command>
+if not "$(TduiModLoaderDir)"=="" if exist "$(TduiModDataDir)" xcopy /E /I /Y "$(TduiModDataDir)*" "$(TduiModLoaderDir)\The-Definitive-UI.SA\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release GTA-SA|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug GTA-SA|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release GTA-SA|Win32'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug GTA-SA|Win32'">pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="source\Main.cpp" />
-    <ClCompile Include="source\MainMenu\MainMenu.cpp" />
-    <ClCompile Include="source\pMainMenu\pMainMenu.cpp" />
-    <ClCompile Include="source\Radar\Radar.cpp" />
-    <ClCompile Include="source\Game\GameState.cpp" />
-    <ClCompile Include="source\Radar\render\RadarRenderer.cpp" />
-    <ClCompile Include="source\Radar\render\RadarGeometry.cpp" />
-    <ClCompile Include="source\Radar\render\RadarViewContext.cpp" />
-    <ClCompile Include="source\Radar\render\camera\CameraController.cpp" />
-    <ClCompile Include="source\Radar\render\draw\DxDrawPrimitives.cpp" />
-    <ClCompile Include="source\Radar\render\RenderTarget.cpp" />
-    <ClCompile Include="source\Radar\render\GpsRender.cpp" />
-    <ClCompile Include="source\Radar\render\RenderRadio.cpp" />
-    <ClCompile Include="source\Radar\mapmanager\BlipManager.cpp" />
-    <ClCompile Include="source\Radar\mapmanager\RadarOverlayCompat.cpp" />
-    <ClCompile Include="source\Radar\mapmanager\StockRadarDraw.cpp" />
-    <ClCompile Include="source\Radar\mapmanager\gangzones\GangZoneRenderer.cpp" />
-    <ClCompile Include="source\Radar\mapmanager\MapChunkManager.cpp" />
-    <ClCompile Include="source\Utils\Utils.cpp" />
-    <ClCompile Include="source\Utils\MathUtils.cpp" />
-    <ClCompile Include="source\Utils\Base64Image.cpp" />
-    <ClCompile Include="source\Utils\CrashDump.cpp" />
-    <ClCompile Include="source\Shader\Shader.cpp" />
-    <ClCompile Include="source\Shader\ShaderCode.cpp" />
-    <ClCompile Include="source\Shader\ShaderManager.cpp" />
-    <ClCompile Include="source\Config\Config.cpp" />
-    <ClCompile Include="source\HookManager\HookManager.cpp" />
-    <ClCompile Include="source\LanguageManager\LanguageManager.cpp" />
-    <ClCompile Include="source\SaveSlots\SaveSlots.cpp" />
-    <ClCompile Include="source\Game\GameSettings.cpp" />
-    <ClCompile Include="source\Game\WindowMode.cpp" />
-    <ClCompile Include="source\Draw\Draw.cpp" />
-    <ClCompile Include="source\InputManager\InputManager.cpp" />
-    <ClCompile Include="source\TxdManager\TxdManager.cpp" />
-    <ClCompile Include="source\Help\Help.cpp" />
-    <ClCompile Include="source\Help\HelpRenderer.cpp" />
-    <ClCompile Include="source\Help\HelpGxt.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\tdui\config\Config.cpp" />
+    <ClCompile Include="source\tdui\core\CrashDump.cpp" />
+    <ClCompile Include="source\tdui\core\HookManager.cpp" />
+    <ClCompile Include="source\tdui\game\GameSettings.cpp" />
+    <ClCompile Include="source\tdui\game\GameState.cpp" />
+    <ClCompile Include="source\tdui\game\WindowMode.cpp" />
+    <ClCompile Include="source\tdui\gfx\Base64Image.cpp" />
+    <ClCompile Include="source\tdui\core\ModPaths.cpp" />
+    <ClCompile Include="source\tdui\gfx\Draw.cpp" />
+    <ClCompile Include="source\tdui\gfx\Shader.cpp" />
+    <ClCompile Include="source\tdui\gfx\ShaderManager.cpp" />
+    <ClCompile Include="source\tdui\gfx\TxdManager.cpp" />
+    <ClCompile Include="source\tdui\input\InputManager.cpp" />
+    <ClCompile Include="source\tdui\localization\DictionaryStore.cpp" />
+    <ClCompile Include="source\tdui\localization\LanguageManager.cpp" />
+    <ClCompile Include="source\tdui\persistence\SaveSlots.cpp" />
+    <ClCompile Include="source\tdui\radar\Radar.cpp" />
+    <ClCompile Include="source\tdui\radar\camera\CameraController.cpp" />
+    <ClCompile Include="source\tdui\radar\map\BlipManager.cpp" />
+    <ClCompile Include="source\tdui\radar\map\MapChunkManager.cpp" />
+    <ClCompile Include="source\tdui\radar\map\RadarOverlayCompat.cpp" />
+    <ClCompile Include="source\tdui\radar\map\StockRadarDraw.cpp" />
+    <ClCompile Include="source\tdui\radar\map\gangzone\GangZoneRenderer.cpp" />
+    <ClCompile Include="source\tdui\radar\render\GpsRender.cpp" />
+    <ClCompile Include="source\tdui\radar\render\RadarGeometry.cpp" />
+    <ClCompile Include="source\tdui\radar\render\RadarRenderer.cpp" />
+    <ClCompile Include="source\tdui\radar\render\RadarViewContext.cpp" />
+    <ClCompile Include="source\tdui\radar\render\RenderRadio.cpp" />
+    <ClCompile Include="source\tdui\radar\render\RenderTarget.cpp" />
+    <ClCompile Include="source\tdui\radar\render\draw\DxDrawPrimitives.cpp" />
+    <ClCompile Include="source\tdui\ui\help\Help.cpp" />
+    <ClCompile Include="source\tdui\ui\help\HelpGxt.cpp" />
+    <ClCompile Include="source\tdui\ui\help\HelpRenderer.cpp" />
+    <ClCompile Include="source\tdui\ui\menu\MainMenu.cpp" />
+    <ClCompile Include="source\tdui\ui\menu\PauseMenu.cpp" />
+    <ClCompile Include="source\tdui\util\MathUtils.cpp" />
+    <ClCompile Include="source\tdui\util\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\pch.h" />
-    <ClInclude Include="source\MainMenu\MainMenu.h" />
-    <ClInclude Include="source\pMainMenu\pMainMenu.h" />
-    <ClInclude Include="source\Radar\Radar.h" />
-    <ClInclude Include="source\Game\GameState.h" />
-    <ClInclude Include="source\Radar\render\RadarRenderer.h" />
-    <ClInclude Include="source\Radar\render\RadarGeometry.h" />
-    <ClInclude Include="source\Radar\render\RadarTypes.h" />
-    <ClInclude Include="source\Radar\render\RadarViewContext.h" />
-    <ClInclude Include="source\Radar\render\camera\CameraController.h" />
-    <ClInclude Include="source\Radar\render\draw\DxDrawPrimitives.h" />
-    <ClInclude Include="source\Radar\render\draw\DrawResources.h" />
-    <ClInclude Include="source\Radar\render\RenderTarget.h" />
-    <ClInclude Include="source\Radar\render\GpsRender.h" />
-    <ClInclude Include="source\Radar\render\RenderRadio.h" />
-    <ClInclude Include="source\Radar\mapmanager\BlipManager.h" />
-    <ClInclude Include="source\Radar\mapmanager\RadarOverlayCompat.h" />
-    <ClInclude Include="source\Radar\mapmanager\StockRadarDraw.h" />
-    <ClInclude Include="source\Radar\mapmanager\gangzones\GangZoneRenderer.h" />
-    <ClInclude Include="source\Radar\mapmanager\gangzones\GangZoneTypes.h" />
-    <ClInclude Include="source\Radar\mapmanager\BlipTypes.h" />
-    <ClInclude Include="source\Radar\mapmanager\MapChunkManager.h" />
-    <ClInclude Include="source\Utils\Utils.h" />
-    <ClInclude Include="source\Utils\MathUtils.h" />
-    <ClInclude Include="source\Utils\Base64Image.h" />
-    <ClInclude Include="source\Utils\ColorUtils.h" />
-    <ClInclude Include="source\Utils\CrashDump.h" />
-    <ClInclude Include="source\Shader\Shader.h" />
-    <ClInclude Include="source\Shader\ShaderCode.h" />
-    <ClInclude Include="source\Shader\ShaderManager.h" />
-    <ClInclude Include="source\Config\Config.h" />
-    <ClInclude Include="source\HookManager\HookManager.h" />
-    <ClInclude Include="source\LanguageManager\LanguageManager.h" />
-    <ClInclude Include="source\SaveSlots\SaveSlots.h" />
-    <ClInclude Include="source\Game\GameSettings.h" />
-    <ClInclude Include="source\Game\WindowMode.h" />
-    <ClInclude Include="source\Draw\Draw.h" />
-    <ClInclude Include="source\InputManager\InputManager.h" />
-    <ClInclude Include="source\TxdManager\TxdManager.h" />
-    <ClInclude Include="source\Help\Help.h" />
-    <ClInclude Include="source\Help\HelpRenderer.h" />
-    <ClInclude Include="source\Help\HelpGxt.h" />
-    <ClInclude Include="source\Help\HelpPhrases.inc" />
+    <ClInclude Include="source\tdui\config\Config.h" />
+    <ClInclude Include="source\tdui\core\CrashDump.h" />
+    <ClInclude Include="source\tdui\core\HookManager.h" />
+    <ClInclude Include="source\tdui\game\GameSettings.h" />
+    <ClInclude Include="source\tdui\game\GameState.h" />
+    <ClInclude Include="source\tdui\game\WindowMode.h" />
+    <ClInclude Include="source\tdui\gfx\Base64Image.h" />
+    <ClInclude Include="source\tdui\core\ModPaths.h" />
+    <ClInclude Include="source\tdui\gfx\Draw.h" />
+    <ClInclude Include="source\tdui\gfx\Shader.h" />
+    <ClInclude Include="source\tdui\gfx\ShaderManager.h" />
+    <ClInclude Include="source\tdui\gfx\TxdManager.h" />
+    <ClInclude Include="source\tdui\input\InputManager.h" />
+    <ClInclude Include="source\tdui\localization\DictionaryStore.h" />
+    <ClInclude Include="source\tdui\localization\LanguageManager.h" />
+    <ClInclude Include="source\tdui\persistence\SaveSlots.h" />
+    <ClInclude Include="source\tdui\radar\Radar.h" />
+    <ClInclude Include="source\tdui\radar\camera\CameraController.h" />
+    <ClInclude Include="source\tdui\radar\map\BlipManager.h" />
+    <ClInclude Include="source\tdui\radar\map\BlipTypes.h" />
+    <ClInclude Include="source\tdui\radar\map\MapChunkManager.h" />
+    <ClInclude Include="source\tdui\radar\map\RadarOverlayCompat.h" />
+    <ClInclude Include="source\tdui\radar\map\StockRadarDraw.h" />
+    <ClInclude Include="source\tdui\radar\map\gangzone\GangZoneRenderer.h" />
+    <ClInclude Include="source\tdui\radar\map\gangzone\GangZoneTypes.h" />
+    <ClInclude Include="source\tdui\radar\render\GpsRender.h" />
+    <ClInclude Include="source\tdui\radar\render\RadarGeometry.h" />
+    <ClInclude Include="source\tdui\radar\render\RadarRenderer.h" />
+    <ClInclude Include="source\tdui\radar\render\RadarTypes.h" />
+    <ClInclude Include="source\tdui\radar\render\RadarViewContext.h" />
+    <ClInclude Include="source\tdui\radar\render\RenderRadio.h" />
+    <ClInclude Include="source\tdui\radar\render\RenderTarget.h" />
+    <ClInclude Include="source\tdui\radar\render\draw\DrawResources.h" />
+    <ClInclude Include="source\tdui\radar\render\draw\DxDrawPrimitives.h" />
+    <ClInclude Include="source\tdui\ui\help\Help.h" />
+    <ClInclude Include="source\tdui\ui\help\HelpGxt.h" />
+    <ClInclude Include="source\tdui\ui\help\HelpRenderer.h" />
+    <ClInclude Include="source\tdui\ui\menu\MainMenu.h" />
+    <ClInclude Include="source\tdui\ui\menu\PauseMenu.h" />
+    <ClInclude Include="source\tdui\util\ColorUtils.h" />
+    <ClInclude Include="source\tdui\util\MathUtils.h" />
+    <ClInclude Include="source\tdui\util\Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\tdui\gfx\shaders\border.fx" />
+    <None Include="source\tdui\gfx\shaders\circle.fx" />
+    <None Include="source\tdui\gfx\shaders\fog_mask.hlsl" />
+    <None Include="source\tdui\gfx\shaders\fog_zones.hlsl" />
+    <None Include="source\tdui\gfx\shaders\green_square.fx" />
+    <None Include="source\tdui\gfx\shaders\image3d.fx" />
+    <None Include="source\tdui\gfx\shaders\line.fx" />
+    <None Include="source\tdui\gfx\shaders\line_smooth.fx" />
+    <None Include="tools\compile_shaders.ps1" />
+    <None Include="tools\export_dictionaries.ps1" />
+    <None Include="tools\port_from_reference.ps1" />
+    <None Include="tools\stage_mod_data.ps1" />
+    <None Include="assets\The-Definitive-UI.SA\ui-text\sanltd_american.gxt" />
+    <None Include="assets\The-Definitive-UI.SA\blip.txd" />
+    <None Include="assets\The-Definitive-UI.SA\MainMenu.txd" />
+    <None Include="assets\The-Definitive-UI.SA\map.txd" />
+    <None Include="assets\The-Definitive-UI.SA\ui-text\dictionaries\help_phrases.txt" />
+    <None Include="assets\The-Definitive-UI.SA\ui-text\dictionaries\ui.txt" />
+    <None Include="assets\The-Definitive-UI.SA\ui-text\dictionaries\zones.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -49,6 +49,16 @@ ASI-плагин для **GTA San Andreas 1.0 US**, который заменя�
 
 ---
 
+## 📰 Update: 29.08.2026 (v7)
+
+- Code refactor
+- Lots of optimizations
+- Lots of bugs (I’m joking, or maybe not 🙂 )
+- ROCHELLE in the main menu!
+- Advanced radar settings
+
+---
+
 ## 📋 Требования
 
 | Компонент | Версия / условие |
@@ -66,8 +76,8 @@ ASI-плагин для **GTA San Andreas 1.0 US**, который заменя�
 ## 🔨 Сборка
 
 1. Откройте `The-Definitive-UI.sln`
-2. Конфигурация: **Release GTA-SA** или **Debug GTA-SA**, платформа **Win32**
-3. Build → `bin\GTA-SA\Release\` или `bin\GTA-SA\Debug\`
+2. Конфигурация: **Release** или **Debug**, платформа **Win32**
+3. Build → `bin\`
 
 ---
 
@@ -123,20 +133,18 @@ The-Definitive-UI.SA\
 ```
 The-Definitive-UI.sln / .vcxproj
 source/
-  Main.cpp              вход ASI, жизненный цикл
-  Radar/                радар, тайлы, блипы, GPS, шейдеры тумана
-  MainMenu/             главное меню
-  pMainMenu/            пауза + карта
-  Help/                 подсказки (GXT / словарь фраз)
-  Config/               ini
-  HookManager/          редиректы frontend / HUD
-  Game/                 window mode, settings, game state
-  LanguageManager/      словари UI и зон (8 языков)
-  Help/                 подсказки (GXT / HelpPhrases.inc)
-tools/                  export/import HelpPhrases, gen .inc
-
+  Main.cpp                 вход ASI, жизненный цикл
+  tdui/
+    radar/                 радар, тайлы, блипы, GPS, шейдеры
+    ui/menu/               главное меню и пауза
+    ui/help/               подсказки (GXT / словарь)
+    config/                ini
+    core/                  хуки, пути, crash dump
+    game/                  window mode, settings, game state
+    localization/          словари UI (8 языков)
+    gfx/                   draw, shaders, txd
 assets/
-  The-Definitive-UI.SA/ ресурсы мода (map.txd, MainMenu.txd, blip.txd, png…)
+  The-Definitive-UI.SA/    ресурсы мода (map.txd, MainMenu.txd, blip.txd, ui-text/…)
 ```
 
 ---
@@ -147,9 +155,9 @@ assets/
 
 | Здесь | Источник в MTA |
 |-------|----------------|
-| `source/Game/WindowMode.*` | `CVideoModeManager` — windowed / exclusive / borderless |
-| `source/Draw/Draw.*` | подход `CGraphics` к 2D-отрисовке (текстуры, текст, состояния) |
-| `source/InputManager/InputManager.*` | подход `CKeyBinds` к клавиатуре и текстовому вводу |
+| `source/tdui/game/WindowMode.*` | `CVideoModeManager` — windowed / exclusive / borderless |
+| `source/tdui/gfx/Draw.*` | подход `CGraphics` к 2D-отрисовке (текстуры, текст, состояния) |
+| `source/tdui/input/InputManager.*` | подход `CKeyBinds` к клавиатуре и текстовому вводу |
 | патчи heat haze / speed blur в `Config` | тот же принцип отключения через RET в начале функции |
 
 Остальной код (радар, меню, help, GPS и т.д.) — собственная реализация проекта.

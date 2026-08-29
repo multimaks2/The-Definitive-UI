@@ -1,11 +1,3 @@
-/*****************************************************************************
- *
- *  PROJECT:     The-Definitive-UI
- *  FILE:        source/pch.h
- *  PURPOSE:     Precompiled header — heavy stable includes only
- *
- *****************************************************************************/
-
 #pragma once
 
 #ifndef WIN32_LEAN_AND_MEAN
@@ -22,8 +14,11 @@
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
+#include <functional>
+#include <memory>
 #include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 #include "plugin.h"

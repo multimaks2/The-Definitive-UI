@@ -20,10 +20,11 @@
 #include "Radar.h"
 #include "GpsRender.h"
 #include "MainMenu.h"
-#include "pMainMenu.h"
+#include "PauseMenu.h"
 #include "GameSettings.h"
 #include "WindowMode.h"
 #include "Help.h"
+#include "GameState.h"
 
 class TheDefinitiveUI
 {
@@ -31,6 +32,8 @@ public:
     TheDefinitiveUI()
     {
         s_self = this;
+        GameState::InstallGameplayGuards();
+        m_gameSettings.SetRadarPreviewSource(&m_radar, [this]() { return EnsureRadarGpu(); });
         CrashDump::Install();
         WindowMode::Install();
         WindowMode::SetGraphicsFlush([]() {
@@ -44,6 +47,7 @@ public:
 
         plugin::Events::initRwEvent += [this]() {
             RadarConfig::Load();
+            GameState::InstallGameplayGuards();
             GpsRenderer::SetPathfindingPatchesEnabled(RadarConfig::GetGps());
             LanguageManager::ApplySavedLanguage();
 
@@ -196,10 +200,10 @@ private:
         if (!m_mainMenu.IsInitialized())
             m_mainMenu.Initialize(device, &m_draw, &m_txdManager, &m_hookManager, &m_gameSettings);
 
-        if (!m_pMainMenu.IsInitialized())
-            m_pMainMenu.Initialize(device, &m_draw, &m_txdManager, &m_hookManager, &m_mainMenu, &m_shader, &m_gameSettings);
+        if (!m_pauseMenu.IsInitialized())
+            m_pauseMenu.Initialize(device, &m_draw, &m_txdManager, &m_hookManager, &m_mainMenu, &m_shader, &m_gameSettings);
 
-        return m_mainMenu.IsInitialized() && m_pMainMenu.IsInitialized();
+        return m_mainMenu.IsInitialized() && m_pauseMenu.IsInitialized();
     }
 
     bool EnsureRadarGpu()
@@ -209,7 +213,7 @@ private:
             return false;
         if (!m_radar.IsInitialized() && !m_radar.Initialize(device))
             return false;
-        m_pMainMenu.SetMapChunkManager(m_radar.GetMapChunkManager());
+        m_pauseMenu.SetMapChunkManager(m_radar.GetMapChunkManager());
         return true;
     }
 
@@ -230,7 +234,7 @@ private:
 
     void OnDeviceLost()
     {
-        m_pMainMenu.OnDeviceLost();
+        m_pauseMenu.OnDeviceLost();
         m_mainMenu.OnDeviceLost();
         m_shader.OnDeviceLost();
         m_help.Shutdown();
@@ -241,11 +245,11 @@ private:
 
     void ReleaseMenuGpu()
     {
-        if (!m_mainMenu.IsInitialized() && !m_pMainMenu.IsInitialized()
+        if (!m_mainMenu.IsInitialized() && !m_pauseMenu.IsInitialized()
             && !m_draw.IsInitialized() && !m_txdManager.IsTxdLoaded())
             return;
 
-        m_pMainMenu.Shutdown();
+        m_pauseMenu.Shutdown();
         m_mainMenu.Shutdown();
         m_help.Shutdown();
         m_radar.Shutdown();
@@ -256,7 +260,7 @@ private:
 
     void Shutdown()
     {
-        m_pMainMenu.Shutdown();
+        m_pauseMenu.Shutdown();
         m_mainMenu.Shutdown();
         m_help.Shutdown();
         m_radar.Shutdown();
@@ -291,7 +295,7 @@ private:
             EnsureRadarGpu();
         }
 
-        m_pMainMenu.Render();
+        m_pauseMenu.Render();
     }
 
     Config          m_config;
@@ -305,7 +309,7 @@ private:
     Help            m_help;
     GameSettings    m_gameSettings;
     MainMenu        m_mainMenu;
-    pMainMenu       m_pMainMenu;
+    PauseMenu       m_pauseMenu;
 } gTheDefinitiveUI;
 
 TheDefinitiveUI* TheDefinitiveUI::s_self = nullptr;

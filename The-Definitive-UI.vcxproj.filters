@@ -4,309 +4,386 @@
     <Filter Include="Source">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Config">
-      <UniqueIdentifier>{E5F6A7B8-C9D0-1234-EF01-345678901234}</UniqueIdentifier>
+    <Filter Include="Source\tdui">
+      <UniqueIdentifier>{A11B22C3-D4E5-4678-9ABC-DEF012345678}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Draw">
-      <UniqueIdentifier>{18C9D0E1-F203-4567-1234-678901234567}</UniqueIdentifier>
+    <Filter Include="Source\tdui\config">
+      <UniqueIdentifier>{B21C32D4-E5F6-4789-ABCD-EF0123456789}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Game">
-      <UniqueIdentifier>{A8E4C1D2-3B5F-4E6A-9C7D-1F2E3D4C5B6A}</UniqueIdentifier>
+    <Filter Include="Source\tdui\core">
+      <UniqueIdentifier>{C32D43E5-F607-489A-BCDE-F01234567890}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Help">
-      <UniqueIdentifier>{5A6B7C8D-9E0F-1234-5678-90ABCDEF1234}</UniqueIdentifier>
+    <Filter Include="Source\tdui\game">
+      <UniqueIdentifier>{D43E54F6-0718-49AB-CDEF-012345678901}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\HookManager">
-      <UniqueIdentifier>{F6A7B8C9-D0E1-2345-F012-456789012345}</UniqueIdentifier>
+    <Filter Include="Source\tdui\gfx">
+      <UniqueIdentifier>{E54F6507-1829-4ABC-DEF0-123456789012}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\InputManager">
-      <UniqueIdentifier>{29D0E1F2-0314-5678-2345-789012345678}</UniqueIdentifier>
+    <Filter Include="Source\tdui\gfx\shaders">
+      <UniqueIdentifier>{C21D32E4-F506-489A-BCDE-F01234567891}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\LanguageManager">
-      <UniqueIdentifier>{07B8C9D0-E1F2-3456-0123-567890123456}</UniqueIdentifier>
+    <Filter Include="Source\tdui\input">
+      <UniqueIdentifier>{F6507618-293A-4BCD-EF01-234567890123}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\MainMenu">
-      <UniqueIdentifier>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</UniqueIdentifier>
+    <Filter Include="Source\tdui\localization">
+      <UniqueIdentifier>{06518729-3A4B-4CDE-F012-345678901234}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\pMainMenu">
-      <UniqueIdentifier>{4BF2A314-2536-789A-4567-901234567890}</UniqueIdentifier>
+    <Filter Include="Source\tdui\persistence">
+      <UniqueIdentifier>{1762983A-4B5C-4DEF-0123-456789012345}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Radar">
-      <UniqueIdentifier>{B2C3D4E5-F6A7-8901-BCDE-F12345678901}</UniqueIdentifier>
+    <Filter Include="Source\tdui\radar">
+      <UniqueIdentifier>{2873A94B-5C6D-4EF0-1234-567890123456}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Radar\mapmanager">
-      <UniqueIdentifier>{A5B6C7D8-E9F0-1234-0123-67890ABCDEF0}</UniqueIdentifier>
+    <Filter Include="Source\tdui\radar\camera">
+      <UniqueIdentifier>{3984BA5C-6D7E-4F01-2345-678901234567}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Radar\mapmanager\gangzones">
-      <UniqueIdentifier>{B6C7D8E9-F0A1-2345-1234-7890ABCDEF01}</UniqueIdentifier>
+    <Filter Include="Source\tdui\radar\map">
+      <UniqueIdentifier>{4A95CB6D-7E8F-4012-3456-789012345678}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Radar\render">
-      <UniqueIdentifier>{D2E3F4A5-B6C7-8901-DEF0-34567890ABCD}</UniqueIdentifier>
+    <Filter Include="Source\tdui\radar\map\gangzone">
+      <UniqueIdentifier>{5BA6DC7E-8F90-4123-4567-890123456789}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Radar\render\camera">
-      <UniqueIdentifier>{E3F4A5B6-C7D8-9012-EF01-4567890ABCDE}</UniqueIdentifier>
+    <Filter Include="Source\tdui\radar\render">
+      <UniqueIdentifier>{6CB7ED8F-901A-4234-5678-901234567890}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Radar\render\draw">
-      <UniqueIdentifier>{F4A5B6C7-D8E9-0123-F012-567890ABCDEF}</UniqueIdentifier>
+    <Filter Include="Source\tdui\radar\render\draw">
+      <UniqueIdentifier>{7DC8FE90-A12B-4345-6789-012345678901}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\SaveSlots">
-      <UniqueIdentifier>{47C1D2E3-F4A5-6789-B012-3456789ABCDE}</UniqueIdentifier>
+    <Filter Include="Source\tdui\ui">
+      <UniqueIdentifier>{8ED90FA1-B23C-4456-789A-123456789012}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Shader">
-      <UniqueIdentifier>{D4E5F6A7-B8C9-0123-DEF0-234567890123}</UniqueIdentifier>
+    <Filter Include="Source\tdui\ui\help">
+      <UniqueIdentifier>{9FEA10B2-C34D-4567-89AB-234567890123}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\TxdManager">
-      <UniqueIdentifier>{39E1F203-1425-6789-3456-890123456789}</UniqueIdentifier>
+    <Filter Include="Source\tdui\ui\menu">
+      <UniqueIdentifier>{A0FB21C3-D45E-4678-9ABC-345678901234}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Utils">
-      <UniqueIdentifier>{C3D4E5F6-A7B8-9012-CDEF-123456789012}</UniqueIdentifier>
+    <Filter Include="Source\tdui\util">
+      <UniqueIdentifier>{B10C32D4-E56F-4789-ABCD-456789012345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{C20D31E3-E405-4789-ABCD-EF01234567892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\The-Definitive-UI.SA">
+      <UniqueIdentifier>{D31E42F4-F516-489A-BCDE-F01234567893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\The-Definitive-UI.SA\ui-text">
+      <UniqueIdentifier>{E42F53A5-0627-49AB-CDEF-012345678904}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\The-Definitive-UI.SA\ui-text\dictionaries">
+      <UniqueIdentifier>{F53A64B6-1738-4ABC-DEF0-123456789015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{064B75C7-2849-4BCD-EF01-234567890126}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\pch.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\Main.cpp">
+    <ClCompile Include="source\main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="source\Config\Config.cpp">
-      <Filter>Source\Config</Filter>
+    <ClCompile Include="source\tdui\config\Config.cpp">
+      <Filter>Source\tdui\config</Filter>
     </ClCompile>
-    <ClCompile Include="source\Draw\Draw.cpp">
-      <Filter>Source\Draw</Filter>
+    <ClCompile Include="source\tdui\core\CrashDump.cpp">
+      <Filter>Source\tdui\core</Filter>
     </ClCompile>
-    <ClCompile Include="source\Game\GameState.cpp">
-      <Filter>Source\Game</Filter>
+    <ClCompile Include="source\tdui\core\HookManager.cpp">
+      <Filter>Source\tdui\core</Filter>
     </ClCompile>
-    <ClCompile Include="source\Game\GameSettings.cpp">
-      <Filter>Source\Game</Filter>
+    <ClCompile Include="source\tdui\core\ModPaths.cpp">
+      <Filter>Source\tdui\core</Filter>
     </ClCompile>
-    <ClCompile Include="source\Game\WindowMode.cpp">
-      <Filter>Source\Game</Filter>
+    <ClCompile Include="source\tdui\game\GameSettings.cpp">
+      <Filter>Source\tdui\game</Filter>
     </ClCompile>
-    <ClCompile Include="source\Help\Help.cpp">
-      <Filter>Source\Help</Filter>
+    <ClCompile Include="source\tdui\game\GameState.cpp">
+      <Filter>Source\tdui\game</Filter>
     </ClCompile>
-    <ClCompile Include="source\Help\HelpRenderer.cpp">
-      <Filter>Source\Help</Filter>
+    <ClCompile Include="source\tdui\game\WindowMode.cpp">
+      <Filter>Source\tdui\game</Filter>
     </ClCompile>
-    <ClCompile Include="source\Help\HelpGxt.cpp">
-      <Filter>Source\Help</Filter>
+    <ClCompile Include="source\tdui\gfx\Base64Image.cpp">
+      <Filter>Source\tdui\gfx</Filter>
     </ClCompile>
-    <ClCompile Include="source\HookManager\HookManager.cpp">
-      <Filter>Source\HookManager</Filter>
+    <ClCompile Include="source\tdui\gfx\Draw.cpp">
+      <Filter>Source\tdui\gfx</Filter>
     </ClCompile>
-    <ClCompile Include="source\InputManager\InputManager.cpp">
-      <Filter>Source\InputManager</Filter>
+    <ClCompile Include="source\tdui\gfx\Shader.cpp">
+      <Filter>Source\tdui\gfx</Filter>
     </ClCompile>
-    <ClCompile Include="source\LanguageManager\LanguageManager.cpp">
-      <Filter>Source\LanguageManager</Filter>
+    <ClCompile Include="source\tdui\gfx\ShaderManager.cpp">
+      <Filter>Source\tdui\gfx</Filter>
     </ClCompile>
-    <ClCompile Include="source\MainMenu\MainMenu.cpp">
-      <Filter>Source\MainMenu</Filter>
+    <ClCompile Include="source\tdui\gfx\TxdManager.cpp">
+      <Filter>Source\tdui\gfx</Filter>
     </ClCompile>
-    <ClCompile Include="source\pMainMenu\pMainMenu.cpp">
-      <Filter>Source\pMainMenu</Filter>
+    <ClCompile Include="source\tdui\input\InputManager.cpp">
+      <Filter>Source\tdui\input</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\Radar.cpp">
-      <Filter>Source\Radar</Filter>
+    <ClCompile Include="source\tdui\localization\DictionaryStore.cpp">
+      <Filter>Source\tdui\localization</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\mapmanager\BlipManager.cpp">
-      <Filter>Source\Radar\mapmanager</Filter>
+    <ClCompile Include="source\tdui\localization\LanguageManager.cpp">
+      <Filter>Source\tdui\localization</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\mapmanager\MapChunkManager.cpp">
-      <Filter>Source\Radar\mapmanager</Filter>
+    <ClCompile Include="source\tdui\persistence\SaveSlots.cpp">
+      <Filter>Source\tdui\persistence</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\mapmanager\RadarOverlayCompat.cpp">
-      <Filter>Source\Radar\mapmanager</Filter>
+    <ClCompile Include="source\tdui\radar\Radar.cpp">
+      <Filter>Source\tdui\radar</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\mapmanager\StockRadarDraw.cpp">
-      <Filter>Source\Radar\mapmanager</Filter>
+    <ClCompile Include="source\tdui\radar\camera\CameraController.cpp">
+      <Filter>Source\tdui\radar\camera</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\mapmanager\gangzones\GangZoneRenderer.cpp">
-      <Filter>Source\Radar\mapmanager\gangzones</Filter>
+    <ClCompile Include="source\tdui\radar\map\BlipManager.cpp">
+      <Filter>Source\tdui\radar\map</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\render\GpsRender.cpp">
-      <Filter>Source\Radar\render</Filter>
+    <ClCompile Include="source\tdui\radar\map\MapChunkManager.cpp">
+      <Filter>Source\tdui\radar\map</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\render\RadarGeometry.cpp">
-      <Filter>Source\Radar\render</Filter>
+    <ClCompile Include="source\tdui\radar\map\RadarOverlayCompat.cpp">
+      <Filter>Source\tdui\radar\map</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\render\RadarRenderer.cpp">
-      <Filter>Source\Radar\render</Filter>
+    <ClCompile Include="source\tdui\radar\map\StockRadarDraw.cpp">
+      <Filter>Source\tdui\radar\map</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\render\RadarViewContext.cpp">
-      <Filter>Source\Radar\render</Filter>
+    <ClCompile Include="source\tdui\radar\map\gangzone\GangZoneRenderer.cpp">
+      <Filter>Source\tdui\radar\map\gangzone</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\render\RenderRadio.cpp">
-      <Filter>Source\Radar\render</Filter>
+    <ClCompile Include="source\tdui\radar\render\GpsRender.cpp">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\render\RenderTarget.cpp">
-      <Filter>Source\Radar\render</Filter>
+    <ClCompile Include="source\tdui\radar\render\RadarGeometry.cpp">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\render\camera\CameraController.cpp">
-      <Filter>Source\Radar\render\camera</Filter>
+    <ClCompile Include="source\tdui\radar\render\RadarRenderer.cpp">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClCompile>
-    <ClCompile Include="source\Radar\render\draw\DxDrawPrimitives.cpp">
-      <Filter>Source\Radar\render\draw</Filter>
+    <ClCompile Include="source\tdui\radar\render\RadarViewContext.cpp">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClCompile>
-    <ClCompile Include="source\SaveSlots\SaveSlots.cpp">
-      <Filter>Source\SaveSlots</Filter>
+    <ClCompile Include="source\tdui\radar\render\RenderRadio.cpp">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClCompile>
-    <ClCompile Include="source\Shader\Shader.cpp">
-      <Filter>Source\Shader</Filter>
+    <ClCompile Include="source\tdui\radar\render\RenderTarget.cpp">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClCompile>
-    <ClCompile Include="source\Shader\ShaderCode.cpp">
-      <Filter>Source\Shader</Filter>
+    <ClCompile Include="source\tdui\radar\render\draw\DxDrawPrimitives.cpp">
+      <Filter>Source\tdui\radar\render\draw</Filter>
     </ClCompile>
-    <ClCompile Include="source\Shader\ShaderManager.cpp">
-      <Filter>Source\Shader</Filter>
+    <ClCompile Include="source\tdui\ui\help\Help.cpp">
+      <Filter>Source\tdui\ui\help</Filter>
     </ClCompile>
-    <ClCompile Include="source\TxdManager\TxdManager.cpp">
-      <Filter>Source\TxdManager</Filter>
+    <ClCompile Include="source\tdui\ui\help\HelpGxt.cpp">
+      <Filter>Source\tdui\ui\help</Filter>
     </ClCompile>
-    <ClCompile Include="source\Utils\Utils.cpp">
-      <Filter>Source\Utils</Filter>
+    <ClCompile Include="source\tdui\ui\help\HelpRenderer.cpp">
+      <Filter>Source\tdui\ui\help</Filter>
     </ClCompile>
-    <ClCompile Include="source\Utils\MathUtils.cpp">
-      <Filter>Source\Utils</Filter>
+    <ClCompile Include="source\tdui\ui\menu\MainMenu.cpp">
+      <Filter>Source\tdui\ui\menu</Filter>
     </ClCompile>
-    <ClCompile Include="source\Utils\Base64Image.cpp">
-      <Filter>Source\Utils</Filter>
+    <ClCompile Include="source\tdui\ui\menu\PauseMenu.cpp">
+      <Filter>Source\tdui\ui\menu</Filter>
     </ClCompile>
-    <ClCompile Include="source\Utils\CrashDump.cpp">
-      <Filter>Source\Utils</Filter>
+    <ClCompile Include="source\tdui\util\MathUtils.cpp">
+      <Filter>Source\tdui\util</Filter>
+    </ClCompile>
+    <ClCompile Include="source\tdui\util\Utils.cpp">
+      <Filter>Source\tdui\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\pch.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="source\Config\Config.h">
-      <Filter>Source\Config</Filter>
+    <ClInclude Include="source\tdui\config\Config.h">
+      <Filter>Source\tdui\config</Filter>
     </ClInclude>
-    <ClInclude Include="source\Draw\Draw.h">
-      <Filter>Source\Draw</Filter>
+    <ClInclude Include="source\tdui\core\CrashDump.h">
+      <Filter>Source\tdui\core</Filter>
     </ClInclude>
-    <ClInclude Include="source\Game\GameState.h">
-      <Filter>Source\Game</Filter>
+    <ClInclude Include="source\tdui\core\HookManager.h">
+      <Filter>Source\tdui\core</Filter>
     </ClInclude>
-    <ClInclude Include="source\Game\GameSettings.h">
-      <Filter>Source\Game</Filter>
+    <ClInclude Include="source\tdui\core\ModPaths.h">
+      <Filter>Source\tdui\core</Filter>
     </ClInclude>
-    <ClInclude Include="source\Game\WindowMode.h">
-      <Filter>Source\Game</Filter>
+    <ClInclude Include="source\tdui\game\GameSettings.h">
+      <Filter>Source\tdui\game</Filter>
     </ClInclude>
-    <ClInclude Include="source\Help\Help.h">
-      <Filter>Source\Help</Filter>
+    <ClInclude Include="source\tdui\game\GameState.h">
+      <Filter>Source\tdui\game</Filter>
     </ClInclude>
-    <ClInclude Include="source\Help\HelpRenderer.h">
-      <Filter>Source\Help</Filter>
+    <ClInclude Include="source\tdui\game\WindowMode.h">
+      <Filter>Source\tdui\game</Filter>
     </ClInclude>
-    <ClInclude Include="source\Help\HelpGxt.h">
-      <Filter>Source\Help</Filter>
+    <ClInclude Include="source\tdui\gfx\Base64Image.h">
+      <Filter>Source\tdui\gfx</Filter>
     </ClInclude>
-    <ClInclude Include="source\Help\HelpPhrases.inc">
-      <Filter>Source\Help</Filter>
+    <ClInclude Include="source\tdui\gfx\Draw.h">
+      <Filter>Source\tdui\gfx</Filter>
     </ClInclude>
-    <ClInclude Include="source\HookManager\HookManager.h">
-      <Filter>Source\HookManager</Filter>
+    <ClInclude Include="source\tdui\gfx\Shader.h">
+      <Filter>Source\tdui\gfx</Filter>
     </ClInclude>
-    <ClInclude Include="source\InputManager\InputManager.h">
-      <Filter>Source\InputManager</Filter>
+    <ClInclude Include="source\tdui\gfx\ShaderManager.h">
+      <Filter>Source\tdui\gfx</Filter>
     </ClInclude>
-    <ClInclude Include="source\LanguageManager\LanguageManager.h">
-      <Filter>Source\LanguageManager</Filter>
+    <ClInclude Include="source\tdui\gfx\TxdManager.h">
+      <Filter>Source\tdui\gfx</Filter>
     </ClInclude>
-    <ClInclude Include="source\MainMenu\MainMenu.h">
-      <Filter>Source\MainMenu</Filter>
+    <ClInclude Include="source\tdui\input\InputManager.h">
+      <Filter>Source\tdui\input</Filter>
     </ClInclude>
-    <ClInclude Include="source\pMainMenu\pMainMenu.h">
-      <Filter>Source\pMainMenu</Filter>
+    <ClInclude Include="source\tdui\localization\DictionaryStore.h">
+      <Filter>Source\tdui\localization</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\Radar.h">
-      <Filter>Source\Radar</Filter>
+    <ClInclude Include="source\tdui\localization\LanguageManager.h">
+      <Filter>Source\tdui\localization</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\mapmanager\BlipManager.h">
-      <Filter>Source\Radar\mapmanager</Filter>
+    <ClInclude Include="source\tdui\persistence\SaveSlots.h">
+      <Filter>Source\tdui\persistence</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\mapmanager\BlipTypes.h">
-      <Filter>Source\Radar\mapmanager</Filter>
+    <ClInclude Include="source\tdui\radar\Radar.h">
+      <Filter>Source\tdui\radar</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\mapmanager\MapChunkManager.h">
-      <Filter>Source\Radar\mapmanager</Filter>
+    <ClInclude Include="source\tdui\radar\camera\CameraController.h">
+      <Filter>Source\tdui\radar\camera</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\mapmanager\RadarOverlayCompat.h">
-      <Filter>Source\Radar\mapmanager</Filter>
+    <ClInclude Include="source\tdui\radar\map\BlipManager.h">
+      <Filter>Source\tdui\radar\map</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\mapmanager\StockRadarDraw.h">
-      <Filter>Source\Radar\mapmanager</Filter>
+    <ClInclude Include="source\tdui\radar\map\BlipTypes.h">
+      <Filter>Source\tdui\radar\map</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\mapmanager\gangzones\GangZoneRenderer.h">
-      <Filter>Source\Radar\mapmanager\gangzones</Filter>
+    <ClInclude Include="source\tdui\radar\map\MapChunkManager.h">
+      <Filter>Source\tdui\radar\map</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\mapmanager\gangzones\GangZoneTypes.h">
-      <Filter>Source\Radar\mapmanager\gangzones</Filter>
+    <ClInclude Include="source\tdui\radar\map\RadarOverlayCompat.h">
+      <Filter>Source\tdui\radar\map</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\render\GpsRender.h">
-      <Filter>Source\Radar\render</Filter>
+    <ClInclude Include="source\tdui\radar\map\StockRadarDraw.h">
+      <Filter>Source\tdui\radar\map</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\render\RadarGeometry.h">
-      <Filter>Source\Radar\render</Filter>
+    <ClInclude Include="source\tdui\radar\map\gangzone\GangZoneRenderer.h">
+      <Filter>Source\tdui\radar\map\gangzone</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\render\RadarRenderer.h">
-      <Filter>Source\Radar\render</Filter>
+    <ClInclude Include="source\tdui\radar\map\gangzone\GangZoneTypes.h">
+      <Filter>Source\tdui\radar\map\gangzone</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\render\RadarTypes.h">
-      <Filter>Source\Radar\render</Filter>
+    <ClInclude Include="source\tdui\radar\render\GpsRender.h">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\render\RadarViewContext.h">
-      <Filter>Source\Radar\render</Filter>
+    <ClInclude Include="source\tdui\radar\render\RadarGeometry.h">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\render\RenderRadio.h">
-      <Filter>Source\Radar\render</Filter>
+    <ClInclude Include="source\tdui\radar\render\RadarRenderer.h">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\render\RenderTarget.h">
-      <Filter>Source\Radar\render</Filter>
+    <ClInclude Include="source\tdui\radar\render\RadarTypes.h">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\render\camera\CameraController.h">
-      <Filter>Source\Radar\render\camera</Filter>
+    <ClInclude Include="source\tdui\radar\render\RadarViewContext.h">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\render\draw\DxDrawPrimitives.h">
-      <Filter>Source\Radar\render\draw</Filter>
+    <ClInclude Include="source\tdui\radar\render\RenderRadio.h">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClInclude>
-    <ClInclude Include="source\Radar\render\draw\DrawResources.h">
-      <Filter>Source\Radar\render\draw</Filter>
+    <ClInclude Include="source\tdui\radar\render\RenderTarget.h">
+      <Filter>Source\tdui\radar\render</Filter>
     </ClInclude>
-    <ClInclude Include="source\SaveSlots\SaveSlots.h">
-      <Filter>Source\SaveSlots</Filter>
+    <ClInclude Include="source\tdui\radar\render\draw\DrawResources.h">
+      <Filter>Source\tdui\radar\render\draw</Filter>
     </ClInclude>
-    <ClInclude Include="source\Shader\Shader.h">
-      <Filter>Source\Shader</Filter>
+    <ClInclude Include="source\tdui\radar\render\draw\DxDrawPrimitives.h">
+      <Filter>Source\tdui\radar\render\draw</Filter>
     </ClInclude>
-    <ClInclude Include="source\Shader\ShaderCode.h">
-      <Filter>Source\Shader</Filter>
+    <ClInclude Include="source\tdui\ui\help\Help.h">
+      <Filter>Source\tdui\ui\help</Filter>
     </ClInclude>
-    <ClInclude Include="source\Shader\ShaderManager.h">
-      <Filter>Source\Shader</Filter>
+    <ClInclude Include="source\tdui\ui\help\HelpGxt.h">
+      <Filter>Source\tdui\ui\help</Filter>
     </ClInclude>
-    <ClInclude Include="source\TxdManager\TxdManager.h">
-      <Filter>Source\TxdManager</Filter>
+    <ClInclude Include="source\tdui\ui\help\HelpRenderer.h">
+      <Filter>Source\tdui\ui\help</Filter>
     </ClInclude>
-    <ClInclude Include="source\Utils\Utils.h">
-      <Filter>Source\Utils</Filter>
+    <ClInclude Include="source\tdui\ui\menu\MainMenu.h">
+      <Filter>Source\tdui\ui\menu</Filter>
     </ClInclude>
-    <ClInclude Include="source\Utils\MathUtils.h">
-      <Filter>Source\Utils</Filter>
+    <ClInclude Include="source\tdui\ui\menu\PauseMenu.h">
+      <Filter>Source\tdui\ui\menu</Filter>
     </ClInclude>
-    <ClInclude Include="source\Utils\Base64Image.h">
-      <Filter>Source\Utils</Filter>
+    <ClInclude Include="source\tdui\util\ColorUtils.h">
+      <Filter>Source\tdui\util</Filter>
     </ClInclude>
-    <ClInclude Include="source\Utils\ColorUtils.h">
-      <Filter>Source\Utils</Filter>
+    <ClInclude Include="source\tdui\util\MathUtils.h">
+      <Filter>Source\tdui\util</Filter>
     </ClInclude>
-    <ClInclude Include="source\Utils\CrashDump.h">
-      <Filter>Source\Utils</Filter>
+    <ClInclude Include="source\tdui\util\Utils.h">
+      <Filter>Source\tdui\util</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\tdui\gfx\shaders\border.fx">
+      <Filter>Source\tdui\gfx\shaders</Filter>
+    </None>
+    <None Include="source\tdui\gfx\shaders\circle.fx">
+      <Filter>Source\tdui\gfx\shaders</Filter>
+    </None>
+    <None Include="source\tdui\gfx\shaders\fog_mask.hlsl">
+      <Filter>Source\tdui\gfx\shaders</Filter>
+    </None>
+    <None Include="source\tdui\gfx\shaders\fog_zones.hlsl">
+      <Filter>Source\tdui\gfx\shaders</Filter>
+    </None>
+    <None Include="source\tdui\gfx\shaders\green_square.fx">
+      <Filter>Source\tdui\gfx\shaders</Filter>
+    </None>
+    <None Include="source\tdui\gfx\shaders\image3d.fx">
+      <Filter>Source\tdui\gfx\shaders</Filter>
+    </None>
+    <None Include="source\tdui\gfx\shaders\line.fx">
+      <Filter>Source\tdui\gfx\shaders</Filter>
+    </None>
+    <None Include="source\tdui\gfx\shaders\line_smooth.fx">
+      <Filter>Source\tdui\gfx\shaders</Filter>
+    </None>
+    <None Include="assets\The-Definitive-UI.SA\ui-text\sanltd_american.gxt">
+      <Filter>Assets\The-Definitive-UI.SA\ui-text</Filter>
+    </None>
+    <None Include="assets\The-Definitive-UI.SA\blip.txd">
+      <Filter>Assets\The-Definitive-UI.SA</Filter>
+    </None>
+    <None Include="assets\The-Definitive-UI.SA\MainMenu.txd">
+      <Filter>Assets\The-Definitive-UI.SA</Filter>
+    </None>
+    <None Include="assets\The-Definitive-UI.SA\map.txd">
+      <Filter>Assets\The-Definitive-UI.SA</Filter>
+    </None>
+    <None Include="assets\The-Definitive-UI.SA\ui-text\dictionaries\help_phrases.txt">
+      <Filter>Assets\The-Definitive-UI.SA\ui-text\dictionaries</Filter>
+    </None>
+    <None Include="assets\The-Definitive-UI.SA\ui-text\dictionaries\ui.txt">
+      <Filter>Assets\The-Definitive-UI.SA\ui-text\dictionaries</Filter>
+    </None>
+    <None Include="assets\The-Definitive-UI.SA\ui-text\dictionaries\zones.txt">
+      <Filter>Assets\The-Definitive-UI.SA\ui-text\dictionaries</Filter>
+    </None>
+    <None Include="tools\compile_shaders.ps1">
+      <Filter>Tools</Filter>
+    </None>
+    <None Include="tools\export_dictionaries.ps1">
+      <Filter>Tools</Filter>
+    </None>
+    <None Include="tools\port_from_reference.ps1">
+      <Filter>Tools</Filter>
+    </None>
+    <None Include="tools\stage_mod_data.ps1">
+      <Filter>Tools</Filter>
+    </None>
   </ItemGroup>
 </Project>

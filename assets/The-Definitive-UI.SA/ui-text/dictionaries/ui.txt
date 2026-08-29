@@ -1,0 +1,1622 @@
+# TDUI menu/settings dictionary
+# LANGS: EN FR DE IT ES RU PT BR
+
+[LANG_AMERICAN]
+EN=American
+FR=American
+DE=American
+IT=American
+ES=American
+RU=American
+PT=American
+BR=American
+
+[LANG_FRENCH]
+EN=Français
+FR=Français
+DE=Français
+IT=Français
+ES=Français
+RU=Français
+PT=Français
+BR=Français
+
+[LANG_GERMAN]
+EN=Deutsch
+FR=Deutsch
+DE=Deutsch
+IT=Deutsch
+ES=Deutsch
+RU=Deutsch
+PT=Deutsch
+BR=Deutsch
+
+[LANG_ITALIAN]
+EN=Italiano
+FR=Italiano
+DE=Italiano
+IT=Italiano
+ES=Italiano
+RU=Italiano
+PT=Italiano
+BR=Italiano
+
+[LANG_SPANISH]
+EN=Español
+FR=Español
+DE=Español
+IT=Español
+ES=Español
+RU=Español
+PT=Español
+BR=Español
+
+[LANG_RUSSIAN]
+EN=Русский
+FR=Русский
+DE=Русский
+IT=Русский
+ES=Русский
+RU=Русский
+PT=Русский
+BR=Русский
+
+[LANG_PORTUGUESE]
+EN=Português
+FR=Português
+DE=Português
+IT=Português
+ES=Português
+RU=Português
+PT=Português
+BR=Português
+
+[LANG_BRAZILIAN]
+EN=Português (Brasil)
+FR=Português (Brasil)
+DE=Português (Brasil)
+IT=Português (Brasil)
+ES=Português (Brasil)
+RU=Português (Brasil)
+PT=Português (Brasil)
+BR=Português (Brasil)
+
+[UI_ON]
+EN=On
+FR=Oui
+DE=Ein
+IT=Sì
+ES=Sí
+RU=Вкл.
+PT=Ligado
+BR=Ligado
+
+[UI_OFF]
+EN=Off
+FR=Non
+DE=Aus
+IT=No
+ES=No
+RU=Выкл.
+PT=Desligado
+BR=Desligado
+
+[UI_START]
+EN=Start
+FR=Commencer
+DE=Start
+IT=Inizia
+ES=Empezar
+RU=Начать
+PT=Começar
+BR=Começar
+
+[UI_CONTINUE]
+EN=Continue
+FR=Continuer
+DE=Fortsetzen
+IT=Continua
+ES=Continuar
+RU=Продолжить
+PT=Continuar
+BR=Continuar
+
+[UI_GAME]
+EN=Game
+FR=Jeu
+DE=Spiel
+IT=Gioco
+ES=Juego
+RU=Игра
+PT=Jogo
+BR=Jogo
+
+[UI_SETTINGS]
+EN=Settings
+FR=Options
+DE=Optionen
+IT=Impostazioni
+ES=Ajustes
+RU=Настройки
+PT=Definições
+BR=Configurações
+
+[UI_EXIT]
+EN=Exit
+FR=Quitter
+DE=Beenden
+IT=Esci
+ES=Salir
+RU=Выйти
+PT=Sair
+BR=Sair
+
+[UI_MAP]
+EN=Map
+FR=Carte
+DE=Karte
+IT=Mappa
+ES=Mapa
+RU=Карта
+PT=Mapa
+BR=Mapa
+
+[UI_MESSAGES]
+EN=Messages
+FR=Messages
+DE=Nachrichten
+IT=Messaggi
+ES=Mensajes
+RU=Сообщения
+PT=Mensagens
+BR=Mensagens
+
+[UI_STATS]
+EN=Stats
+FR=Stats
+DE=Statistik
+IT=Statistiche
+ES=Estadísticas
+RU=Статистика
+PT=Estatísticas
+BR=Estatísticas
+
+[UI_SAVE]
+EN=SAVE
+FR=SAUVER
+DE=SPEICHERN
+IT=SALVA
+ES=GUARDAR
+RU=СОХРАНИТЬ
+PT=GUARDAR
+BR=SALVAR
+
+[UI_LOAD]
+EN=LOAD GAME
+FR=CHARGER
+DE=LADEN
+IT=CARICA
+ES=CARGAR
+RU=ЗАГРУЗИТЬ ИГРУ
+PT=CARREGAR JOGO
+BR=CARREGAR JOGO
+
+[UI_NEW_GAME]
+EN=NEW GAME
+FR=NOUVELLE PARTIE
+DE=NEUES SPIEL
+IT=NUOVA PARTITA
+ES=NUEVA PARTIDA
+RU=НОВАЯ ИГРА
+PT=NOVO JOGO
+BR=NOVO JOGO
+
+[UI_DELETE]
+EN=DELETE GAME
+FR=SUPPRIMER
+DE=LÖSCHEN
+IT=ELIMINA
+ES=ELIMINAR
+RU=УДАЛИТЬ ИГРУ
+PT=APAGAR JOGO
+BR=EXCLUIR JOGO
+
+[UI_TAB_CONTROLS]
+EN=CONTROLS
+FR=COMMANDES
+DE=STEUERUNG
+IT=COMANDI
+ES=CONTROLES
+RU=УПРАВЛЕНИЕ
+PT=COMANDOS
+BR=CONTROLES
+
+[UI_TAB_GAME]
+EN=GAME
+FR=JEU
+DE=SPIEL
+IT=GIOCO
+ES=JUEGO
+RU=ИГРА
+PT=JOGO
+BR=JOGO
+
+[UI_TAB_GRAPHICS]
+EN=DISPLAY
+FR=AFFICHAGE
+DE=GRAFIK
+IT=GRAFICA
+ES=PANTALLA
+RU=ГРАФИКА
+PT=ECRÃ
+BR=TELA
+
+[UI_TAB_SOUND]
+EN=AUDIO
+FR=AUDIO
+DE=AUDIO
+IT=AUDIO
+ES=AUDIO
+RU=ЗВУК
+PT=ÁUDIO
+BR=ÁUDIO
+
+[UI_TAB_OPTIONS]
+EN=OPTIONS
+FR=OPTIONS
+DE=OPTIONEN
+IT=OPZIONI
+ES=OPCIONES
+RU=ОПЦИИ
+PT=OPÇÕES
+BR=OPÇÕES
+
+[UI_BACK]
+EN=BACK
+FR=RETOUR
+DE=ZURÜCK
+IT=INDIETRO
+ES=ATRÁS
+RU=НАЗАД
+PT=VOLTAR
+BR=VOLTAR
+
+[UI_RESET]
+EN=RESET
+FR=RÉINIT.
+DE=RESET
+IT=RESET
+ES=RESTABLECER
+RU=СБРОС
+PT=REPOR
+BR=REDEFINIR
+
+[UI_REBIND_WAIT]
+EN=Waiting for input...
+FR=En attente d'une touche...
+DE=Warte auf Eingabe...
+IT=In attesa di un tasto...
+ES=Esperando una tecla...
+RU=Ожидание ввода...
+PT=À espera de input...
+BR=Aguardando entrada...
+
+[UI_REBIND_ESC]
+EN=Press [esc] to cancel
+FR=Appuie sur [esc] pour annuler
+DE=Zum Abbrechen [esc] drücken
+IT=Premi [esc] per annullare
+ES=Pulsa [esc] para cancelar
+RU=Для отмены нажмите [esc]
+PT=Prima [esc] para cancelar
+BR=Pressione [esc] para cancelar
+
+[UI_KEY_SPACE]
+EN=SPACE
+FR=ESPACE
+DE=LEERTASTE
+IT=SPAZIO
+ES=ESPACIO
+RU=ПРОБЕЛ
+PT=ESPAÇO
+BR=ESPAÇO
+
+[UI_KEY_LSHIFT]
+EN=L. SHIFT
+FR=MAJ. G
+DE=L. UMSCHALT
+IT=SHIFT S
+ES=MAYÚS. I
+RU=Л. SHIFT
+PT=SHIFT ESQ.
+BR=SHIFT ESQ.
+
+[UI_KEY_RSHIFT]
+EN=R. SHIFT
+FR=MAJ. D
+DE=R. UMSCHALT
+IT=SHIFT D
+ES=MAYÚS. D
+RU=П. SHIFT
+PT=SHIFT DIR.
+BR=SHIFT DIR.
+
+[UI_KEY_LCTRL]
+EN=L. CTRL
+FR=CTRL G
+DE=L. STRG
+IT=CTRL S
+ES=CTRL I
+RU=Л. CTRL
+PT=CTRL ESQ.
+BR=CTRL ESQ.
+
+[UI_KEY_RCTRL]
+EN=R. CTRL
+FR=CTRL D
+DE=R. STRG
+IT=CTRL D
+ES=CTRL D
+RU=П. CTRL
+PT=CTRL DIR.
+BR=CTRL DIR.
+
+[UI_KEY_LALT]
+EN=L. ALT
+FR=ALT G
+DE=L. ALT
+IT=ALT S
+ES=ALT I
+RU=Л. ALT
+PT=ALT ESQ.
+BR=ALT ESQ.
+
+[UI_KEY_RALT]
+EN=R. ALT
+FR=ALT D
+DE=R. ALT
+IT=ALT D
+ES=ALT D
+RU=П. ALT
+PT=ALT DIR.
+BR=ALT DIR.
+
+[UI_KEY_MOUSE4]
+EN=Mouse 4
+FR=Souris 4
+DE=Maus 4
+IT=Mouse 4
+ES=Ratón 4
+RU=Мышь 4
+PT=Rato 4
+BR=Mouse 4
+
+[UI_KEY_MOUSE5]
+EN=Mouse 5
+FR=Souris 5
+DE=Maus 5
+IT=Mouse 5
+ES=Ratón 5
+RU=Мышь 5
+PT=Rato 5
+BR=Mouse 5
+
+[UI_CANCEL]
+EN=Cancel
+FR=Annuler
+DE=Abbrechen
+IT=Annulla
+ES=Cancelar
+RU=Отмена
+PT=Cancelar
+BR=Cancelar
+
+[UI_CONFIRM]
+EN=Confirm
+FR=Confirmer
+DE=Bestätigen
+IT=Conferma
+ES=Confirmar
+RU=Подтвердить
+PT=Confirmar
+BR=Confirmar
+
+[UI_OK]
+EN=OK
+FR=OK
+DE=OK
+IT=OK
+ES=OK
+RU=OK
+PT=OK
+BR=OK
+
+[UI_ARE_YOU_SURE]
+EN=Are you sure?
+FR=Êtes-vous sûr ?
+DE=Sind Sie sicher?
+IT=Sei sicuro?
+ES=¿Estás seguro?
+RU=Вы уверены?
+PT=Tem a certeza?
+BR=Tem certeza?
+
+[UI_NEW_GAME_PROMPT]
+EN=Are you sure you want to start a new game?
+FR=Voulez-vous vraiment commencer une nouvelle partie ?
+DE=Wirklich ein neues Spiel beginnen?
+IT=Vuoi davvero iniziare una nuova partita?
+ES=¿Seguro que quieres comenzar una nueva partida?
+RU=Вы действительно хотите начать новую игру?
+PT=Tem a certeza de que quer começar um novo jogo?
+BR=Tem certeza de que deseja começar um novo jogo?
+
+[UI_LOAD_PROMPT]
+EN=Do you want to load the save \"%s\"?
+FR=Voulez-vous charger la sauvegarde « %s » ?
+DE=Möchten Sie den Spielstand „%s“ laden?
+IT=Vuoi caricare il salvataggio '%s'?
+ES=¿Quieres cargar la partida \"%s\"?
+RU=Вы хотите загрузить сохранение '%s'?
+PT=Quer carregar o save \"%s\"?
+BR=Deseja carregar o save \"%s\"?
+
+[UI_DELETE_PROMPT]
+EN=Do you want to delete the save \"%s\"?
+FR=Voulez-vous supprimer la sauvegarde « %s » ?
+DE=Möchten Sie den Spielstand „%s“ löschen?
+IT=Vuoi eliminare il salvataggio '%s'?
+ES=¿Quieres eliminar la partida \"%s\"?
+RU=Вы хотите удалить сохранение '%s'?
+PT=Quer apagar o save \"%s\"?
+BR=Deseja excluir o save \"%s\"?
+
+[UI_OVERWRITE_PROMPT]
+EN=Do you want to overwrite the save \"%s\"?
+FR=Voulez-vous écraser la sauvegarde « %s » ?
+DE=Möchten Sie den Spielstand „%s“ überschreiben?
+IT=Vuoi sovrascrivere il salvataggio '%s'?
+ES=¿Quieres sobrescribir la partida \"%s\"?
+RU=Вы хотите перезаписать сохранение \"%s\"?
+PT=Quer substituir o save \"%s\"?
+BR=Deseja sobrescrever o save \"%s\"?
+
+[UI_SAVE_SUCCESS]
+EN=Save successful.\nPress OK to continue.
+FR=Sauvegarde réussie.\nAppuyez sur OK pour continuer.
+DE=Speichern erfolgreich.\nDrücken Sie OK, um fortzufahren.
+IT=Salvataggio riuscito.\nPremi OK per continuare.
+ES=Partida guardada.\nPulsa OK para continuar.
+RU=Сохранение прошло успешно.\nНажмите OK, чтобы продолжить.
+PT=Guardado com sucesso.\\nPrima OK para continuar.
+BR=Salvo com sucesso.\\nPressione OK para continuar.
+
+[UI_EMPTY_SLOT]
+EN=Empty slot
+FR=Emplacement vide
+DE=Leerer Slot
+IT=Slot vuoto
+ES=Ranura vacía
+RU=Пустая ячейка
+PT=Vazio
+BR=Vazio
+
+[UI_CORRUPT_SAVE]
+EN=Damaged file
+FR=Fichier endommagé
+DE=Beschädigte Datei
+IT=File danneggiato
+ES=Archivo dañado
+RU=Повреждённый файл
+PT=Corrupto
+BR=Corrompido
+
+[MON_01]
+EN=JAN
+FR=JAN
+DE=JAN
+IT=GEN
+ES=ENE
+RU=ЯНВ
+PT=ENE
+BR=ENE
+
+[MON_02]
+EN=FEB
+FR=FÉV
+DE=FEB
+IT=FEB
+ES=FEB
+RU=ФЕВ
+PT=FEB
+BR=FEB
+
+[MON_03]
+EN=MAR
+FR=MAR
+DE=MÄR
+IT=MAR
+ES=MAR
+RU=МАР
+PT=MAR
+BR=MAR
+
+[MON_04]
+EN=APR
+FR=AVR
+DE=APR
+IT=APR
+ES=ABR
+RU=АПР
+PT=ABR
+BR=ABR
+
+[MON_05]
+EN=MAY
+FR=MAI
+DE=MAI
+IT=MAG
+ES=MAY
+RU=МАЙ
+PT=MAY
+BR=MAY
+
+[MON_06]
+EN=JUN
+FR=JUIN
+DE=JUN
+IT=GIU
+ES=JUN
+RU=ИЮН
+PT=JUN
+BR=JUN
+
+[MON_07]
+EN=JUL
+FR=JUIL
+DE=JUL
+IT=LUG
+ES=JUL
+RU=ИЮЛ
+PT=JUL
+BR=JUL
+
+[MON_08]
+EN=AUG
+FR=AOÛT
+DE=AUG
+IT=AGO
+ES=AGO
+RU=АВГ
+PT=AGO
+BR=AGO
+
+[MON_09]
+EN=SEP
+FR=SEP
+DE=SEP
+IT=SET
+ES=SEP
+RU=СЕН
+PT=SEP
+BR=SEP
+
+[MON_10]
+EN=OCT
+FR=OCT
+DE=OKT
+IT=OTT
+ES=OCT
+RU=ОКТ
+PT=OCT
+BR=OCT
+
+[MON_11]
+EN=NOV
+FR=NOV
+DE=NOV
+IT=NOV
+ES=NOV
+RU=НОЯ
+PT=NOV
+BR=NOV
+
+[MON_12]
+EN=DEC
+FR=DÉC
+DE=DEZ
+IT=DIC
+ES=DIC
+RU=ДЕК
+PT=DIC
+BR=DIC
+
+[MAP_HINTS]
+EN=Zoom [SCROLL]    Place marker [LMB]    Remove marker [RMB]    Back [ESC]    Legend [TAB]
+FR=Zoom [SCROLL]    Placer un marqueur [LMB]    Retirer le marqueur [RMB]    Retour [ESC]    Légende [TAB]
+DE=Zoom [SCROLL]    Markierung setzen [LMB]    Markierung entfernen [RMB]    Zurück [ESC]    Legende [TAB]
+IT=Zoom [SCROLL]    Posiziona marcatore [LMB]    Rimuovi marcatore [RMB]    Indietro [ESC]    Legenda [TAB]
+ES=Zoom [SCROLL]    Colocar marca [LMB]    Quitar marca [RMB]    Atrás [ESC]    Leyenda [TAB]
+RU=Масштаб [СКРОЛЛ]    Поставить метку [ЛКМ]    Убрать метку [ПКМ]    Назад [ESC]    Легенда [TAB]
+PT=Zoom [SCROLL]    Colocar marcador [LMB]    Remover marcador [RMB]    Voltar [ESC]    Legenda [TAB]
+BR=Zoom [SCROLL]    Colocar marcador [LMB]    Remover marcador [RMB]    Voltar [ESC]    Legenda [TAB]
+
+[ZONE_DEFAULT]
+EN=SAN ANDREAS
+FR=SAN ANDREAS
+DE=SAN ANDREAS
+IT=SAN ANDREAS
+ES=SAN ANDREAS
+RU=САН АНДРЕАС
+PT=SAN ANDREAS
+BR=SAN ANDREAS
+
+[SET_REDEFINE]
+EN=Redefine Controls
+FR=Redéfinir les commandes
+DE=Steuerung ändern
+IT=Ridefinisci comandi
+ES=Cambiar controles
+RU=Изменить раскладку управления
+PT=Cambiar controles
+BR=Cambiar controles
+
+[SET_INVERT_Y]
+EN=Invert Look
+FR=Inverser le regard
+DE=Blick umkehren
+IT=Inverti visuale
+ES=Invertir mirada
+RU=Инвертировать обзор
+PT=Invertir mirada
+BR=Invertir mirada
+
+[SET_INVERT_X]
+EN=Invert Look Horizontal
+FR=Inverser regard horizontal
+DE=Blick horizontal umkehren
+IT=Inverti visuale orizz.
+ES=Invertir mirada horizontal
+RU=Инвертировать обзор по горизонтали
+PT=Invertir mirada horizontal
+BR=Invertir mirada horizontal
+
+[SET_MOUSE_X]
+EN=Mouse X Sensitivity
+FR=Sensibilité souris X
+DE=Mausempfindlichkeit X
+IT=Sensibilità mouse X
+ES=Sensibilidad ratón X
+RU=Чувствительность оси X
+PT=Sensibilidad ratón X
+BR=Sensibilidad ratón X
+
+[SET_MOUSE_Y]
+EN=Mouse Y Sensitivity
+FR=Sensibilité souris Y
+DE=Mausempfindlichkeit Y
+IT=Sensibilità mouse Y
+ES=Sensibilidad ratón Y
+RU=Чувствительность оси Y
+PT=Sensibilidad ratón Y
+BR=Sensibilidad ratón Y
+
+[SET_MOUSE_STEER]
+EN=Mouse Steering
+FR=Conduite à la souris
+DE=Mauslenkung
+IT=Sterzo mouse
+ES=Dirección con ratón
+RU=Руление мышью
+PT=Dirección con ratón
+BR=Dirección con ratón
+
+[SET_MOUSE_FLY]
+EN=Mouse Flying
+FR=Vol à la souris
+DE=Mausflug
+IT=Volo mouse
+ES=Vuelo con ratón
+RU=Полёт мышью
+PT=Vuelo con ratón
+BR=Vuelo con ratón
+
+[SET_RESTORE]
+EN=Restore Defaults
+FR=Restaurer
+DE=Standard wiederherstellen
+IT=Ripristina predefiniti
+ES=Restaurar valores
+RU=Восстановить по умолчанию
+PT=Restaurar valores
+BR=Restaurar valores
+
+[SET_SHOW_HUD]
+EN=Show HUD
+FR=Afficher le HUD
+DE=HUD anzeigen
+IT=Mostra HUD
+ES=Mostrar HUD
+RU=Показывать HUD
+PT=Mostrar HUD
+BR=Mostrar HUD
+
+[SET_RADAR]
+EN=Radar Mode
+FR=Mode radar
+DE=Radarmodus
+IT=Modalità radar
+ES=Modo radar
+RU=Режим радара
+PT=Modo radar
+BR=Modo radar
+
+[SET_WIDESCREEN]
+EN=Widescreen
+FR=Grand écran
+DE=Breitbild
+IT=Widescreen
+ES=Pantalla ancha
+RU=Широкий экран
+PT=Pantalla ancha
+BR=Pantalla ancha
+
+[SET_BRIGHTNESS]
+EN=Brightness
+FR=Luminosité
+DE=Helligkeit
+IT=Luminosità
+ES=Brillo
+RU=Яркость
+PT=Brillo
+BR=Brillo
+
+[SET_DRAW_DIST]
+EN=Draw Distance
+FR=Distance d'affichage
+DE=Zeichnungsweite
+IT=Distanza di disegno
+ES=Distancia de dibujo
+RU=Дальность прорисовки
+PT=Distancia de dibujo
+BR=Distancia de dibujo
+
+[SET_FRAME_LIMIT]
+EN=Frame Limiter
+FR=Limiteur d'images
+DE=Bildratenbegrenzer
+IT=Limite fotogrammi
+ES=Limitador de fotogramas
+RU=Ограничение частоты кадров
+PT=Limitador de fotogramas
+BR=Limitador de fotogramas
+
+[SET_FX_QUALITY]
+EN=Effects Quality
+FR=Qualité des effets
+DE=Effektqualität
+IT=Qualità effetti
+ES=Calidad de efectos
+RU=Качество эффектов
+PT=Calidad de efectos
+BR=Calidad de efectos
+
+[SET_MIP]
+EN=Mip Mapping
+FR=Mip Mapping
+DE=Mip Mapping
+IT=Mip Mapping
+ES=Mip Mapping
+RU=Mip Mapping
+PT=Mip Mapping
+BR=Mip Mapping
+
+[SET_AA]
+EN=Anti-Aliasing
+FR=Anticrénelage
+DE=Antialiasing
+IT=Anti-aliasing
+ES=Suavizado
+RU=Сглаживание
+PT=Suavizado
+BR=Suavizado
+
+[SET_WINDOW_MODE]
+EN=Window Mode
+FR=Mode fenêtre
+DE=Fenstermodus
+IT=Modalità finestra
+ES=Modo de ventana
+RU=Режим окна
+PT=Modo de ventana
+BR=Modo de ventana
+
+[SET_RESOLUTION]
+EN=Resolution
+FR=Résolution
+DE=Auflösung
+IT=Risoluzione
+ES=Resolución
+RU=Разрешение
+PT=Resolução
+BR=Resolução
+
+[SET_HEATHAZE]
+EN=Heat Haze
+FR=Effet de chaleur
+DE=Hitzeflimmern
+IT=Foschia di calore
+ES=Efecto de calor
+RU=Эффект жары
+PT=Efeito de calor
+BR=Efeito de calor
+
+[SET_SPEEDBLUR]
+EN=Speed Blur
+FR=Flou de vitesse
+DE=Geschwindigkeitsunschärfe
+IT=Sfocatura velocità
+ES=Desenfoque de velocidad
+RU=Размытие на скорости
+PT=Desfoque de velocidade
+BR=Desfoque de velocidade
+
+[SET_SFX]
+EN=SFX Volume
+FR=Volume SFX
+DE=SFX-Lautstärke
+IT=Volume SFX
+ES=Volumen SFX
+RU=Громкость звуков
+PT=Volume SFX
+BR=Volume SFX
+
+[SET_MUSIC]
+EN=Music Volume
+FR=Volume musique
+DE=Musiklautstärke
+IT=Volume musica
+ES=Volumen música
+RU=Громкость музыки
+PT=Volume da música
+BR=Volume da música
+
+[SET_RADIO_AUTO]
+EN=Radio Autotune
+FR=Radio auto
+DE=Radio Auto
+IT=Radio auto
+ES=Radio auto
+RU=Автовыбор радиостанции
+PT=Rádio automática
+BR=Rádio automática
+
+[SET_RADIO_EQ]
+EN=Radio EQ
+FR=Égaliseur radio
+DE=Radio-EQ
+IT=EQ radio
+ES=EQ de radio
+RU=Эквалайзер радио
+PT=EQ do rádio
+BR=EQ do rádio
+
+[SET_LANGUAGE]
+EN=Language
+FR=Langue
+DE=Sprache
+IT=Lingua
+ES=Idioma
+RU=Язык
+PT=Idioma
+BR=Idioma
+
+[SET_SUBTITLES]
+EN=Subtitles
+FR=Sous-titres
+DE=Untertitel
+IT=Sottotitoli
+ES=Subtítulos
+RU=Субтитры
+PT=Legendas
+BR=Legendas
+
+[SET_UPDATED_HELP]
+EN=Updated Help
+FR=Aide actualisée
+DE=Aktualisierte Hinweise
+IT=Suggerimenti aggiornati
+ES=Consejos actualizados
+RU=Обновленные подсказки
+PT=Ajuda atualizada
+BR=Ajuda atualizada
+
+[SET_RADIO_TEXT]
+EN=Radio Name HUD
+FR=Nom radio HUD
+DE=Radio-Name HUD
+IT=Nome radio HUD
+ES=Nombre de radio HUD
+RU=Название радио HUD
+PT=Nome do rádio no HUD
+BR=Nome do rádio no HUD
+
+[SET_GPS]
+EN=GPS Route
+FR=Itinéraire GPS
+DE=GPS-Route
+IT=Percorso GPS
+ES=Ruta GPS
+RU=Маршрут GPS
+PT=Rota GPS
+BR=Rota GPS
+
+[SET_PHOTOS]
+EN=Store Photos
+FR=Stocker photos
+DE=Fotos speichern
+IT=Salva foto
+ES=Guardar fotos
+RU=Сохранять фотографии
+PT=Guardar fotos
+BR=Salvar fotos
+
+[SET_DE_ICONS]
+EN=Definitive Icons
+FR=Icônes Definitive
+DE=Definitive-Symbole
+IT=Icone Definitive
+ES=Iconos Definitive
+RU=Иконки Definitive
+PT=Ícones Definitive
+BR=Ícones Definitive
+
+[SET_CUSTOM_RADAR]
+EN=Custom Radar Map
+FR=Carte radar perso
+DE=Eigene Radarkarte
+IT=Mappa radar personalizzata
+ES=Mapa radar personal
+RU=Кастомная карта радара
+PT=Mapa de radar personalizado
+BR=Mapa de radar personalizado
+
+[SET_GANG_ZONES]
+EN=Gang Zones
+FR=Zones de gangs
+DE=Ganggebiete
+IT=Zone gang
+ES=Zonas de bandas
+RU=Зоны банд
+PT=Zonas de gangs
+BR=Zonas de gangs
+
+[SET_RADAR_APPEARANCE]
+EN=Radar Appearance/Settings
+FR=Apparence/Réglages du radar
+DE=Radar-Darstellung/Einstellungen
+IT=Aspetto/Impostazioni radar
+ES=Apariencia/Ajustes del radar
+RU=Внешний вид/Настройки радара
+PT=Aspeto/Definições do radar
+BR=Aparência/Configurações do radar
+
+[SET_RADAR_CAMERA]
+EN=Radar Camera Settings
+FR=Réglages caméra radar
+DE=Radar-Kameraeinstellungen
+IT=Impostazioni camera radar
+ES=Ajustes de cámara del radar
+RU=Настройка камеры для радара
+PT=Definições da câmara do radar
+BR=Configurações da câmera do radar
+
+[SET_RADAR_CAM_CONTEXT]
+EN=Camera Preset
+FR=Préréglage caméra
+DE=Kamera-Voreinstellung
+IT=Preset camera
+ES=Ajuste de cámara
+RU=Профиль камеры
+PT=Predefinição da câmara
+BR=Predefinição da câmera
+
+[RADAR_CAM_CTX_PED]
+EN=On Foot
+FR=À pied
+DE=Zu Fuß
+IT=A piedi
+ES=A pie
+RU=Пешком
+PT=A pé
+BR=A pé
+
+[RADAR_CAM_CTX_VEHICLE]
+EN=Fast Vehicle
+FR=Véhicule rapide
+DE=Schnelles Fahrzeug
+IT=Veicolo veloce
+ES=Vehículo rápido
+RU=Быстрый транспорт
+PT=Veículo rápido
+BR=Veículo rápido
+
+[RADAR_CAM_CTX_PLANE]
+EN=Plane
+FR=Avion
+DE=Flugzeug
+IT=Aereo
+ES=Avión
+RU=Самолёт
+PT=Avião
+BR=Avião
+
+[RADAR_CAM_CTX_HELI]
+EN=Helicopter
+FR=Hélicoptère
+DE=Hubschrauber
+IT=Elicottero
+ES=Helicóptero
+RU=Вертолёт
+PT=Helicóptero
+BR=Helicóptero
+
+[RADAR_CAM_CTX_ZOOM]
+EN=Max Zoom
+FR=Zoom max
+DE=Max-Zoom
+IT=Zoom max
+ES=Zoom máximo
+RU=Макс. зум
+PT=Zoom máximo
+BR=Zoom máximo
+
+[SET_RADAR_CAM_OFFSET_X]
+EN=Offset X
+FR=Décalage X
+DE=Versatz X
+IT=Offset X
+ES=Desplazamiento X
+RU=Смещение X
+PT=Deslocamento X
+BR=Deslocamento X
+
+[SET_RADAR_CAM_OFFSET_Y]
+EN=Offset Y
+FR=Décalage Y
+DE=Versatz Y
+IT=Offset Y
+ES=Desplazamiento Y
+RU=Смещение Y
+PT=Deslocamento Y
+BR=Deslocamento Y
+
+[SET_RADAR_CAM_OFFSET_Z]
+EN=Offset Z (Height)
+FR=Décalage Z (hauteur)
+DE=Versatz Z (Höhe)
+IT=Offset Z (altezza)
+ES=Desplazamiento Z (altura)
+RU=Смещение Z (высота)
+PT=Deslocamento Z (altura)
+BR=Deslocamento Z (altura)
+
+[SET_RADAR_CAM_PITCH]
+EN=Camera Pitch Offset
+FR=Décalage inclinaison
+DE=Neigungsversatz
+IT=Offset inclinazione
+ES=Desplazamiento inclinación
+RU=Смещение наклона
+PT=Deslocamento inclinação
+BR=Deslocamento inclinação
+
+[SET_RADAR_CAM_FOV]
+EN=Camera FOV Offset
+FR=Décalage FOV
+DE=FOV-Versatz
+IT=Offset FOV
+ES=Desplazamiento FOV
+RU=Смещение FOV
+PT=Deslocamento FOV
+BR=Deslocamento FOV
+
+[SET_RADAR_CULL_RADIUS_MUL]
+EN=Map Load Radius
+FR=Rayon de chargement carte
+DE=Kartenladeradius
+IT=Raggio caricamento mappa
+ES=Radio de carga del mapa
+RU=Радиус загрузки карты
+PT=Raio de carregamento do mapa
+BR=Raio de carregamento do mapa
+
+[SET_RADAR_CULL_RADIUS_ADD]
+EN=Map Load Radius Extra
+FR=Rayon extra carte
+DE=Zusätzlicher Kartenradius
+IT=Raggio extra mappa
+ES=Radio extra del mapa
+RU=Доп. радиус загрузки
+PT=Raio extra do mapa
+BR=Raio extra do mapa
+
+[SET_RADAR_SHAPE]
+EN=Shape
+FR=Forme
+DE=Form
+IT=Forma
+ES=Forma
+RU=Форма
+PT=Forma
+BR=Forma
+
+[SET_RADAR_VIEW]
+EN=Radar View
+FR=Vue radar
+DE=Radaransicht
+IT=Vista radar
+ES=Vista del radar
+RU=Вид радара
+PT=Vista do radar
+BR=Vista do radar
+
+[SET_RADAR_SIZE]
+EN=Size
+FR=Taille
+DE=Größe
+IT=Dimensione
+ES=Tamaño
+RU=Размер
+PT=Tamanho
+BR=Tamanho
+
+[SET_RADAR_SIZE_W]
+EN=Width
+FR=Largeur
+DE=Breite
+IT=Larghezza
+ES=Ancho
+RU=Ширина
+PT=Largura
+BR=Largura
+
+[SET_RADAR_SIZE_H]
+EN=Height
+FR=Hauteur
+DE=Höhe
+IT=Altezza
+ES=Alto
+RU=Высота
+PT=Altura
+BR=Altura
+
+[SET_RADAR_OFFSET_X]
+EN=Offset X
+FR=Décalage X
+DE=Versatz X
+IT=Offset X
+ES=Desplazamiento X
+RU=Отступ X
+PT=Deslocamento X
+BR=Deslocamento X
+
+[SET_RADAR_OFFSET_Y]
+EN=Offset Y
+FR=Décalage Y
+DE=Versatz Y
+IT=Offset Y
+ES=Desplazamiento Y
+RU=Отступ Y
+PT=Deslocamento Y
+BR=Deslocamento Y
+
+[SET_RADAR_BORDER]
+EN=Outline Thickness
+FR=Épaisseur du contour
+DE=Randdicke
+IT=Spessore bordo
+ES=Grosor del borde
+RU=Толщина обводки
+PT=Espessura do contorno
+BR=Espessura do contorno
+
+[SET_BLIP_ICON_SCALE]
+EN=Blip Icon Size
+FR=Taille des icônes
+DE=Icon-Größe
+IT=Dimensione icone
+ES=Tamaño de iconos
+RU=Размер иконок
+PT=Tamanho dos ícones
+BR=Tamanho dos ícones
+
+[SET_BLIP_EDGE_FADE]
+EN=Blip Edge Fade
+FR=Fondu des icônes au bord
+DE=Icon-Ausblenden am Rand
+IT=Dissolvenza icone al bordo
+ES=Desvanecimiento en el borde
+RU=Затухание иконок у края
+PT=Desvanecer ícones na borda
+BR=Desvanecer ícones na borda
+
+[SET_RADAR_BG]
+EN=Background Color
+FR=Couleur de fond
+DE=Hintergrundfarbe
+IT=Colore sfondo
+ES=Color de fondo
+RU=Цвет фона
+PT=Cor de fundo
+BR=Cor de fundo
+
+[SET_RADAR_BG_R]
+EN=Background R
+FR=Fond R
+DE=Hintergrund R
+IT=Sfondo R
+ES=Fondo R
+RU=Фон R
+PT=Fundo R
+BR=Fundo R
+
+[SET_RADAR_BG_G]
+EN=Background G
+FR=Fond G
+DE=Hintergrund G
+IT=Sfondo G
+ES=Fondo G
+RU=Фон G
+PT=Fundo G
+BR=Fundo G
+
+[SET_RADAR_BG_B]
+EN=Background B
+FR=Fond B
+DE=Hintergrund B
+IT=Sfondo B
+ES=Fondo B
+RU=Фон B
+PT=Fundo B
+BR=Fundo B
+
+[SET_RADAR_BG_A]
+EN=Background Alpha
+FR=Fond Alpha
+DE=Hintergrund Alpha
+IT=Sfondo Alpha
+ES=Fondo Alpha
+RU=Фон прозрачность
+PT=Fundo Alpha
+BR=Fundo Alpha
+
+[SET_RADAR_BORDER_COLOR]
+EN=Outline Color
+FR=Couleur du contour
+DE=Randfarbe
+IT=Colore bordo
+ES=Color del borde
+RU=Цвет обводки
+PT=Cor do contorno
+BR=Cor do contorno
+
+[SET_RADAR_BORDER_R]
+EN=Outline R
+FR=Contour R
+DE=Rand R
+IT=Bordo R
+ES=Borde R
+RU=Обводка R
+PT=Contorno R
+BR=Contorno R
+
+[SET_RADAR_BORDER_G]
+EN=Outline G
+FR=Contour G
+DE=Rand G
+IT=Bordo G
+ES=Borde G
+RU=Обводка G
+PT=Contorno G
+BR=Contorno G
+
+[SET_RADAR_BORDER_B]
+EN=Outline B
+FR=Contour B
+DE=Rand B
+IT=Bordo B
+ES=Borde B
+RU=Обводка B
+PT=Contorno B
+BR=Contorno B
+
+[SET_RADAR_BORDER_A]
+EN=Outline Alpha
+FR=Contour Alpha
+DE=Rand Alpha
+IT=Bordo Alpha
+ES=Borde Alpha
+RU=Обводка прозрачность
+PT=Contorno Alpha
+BR=Contorno Alpha
+
+[SET_RADAR_COLOR_CUSTOM]
+EN=Custom
+FR=Perso
+DE=Eigene
+IT=Personalizzato
+ES=Personalizado
+RU=Свой
+PT=Personalizado
+BR=Personalizado
+
+[RADAR_SHAPE_CIRCLE]
+EN=Circle
+FR=Cercle
+DE=Kreis
+IT=Cerchio
+ES=Círculo
+RU=Круг
+PT=Círculo
+BR=Círculo
+
+[RADAR_SHAPE_SQUARE]
+EN=Square
+FR=Carré
+DE=Quadrat
+IT=Quadrato
+ES=Cuadrado
+RU=Квадрат
+PT=Quadrado
+BR=Quadrado
+
+[RADAR_VIEW_2D]
+EN=2D
+FR=2D
+DE=2D
+IT=2D
+ES=2D
+RU=2D
+PT=2D
+BR=2D
+
+[RADAR_VIEW_3D]
+EN=3D
+FR=3D
+DE=3D
+IT=3D
+ES=3D
+RU=3D
+PT=3D
+BR=3D
+
+[RADAR_MAP_BLIPS]
+EN=Map & Blips
+FR=Carte et repères
+DE=Karte & Markierungen
+IT=Mappa e icone
+ES=Mapa y marcas
+RU=Карта и метки
+PT=Mapa e marcas
+BR=Mapa e marcas
+
+[RADAR_BLIPS]
+EN=Blips only
+FR=Repères seuls
+DE=Nur Markierungen
+IT=Solo icone
+ES=Solo marcas
+RU=Только метки
+PT=Só marcas
+BR=Só marcas
+
+[RADAR_OFF]
+EN=Off
+FR=Désactivé
+DE=Aus
+IT=No
+ES=No
+RU=Выкл.
+PT=Desligado
+BR=Desligado
+
+[WIN_WINDOWED]
+EN=Windowed
+FR=Fenêtré
+DE=Fenster
+IT=Finestra
+ES=Ventana
+RU=Оконный
+PT=Janela
+BR=Janela
+
+[WIN_FULLSCREEN]
+EN=Fullscreen
+FR=Plein écran
+DE=Vollbild
+IT=Schermo intero
+ES=Pantalla completa
+RU=Полноэкранный
+PT=Ecrã inteiro
+BR=Tela cheia
+
+[WIN_BORDERLESS]
+EN=Windowed (Borderless)
+FR=Fenêtré (sans bord)
+DE=Fenster (rahmenlos)
+IT=Finestra (senza bordo)
+ES=Ventana (sin marco)
+RU=Оконный (без рамки)
+PT=Janela (sem moldura)
+BR=Janela (sem borda)
+
+[FEA_R0]
+EN=Playback FM
+FR=Playback FM
+DE=Playback FM
+IT=Playback FM
+ES=Playback FM
+RU=Playback FM
+PT=Playback FM
+BR=Playback FM
+
+[FEA_R1]
+EN=K-Rose
+FR=K-Rose
+DE=K-Rose
+IT=K-Rose
+ES=K-Rose
+RU=K-Rose
+PT=K-Rose
+BR=K-Rose
+
+[FEA_R2]
+EN=K-DST
+FR=K-DST
+DE=K-DST
+IT=K-DST
+ES=K-DST
+RU=K-DST
+PT=K-DST
+BR=K-DST
+
+[FEA_R3]
+EN=Bounce FM
+FR=Bounce FM
+DE=Bounce FM
+IT=Bounce FM
+ES=Bounce FM
+RU=Bounce FM
+PT=Bounce FM
+BR=Bounce FM
+
+[FEA_R4]
+EN=SF-UR
+FR=SF-UR
+DE=SF-UR
+IT=SF-UR
+ES=SF-UR
+RU=SF-UR
+PT=SF-UR
+BR=SF-UR
+
+[FEA_R5]
+EN=Radio Los Santos
+FR=Radio Los Santos
+DE=Radio Los Santos
+IT=Radio Los Santos
+ES=Radio Los Santos
+RU=Радио Лос-Сантос
+PT=Radio Los Santos
+BR=Radio Los Santos
+
+[FEA_R6]
+EN=Radio X
+FR=Radio X
+DE=Radio X
+IT=Radio X
+ES=Radio X
+RU=Radio X
+PT=Radio X
+BR=Radio X
+
+[FEA_R7]
+EN=CSR 103.9
+FR=CSR 103.9
+DE=CSR 103.9
+IT=CSR 103.9
+ES=CSR 103.9
+RU=CSR 103.9
+PT=CSR 103.9
+BR=CSR 103.9
+
+[FEA_R8]
+EN=K-Jah West
+FR=K-Jah West
+DE=K-Jah West
+IT=K-Jah West
+ES=K-Jah West
+RU=K-Jah West
+PT=K-Jah West
+BR=K-Jah West
+
+[FEA_R9]
+EN=Master Sounds 98.3
+FR=Master Sounds 98.3
+DE=Master Sounds 98.3
+IT=Master Sounds 98.3
+ES=Master Sounds 98.3
+RU=Master Sounds 98.3
+PT=Master Sounds 98.3
+BR=Master Sounds 98.3
+
+[FEA_R10]
+EN=WCTR
+FR=WCTR
+DE=WCTR
+IT=WCTR
+ES=WCTR
+RU=WCTR
+PT=WCTR
+BR=WCTR
+
+[FEA_MP3]
+EN=User Track Player
+FR=Lecteur de pistes perso
+DE=User-Track-Player
+IT=Lettore tracce utente
+ES=Reproductor de pistas
+RU=Пользовательские треки
+PT=Leitor de faixas do utilizador
+BR=Player de faixas do usuário
+
+[FEA_NON]
+EN=Radio Off
+FR=Radio éteinte
+DE=Radio aus
+IT=Radio spenta
+ES=Radio apagada
+RU=Радио выключено
+PT=Rádio desligado
+BR=Rádio desligado
+
+[FX_LOW]
+EN=Low
+FR=Faible
+DE=Niedrig
+IT=Bassa
+ES=Baja
+RU=Низк.
+PT=Baixo
+BR=Baixo
+
+[FX_MED]
+EN=Medium
+FR=Moyen
+DE=Mittel
+IT=Media
+ES=Media
+RU=Средн.
+PT=Médio
+BR=Médio
+
+[FX_HIGH]
+EN=High
+FR=Élevé
+DE=Hoch
+IT=Alta
+ES=Alta
+RU=Высок.
+PT=Alto
+BR=Alto
+
+[FX_VERY]
+EN=Very High
+FR=Très élevé
+DE=Sehr hoch
+IT=Molto alta
+ES=Muy alta
+RU=Очень высок.
+PT=Muito alto
+BR=Muito alto

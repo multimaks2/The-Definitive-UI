@@ -1,3 +1,7 @@
+# Legacy VS output dirs (configuration names with spaces)
+Release GTA-SA/
+Debug GTA-SA/
+
 # Build / local output
 bin/
 obj/
@@ -33,6 +37,9 @@ Local.props
 
 # Local-only docs (keep on disk, do not publish)
 PLUGIN-SDK-ADDRESS-AUDIT.md
+
+# Local pre-refactor snapshot (not for publish)
+code-reference/
 
 # Python caches (if any scripts appear outside tools/)
 __pycache__/
