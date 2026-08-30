@@ -42,9 +42,13 @@ Config file: `radar-trilogy-sa.ini` (created automatically)
 - `ModeMoreIcon` — icon mode
 - `CircleSize` — radar size
 
-## License
+## License / Лицензия
 
-MIT. See the [LICENSE](LICENSE) file.
+**[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — see [LICENSE](LICENSE).
+
+**English:** You may share and adapt this work for **non-commercial** purposes only, with **attribution**, and derivatives must stay under the **same license** (source remains open). Selling or other commercial use is not allowed without a separate permission from the copyright holder.
+
+**Русский:** Разрешено распространять и изменять работу **только в некоммерческих целях**, с указанием **авторства**; производные работы должны оставаться под **той же лицензией** (исходный код остаётся открытым). **Продажа и иное коммерческое использование запрещены** без отдельного разрешения правообладателя.
 
 ## Acknowledgements
 
